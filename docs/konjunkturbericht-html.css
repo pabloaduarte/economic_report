@@ -1,0 +1,724 @@
+@font-face {
+  font-family: "Big Vesta";
+  src: url("fonts/Big_Vesta_regular.woff2") format("woff2"),
+       url("fonts/Big_Vesta_regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Big Vesta";
+  src: url("fonts/Big_Vesta_bold.woff2") format("woff2"),
+       url("fonts/Big_Vesta_bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BigVesta";
+  src: url("fonts/Big_Vesta_regular.woff2") format("woff2"),
+       url("fonts/Big_Vesta_regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BigVesta";
+  src: url("fonts/Big_Vesta_bold.woff2") format("woff2"),
+       url("fonts/Big_Vesta_bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f7f8f8;
+  --paper: #ffffff;
+  --paper-2: #fafafa;
+  --ink: #000000;
+  --muted: #677e78;
+  --faint: #b3b3b3;
+  --line: #e6e6e6;
+  --accent: #002f6a;
+  --accent-soft: #e6f0f2;
+  --accent-ink: #001a3b;
+  --brand-red: #b51d28;
+  --gold: #c3aa69;
+  --shadow: 0 20px 60px rgba(0, 47, 106, 0.08);
+  --font: "Big Vesta", "BigVesta", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --measure: 72ch;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(0, 47, 106, 0.06), transparent 30rem),
+    linear-gradient(180deg, #ffffff 0%, var(--bg) 44%, #f1f4f4 100%);
+  font-family: var(--font);
+  font-size: 18px;
+  line-height: 1.55;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+a {
+  color: var(--accent-ink);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+strong {
+  font-weight: 800;
+}
+
+#quarto-content {
+  gap: 0;
+}
+
+#quarto-margin-sidebar,
+#quarto-header,
+.quarto-title-block,
+.quarto-title-banner,
+#title-block-header,
+.code-tools-button,
+.sourceCode,
+.cell > details {
+  display: none !important;
+}
+
+#quarto-sidebar {
+  width: 280px;
+  border-right: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  padding: 1.25rem 1rem;
+}
+
+#quarto-sidebar::before {
+  content: "Konjunkturbericht";
+  display: block;
+  margin: 0.3rem 0 1.25rem;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+#TOC {
+  font-size: 0.86rem;
+}
+
+#TOC .nav-link {
+  color: var(--muted);
+  border-left: 2px solid transparent;
+  padding: 0.42rem 0.55rem;
+  line-height: 1.25;
+  border-radius: 0 999px 999px 0;
+}
+
+#TOC .nav-link.active,
+#TOC .nav-link:hover {
+  color: var(--accent-ink);
+  background: var(--accent-soft);
+  border-left-color: var(--accent);
+}
+
+main.content {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.report-cover,
+main.content > section.level3,
+section.level1 > section.level3,
+section.level1 > h1,
+main.content > h3,
+main.content > p,
+main.content > .columns,
+main.content > .forecast-block,
+main.content > .manual-toc {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.report-cover {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1.1rem;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+img.cover-logo,
+.cover-logo img {
+  width: min(420px, 72vw);
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.report-cover p:has(img.cover-logo),
+.cover-logo p {
+  margin: 0;
+}
+
+.cover-kicker {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.cover-title {
+  margin-top: 1.4rem;
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: clamp(2.4rem, 5.8vw, 4.8rem);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+.cover-subtitle {
+  color: var(--ink);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  font-weight: 400;
+}
+
+.cover-date {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+main.content > h3,
+main.content > section.level3,
+section.level1 > section.level3 {
+  width: calc(100% - 4rem);
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  padding: clamp(2.4rem, 5vw, 5.5rem);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+main.content > h3 {
+  display: block;
+}
+
+section.level3 h3 {
+  margin: 0 0 2rem;
+  color: var(--accent-ink);
+  font-size: clamp(1.85rem, 2.8vw, 3rem);
+  line-height: 1.08;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-align: left;
+}
+
+section.level3 p {
+  max-width: var(--measure);
+  margin: 0.85rem auto 0;
+  font-size: clamp(1.12rem, 1.6vw, 1.44rem);
+  line-height: 1.46;
+}
+
+section.level3 > p:first-of-type {
+  margin-top: 0;
+}
+
+section.level3 > p:has(img),
+section.level3 .cell-output-display,
+section.level3 figure {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img.chart-img,
+.chart-img img,
+section.level3 img:not(.cover-logo):not(.feature-image) {
+  width: min(920px, 100%);
+  max-height: 58vh;
+  object-fit: contain;
+  padding: 0.35rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+img.feature-image,
+.feature-image img {
+  width: min(940px, 100%);
+  max-height: 66vh;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 20px 70px rgba(0, 47, 106, 0.14);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.3rem;
+  align-items: start;
+}
+
+.column {
+  min-width: 0;
+}
+
+.columns img.chart-img,
+.columns .chart-img,
+.columns img {
+  width: 100%;
+  max-height: 46vh;
+}
+
+section.level1 {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+section.level1 > h1 {
+  width: min(980px, calc(100% - 4rem));
+  max-width: calc(100% - 4rem);
+  min-height: 72vh;
+  margin: 5rem 0 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8rem clamp(1.5rem, 5vw, 5rem);
+  display: grid;
+  align-items: end;
+  background:
+    linear-gradient(327.22deg, rgba(0, 26, 59, 0.055) 3.83%, rgba(0, 47, 106, 0.11) 92.46%),
+    #ffffff;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+section.level1 > h1 {
+  font-size: clamp(1.9rem, 3.9vw, 3.5rem);
+  line-height: 1.04;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: nowrap;
+}
+
+section.level1 > section.level3 {
+  width: min(1180px, calc(100% - 4rem));
+  max-width: 1180px;
+}
+
+.toc-slide {
+  text-align: center !important;
+}
+
+.manual-toc {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 2rem;
+}
+
+.manual-toc a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  color: var(--accent-ink);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+  font-size: clamp(1.45rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  text-decoration: none;
+}
+
+.manual-toc a::after {
+  content: "↗";
+  color: var(--faint);
+  font-size: 1.1rem;
+}
+
+.forecast-block {
+  margin-top: 1.6rem;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(1rem, 1.45vw, 1.25rem);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #ebe6df;
+}
+
+  th {
+  color: var(--muted);
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-soft);
+}
+
+td {
+  font-weight: 500;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.forecast-notes {
+  margin-top: 2rem;
+}
+
+#rechtliche-hinweise p,
+#rechtliche-hinweise .column {
+  color: #3e3a35;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+#rechtliche-hinweise h3 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):not(#aviso-legal)::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-image: url("pentagram.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 2rem auto 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 980px) {
+  #quarto-sidebar {
+    display: none;
+  }
+
+  main.content > h3,
+  main.content > section.level3 {
+    width: calc(100% - 1.5rem);
+    padding: 1.5rem;
+    border-radius: 22px;
+  }
+
+  .columns {
+    grid-template-columns: 1fr;
+  }
+
+  .cover-title,
+  section.level1 > h1 {
+    letter-spacing: 0;
+  }
+
+  .cover-title {
+    width: 100%;
+    font-size: clamp(2rem, 8vw, 3.2rem);
+    white-space: normal;
+  }
+
+  section.level1 > h1 {
+    width: calc(100% - 1.5rem);
+    max-width: calc(100vw - 1.5rem);
+    padding: 5rem 1.25rem;
+    font-size: clamp(1.7rem, 6.8vw, 2.7rem);
+    white-space: nowrap;
+  }
+}
+
+@media print {
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+
+  :root {
+    --bg: #ffffff;
+    --paper: #ffffff;
+    --ink: #000000;
+    --muted: #677e78;
+    --line: #e6e6e6;
+    --shadow: none;
+  }
+
+  html,
+  body {
+    width: 16in;
+    background: #ffffff !important;
+    font-size: 16pt;
+  }
+
+  #quarto-sidebar,
+  body::after,
+  .anchorjs-link,
+  .quarto-navigation-tool,
+  .sidebar,
+  nav {
+    display: none !important;
+  }
+
+  #quarto-content,
+  main.content {
+    display: block !important;
+    width: 16in !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .report-cover,
+  section.level1 > h1,
+  main.content > section.level3,
+  section.level1 > section.level3 {
+    break-after: page;
+    page-break-after: always;
+    width: 16in !important;
+    min-width: 16in !important;
+    max-width: 16in !important;
+    min-height: 9in !important;
+    height: 9in !important;
+    margin: 0 !important;
+    padding: 0.65in 0.78in 0.72in !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+  }
+
+  .report-cover {
+    display: grid !important;
+    place-items: center !important;
+    align-content: center !important;
+    gap: 0.22in !important;
+    text-align: center !important;
+  }
+
+  img.cover-logo,
+  .cover-logo img {
+    width: 4.1in !important;
+  }
+
+  .cover-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 40pt !important;
+    letter-spacing: 0 !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    white-space: nowrap !important;
+  }
+
+  .cover-subtitle {
+    font-size: 22pt !important;
+  }
+
+  .cover-date,
+  .cover-kicker {
+    font-size: 11pt !important;
+  }
+
+  section.level1 > h1 {
+    width: 14in !important;
+    min-width: 14in !important;
+    max-width: 14in !important;
+    padding: 0.65in 0.7in 0.78in !important;
+    font-size: 28pt !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0 !important;
+    text-align: left !important;
+    display: grid !important;
+    align-items: end !important;
+    color: #001a3b !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    white-space: nowrap !important;
+  }
+
+  section.level3 h3 {
+    margin: 0 0 0.22in !important;
+    font-size: 24pt !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.01em !important;
+    text-align: center !important;
+    color: #001a3b !important;
+  }
+
+  section.level3 p {
+    max-width: none !important;
+    margin: 0.12in 0 0 !important;
+    font-size: 16pt !important;
+    line-height: 1.36 !important;
+    text-align: left !important;
+  }
+
+  img.chart-img,
+  .chart-img img,
+  section.level3 img:not(.cover-logo):not(.feature-image) {
+    width: auto !important;
+    max-width: 12.6in !important;
+    max-height: 5.15in !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+
+  img.feature-image,
+  .feature-image img {
+    width: auto !important;
+    max-width: 12.2in !important;
+    max-height: 5.7in !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .columns {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.28in !important;
+  }
+
+  .columns img.chart-img,
+  .columns .chart-img,
+  .columns img {
+    max-width: 6.35in !important;
+    max-height: 4.9in !important;
+  }
+
+  .manual-toc a {
+    padding: 0.08in 0 !important;
+    font-size: 22pt !important;
+  }
+
+  table {
+    font-size: 14pt !important;
+  }
+
+  th,
+  td {
+    padding: 0.12in !important;
+  }
+
+  #rechtliche-hinweise p,
+  #rechtliche-hinweise .column {
+    font-size: 7.5pt !important;
+    line-height: 1.25 !important;
+  }
+}
+
+.forecast-block table td {
+  text-align: center;
+}
+
+.forecast-block table td:first-child {
+  text-align: left;
+  font-weight: 700;
+}
+
+.nav-links-wrapper {
+  font-size: 0.45em;
+  font-weight: 400;
+  color: var(--faint);
+  margin-left: 0.8rem;
+  vertical-align: middle;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.back-link {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: var(--brand-red) !important;
+  text-decoration: underline !important;
+}
+
+/* --- Custom Chart Styling --- */
+.chart-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.chart-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 2px;
+}
+
+.btn-download {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-family: var(--font);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-download:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}

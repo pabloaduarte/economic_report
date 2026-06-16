@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Pablo Duarte">
+
+<title>Konjunkturbericht</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="libs/clipboard/clipboard.min.js"></script>
+<script src="libs/quarto-html/quarto.js" type="module"></script>
+<script src="libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="libs/quarto-html/popper.min.js"></script>
+<script src="libs/quarto-html/tippy.umd.min.js"></script>
+<script src="libs/quarto-html/anchor.min.js"></script>
+<link href="libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="libs/bootstrap/bootstrap.min.js"></script>
+<link href="libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<style>html{ scroll-behavior: smooth; }</style>
+<style>
+  #language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-family: sans-serif;
+    display: flex;
+    gap: 15px;
+    border: 1px solid #eee;
+    align-items: center;
+  }
+  #language-switcher a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 600;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  #language-switcher a:hover {
+    color: #c05948;
+  }
+  .lang-active {
+    color: #c05948 !important;
+    border-bottom: 2px solid #c05948;
+  }
+  .pdf-link {
+    margin-left: 10px;
+    padding-left: 15px;
+    border-left: 1px solid #ddd;
+    color: #c05948 !important;
+  }
+
+  /* Navigation Links */
+  .back-link {
+    font-size: 0.6em;
+    font-weight: normal;
+    margin-left: 15px;
+    color: #888 !important;
+    text-decoration: none !important;
+    vertical-align: middle;
+  }
+  .back-link:hover {
+    color: #c05948 !important;
+  }
+
+  /* Download UI - Flexible & Simple */
+  .chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
+  .chart-img {
+    width: 100%;
+    display: block;
+    cursor: zoom-in;
+  }
+  .chart-actions {
+    align-self: flex-end;
+    margin-top: 0.2em;
+    opacity: 0.7;
+    display: flex;
+    gap: 1em;
+  }
+  .btn-download {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #888;
+    text-decoration: underline;
+    font-family: inherit;
+    transition: color 0.2s;
+  }
+  .btn-download:hover {
+    color: #002f6a;
+  }
+</style>
+</head><body class="quarto-light"><div id="language-switcher">
+  <a href="de.html" id="link-de">DE</a>
+  <a href="index.html" id="link-en">EN</a>
+  <a href="es.html" id="link-es">ES</a>
+  <a href="it.html" id="link-it">IT</a>
+  <a href="Konjunkturbericht_de.pdf" class="pdf-link" target="_blank">Bericht (PDF)</a>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const path = window.location.pathname;
+    if (path.includes("de.html")) document.getElementById("link-de").classList.add("lang-active");
+    else if (path.includes("es.html")) document.getElementById("link-es").classList.add("lang-active");
+    else if (path.includes("it.html")) document.getElementById("link-it").classList.add("lang-active");
+    else document.getElementById("link-en").classList.add("lang-active");
+
+    // Automatic Navigation Links
+    const labelSection = "Abschnitt";
+    const labelIntro = "Einleitung";
+    const introId = "makroausblick-in-kürze";
+
+    function createNavLink(id, label) {
+      const a = document.createElement('a');
+      a.href = "#" + id;
+      a.className = "back-link";
+      a.innerText = label;
+      return a;
+    }
+
+    // Add Links to H2s
+    document.querySelectorAll('h2').forEach(h2 => {
+      const nav = document.createElement('span');
+      nav.className = "nav-links-wrapper";
+      nav.appendChild(document.createTextNode(" [ "));
+      nav.appendChild(createNavLink(introId, labelIntro));
+      nav.appendChild(document.createTextNode(" ]"));
+      h2.appendChild(nav);
+    });
+
+    // Add Links to H3s
+    document.querySelectorAll('h3').forEach(h3 => {
+      if (h3.closest('.report-cover')) return;
+
+      // Find nearest preceding H2
+      let prev = h3.previousElementSibling;
+      while (prev && prev.tagName !== 'H2') {
+        prev = prev.previousElementSibling;
+      }
+
+      const nav = document.createElement('span');
+      nav.className = "nav-links-wrapper";
+      nav.appendChild(document.createTextNode(" [ "));
+      nav.appendChild(createNavLink(introId, labelIntro));
+      if (prev && prev.id) {
+        nav.appendChild(document.createTextNode(" | "));
+        nav.appendChild(createNavLink(prev.id, labelSection));
+      }
+      nav.appendChild(document.createTextNode(" ]"));
+      h3.appendChild(nav);
+    });
+  });
+
+  function downloadChart(id, filename, type) {
+    if (type === 'svg') {
+      const img = document.getElementById('img-' + id);
+      if (!img) return;
+      fetch(img.src)
+        .then(res => res.blob())
+        .then(blob => {
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        });
+    }
+  }
+</script>
+
+
+<link rel="stylesheet" href="konjunkturbericht-html.css">
+
+
+
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhalt</h2>
+   
+  <ul>
+  <li><a href="#realwirtschaft" id="toc-realwirtschaft" class="nav-link active" data-scroll-target="#realwirtschaft">REALWIRTSCHAFT</a>
+  <ul class="collapse">
+  <li><a href="#wachstum" id="toc-wachstum" class="nav-link" data-scroll-target="#wachstum">Wachstum</a>
+  <ul class="collapse">
+  <li><a href="#usa-und-eurozone-ölpreisschock" id="toc-usa-und-eurozone-ölpreisschock" class="nav-link" data-scroll-target="#usa-und-eurozone-ölpreisschock">USA und Eurozone: Ölpreisschock</a></li>
+  <li><a href="#eurozone-dienstleistungssektor-schwach" id="toc-eurozone-dienstleistungssektor-schwach" class="nav-link" data-scroll-target="#eurozone-dienstleistungssektor-schwach">Eurozone: Dienstleistungssektor schwach</a></li>
+  <li><a href="#deutschland-und-frankreich-mit-trüben-aussichten" id="toc-deutschland-und-frankreich-mit-trüben-aussichten" class="nav-link" data-scroll-target="#deutschland-und-frankreich-mit-trüben-aussichten">Deutschland und Frankreich mit trüben Aussichten</a></li>
+  <li><a href="#die-deutsche-industrieproduktion-schrumpft-weiter" id="toc-die-deutsche-industrieproduktion-schrumpft-weiter" class="nav-link" data-scroll-target="#die-deutsche-industrieproduktion-schrumpft-weiter">Die Deutsche Industrieproduktion schrumpft weiter</a></li>
+  <li><a href="#china-schwache-binnenwirtschaft" id="toc-china-schwache-binnenwirtschaft" class="nav-link" data-scroll-target="#china-schwache-binnenwirtschaft">China: schwache Binnenwirtschaft</a></li>
+  <li><a href="#die-bauaktivitäten-erholen-sich-nicht" id="toc-die-bauaktivitäten-erholen-sich-nicht" class="nav-link" data-scroll-target="#die-bauaktivitäten-erholen-sich-nicht">Die Bauaktivitäten erholen sich nicht</a></li>
+  </ul></li>
+  <li><a href="#finanzierungsbedingungen" id="toc-finanzierungsbedingungen" class="nav-link" data-scroll-target="#finanzierungsbedingungen">Finanzierungsbedingungen</a>
+  <ul class="collapse">
+  <li><a href="#us-banken-restriktive-kreditvergabe-für-unternehmen" id="toc-us-banken-restriktive-kreditvergabe-für-unternehmen" class="nav-link" data-scroll-target="#us-banken-restriktive-kreditvergabe-für-unternehmen">US-Banken: restriktive Kreditvergabe für Unternehmen</a></li>
+  <li><a href="#restriktive-kreditbedingungen-in-der-eurozone" id="toc-restriktive-kreditbedingungen-in-der-eurozone" class="nav-link" data-scroll-target="#restriktive-kreditbedingungen-in-der-eurozone">Restriktive Kreditbedingungen in der Eurozone</a></li>
+  <li><a href="#schwacher-kreditimpuls" id="toc-schwacher-kreditimpuls" class="nav-link" data-scroll-target="#schwacher-kreditimpuls">Schwacher Kreditimpuls</a></li>
+  <li><a href="#nachlassender-kreditimpuls-in-china" id="toc-nachlassender-kreditimpuls-in-china" class="nav-link" data-scroll-target="#nachlassender-kreditimpuls-in-china">Nachlassender Kreditimpuls in China</a></li>
+  </ul></li>
+  <li><a href="#privater-konsum" id="toc-privater-konsum" class="nav-link" data-scroll-target="#privater-konsum">Privater Konsum</a>
+  <ul class="collapse">
+  <li><a href="#usa-die-einzelhandelsverkäufe-steigen-weiter" id="toc-usa-die-einzelhandelsverkäufe-steigen-weiter" class="nav-link" data-scroll-target="#usa-die-einzelhandelsverkäufe-steigen-weiter">USA: Die Einzelhandelsverkäufe steigen weiter</a></li>
+  <li><a href="#usa-kreditkartenschulden-steigen-etwas-schneller" id="toc-usa-kreditkartenschulden-steigen-etwas-schneller" class="nav-link" data-scroll-target="#usa-kreditkartenschulden-steigen-etwas-schneller">USA: Kreditkartenschulden steigen etwas schneller</a></li>
+  <li><a href="#usa-google-suchen-deuten-auf-einen-vorsichtigen-konsum-hin" id="toc-usa-google-suchen-deuten-auf-einen-vorsichtigen-konsum-hin" class="nav-link" data-scroll-target="#usa-google-suchen-deuten-auf-einen-vorsichtigen-konsum-hin">USA: Google-Suchen deuten auf einen vorsichtigen Konsum hin</a></li>
+  <li><a href="#usa-die-us-sparquote-sinkt-weiter" id="toc-usa-die-us-sparquote-sinkt-weiter" class="nav-link" data-scroll-target="#usa-die-us-sparquote-sinkt-weiter">USA: Die US-Sparquote sinkt weiter</a></li>
+  <li><a href="#nur-die-stimmung-der-republikaner-bleibt-optimistisch" id="toc-nur-die-stimmung-der-republikaner-bleibt-optimistisch" class="nav-link" data-scroll-target="#nur-die-stimmung-der-republikaner-bleibt-optimistisch">Nur die Stimmung der Republikaner bleibt optimistisch</a></li>
+  <li><a href="#energieausgaben-usa-niedriger-als-eurozone" id="toc-energieausgaben-usa-niedriger-als-eurozone" class="nav-link" data-scroll-target="#energieausgaben-usa-niedriger-als-eurozone">Energieausgaben: USA niedriger als Eurozone</a></li>
+  <li><a href="#eurozone-energiebelastung-deutsche-haushalte" id="toc-eurozone-energiebelastung-deutsche-haushalte" class="nav-link" data-scroll-target="#eurozone-energiebelastung-deutsche-haushalte">Eurozone: Energiebelastung deutsche Haushalte</a></li>
+  <li><a href="#eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil" id="toc-eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil" class="nav-link" data-scroll-target="#eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil">Eurozone &amp; Deutschland: Sparquote der Haushalte bleibt stabil</a></li>
+  <li><a href="#google-suchdaten-deuten-auf-zurückhaltung-in-frankreich-und-deutschland-hin" id="toc-google-suchdaten-deuten-auf-zurückhaltung-in-frankreich-und-deutschland-hin" class="nav-link" data-scroll-target="#google-suchdaten-deuten-auf-zurückhaltung-in-frankreich-und-deutschland-hin">Google-Suchdaten deuten auf Zurückhaltung in Frankreich und Deutschland hin</a></li>
+  <li><a href="#weniger-vorsicht-in-spanien" id="toc-weniger-vorsicht-in-spanien" class="nav-link" data-scroll-target="#weniger-vorsicht-in-spanien">Weniger Vorsicht in Spanien</a></li>
+  <li><a href="#die-stimmung-verbessert-sich-nur-leicht" id="toc-die-stimmung-verbessert-sich-nur-leicht" class="nav-link" data-scroll-target="#die-stimmung-verbessert-sich-nur-leicht">Die Stimmung verbessert sich nur leicht</a></li>
+  </ul></li>
+  <li><a href="#arbeitsmarkt" id="toc-arbeitsmarkt" class="nav-link" data-scroll-target="#arbeitsmarkt">Arbeitsmarkt</a>
+  <ul class="collapse">
+  <li><a href="#usa-weiter-starker-anstieg-der-nominallöhne" id="toc-usa-weiter-starker-anstieg-der-nominallöhne" class="nav-link" data-scroll-target="#usa-weiter-starker-anstieg-der-nominallöhne">USA: Weiter starker Anstieg der Nominallöhne</a></li>
+  <li><a href="#usa-normalisierung-des-lohnwachstums" id="toc-usa-normalisierung-des-lohnwachstums" class="nav-link" data-scroll-target="#usa-normalisierung-des-lohnwachstums">USA: Normalisierung des Lohnwachstums?</a></li>
+  <li><a href="#usa-schwaches-lohnwachstum-bei-niedrigen-löhnen" id="toc-usa-schwaches-lohnwachstum-bei-niedrigen-löhnen" class="nav-link" data-scroll-target="#usa-schwaches-lohnwachstum-bei-niedrigen-löhnen">USA: schwaches Lohnwachstum bei niedrigen Löhnen</a></li>
+  <li><a href="#der-us-arbeitsmarkt-ist-weniger-angespannt" id="toc-der-us-arbeitsmarkt-ist-weniger-angespannt" class="nav-link" data-scroll-target="#der-us-arbeitsmarkt-ist-weniger-angespannt">Der US-Arbeitsmarkt ist weniger angespannt</a></li>
+  <li><a href="#stellenwachstum-erholt-sich-bleibt-dennoch-schwach" id="toc-stellenwachstum-erholt-sich-bleibt-dennoch-schwach" class="nav-link" data-scroll-target="#stellenwachstum-erholt-sich-bleibt-dennoch-schwach">Stellenwachstum erholt sich, bleibt dennoch schwach</a></li>
+  <li><a href="#usa-entlassungen-und-jobless-claims-im-rahmen" id="toc-usa-entlassungen-und-jobless-claims-im-rahmen" class="nav-link" data-scroll-target="#usa-entlassungen-und-jobless-claims-im-rahmen">USA: Entlassungen und Jobless Claims im Rahmen</a></li>
+  <li><a href="#usa-sinkendes-arbeitsangebot" id="toc-usa-sinkendes-arbeitsangebot" class="nav-link" data-scroll-target="#usa-sinkendes-arbeitsangebot">USA: sinkendes Arbeitsangebot</a></li>
+  <li><a href="#die-nominallöhne-steigen-in-deutschland-schneller" id="toc-die-nominallöhne-steigen-in-deutschland-schneller" class="nav-link" data-scroll-target="#die-nominallöhne-steigen-in-deutschland-schneller">Die Nominallöhne steigen in Deutschland schneller</a></li>
+  <li><a href="#eurozone-angespannter-arbeitsmarkt" id="toc-eurozone-angespannter-arbeitsmarkt" class="nav-link" data-scroll-target="#eurozone-angespannter-arbeitsmarkt">Eurozone: angespannter Arbeitsmarkt</a></li>
+  <li><a href="#china-sehr-hohe-jugendarbeitslosigkeit" id="toc-china-sehr-hohe-jugendarbeitslosigkeit" class="nav-link" data-scroll-target="#china-sehr-hohe-jugendarbeitslosigkeit">China: Sehr hohe Jugendarbeitslosigkeit</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#preise" id="toc-preise" class="nav-link" data-scroll-target="#preise">PREISE</a>
+  <ul class="collapse">
+  <li><a href="#rohstoffe" id="toc-rohstoffe" class="nav-link" data-scroll-target="#rohstoffe">Rohstoffe</a>
+  <ul class="collapse">
+  <li><a href="#hohe-seefrachtkosten-für-rohöl" id="toc-hohe-seefrachtkosten-für-rohöl" class="nav-link" data-scroll-target="#hohe-seefrachtkosten-für-rohöl">Hohe Seefrachtkosten für Rohöl</a></li>
+  <li><a href="#backwardation-sinkende-ölpreise-erwartet" id="toc-backwardation-sinkende-ölpreise-erwartet" class="nav-link" data-scroll-target="#backwardation-sinkende-ölpreise-erwartet">Backwardation: sinkende Ölpreise erwartet</a></li>
+  <li><a href="#wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus" id="toc-wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus" class="nav-link" data-scroll-target="#wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus">Wann normalisiert sich der Schiffsverkehr durch die Straße von Hormus?</a></li>
+  <li><a href="#europäische-gaspreise-verlaufen-ähnlich-wie-2022" id="toc-europäische-gaspreise-verlaufen-ähnlich-wie-2022" class="nav-link" data-scroll-target="#europäische-gaspreise-verlaufen-ähnlich-wie-2022">Europäische Gaspreise verlaufen ähnlich wie 2022</a></li>
+  </ul></li>
+  <li><a href="#usa" id="toc-usa" class="nav-link" data-scroll-target="#usa">USA</a>
+  <ul class="collapse">
+  <li><a href="#usa-inflationsrate-steigt-stark-an" id="toc-usa-inflationsrate-steigt-stark-an" class="nav-link" data-scroll-target="#usa-inflationsrate-steigt-stark-an">USA: Inflationsrate steigt stark an</a></li>
+  <li><a href="#inflation-in-den-usa-cpi-pce-bip-deflator" id="toc-inflation-in-den-usa-cpi-pce-bip-deflator" class="nav-link" data-scroll-target="#inflation-in-den-usa-cpi-pce-bip-deflator">Inflation in den USA: CPI, PCE &amp; BIP-Deflator</a></li>
+  <li><a href="#inflationstreiber-dienstleistungen-und-energie" id="toc-inflationstreiber-dienstleistungen-und-energie" class="nav-link" data-scroll-target="#inflationstreiber-dienstleistungen-und-energie">Inflationstreiber: Dienstleistungen und Energie</a></li>
+  <li><a href="#usa-steigender-inflationsdruck" id="toc-usa-steigender-inflationsdruck" class="nav-link" data-scroll-target="#usa-steigender-inflationsdruck">USA: Steigender Inflationsdruck</a></li>
+  <li><a href="#usa-supercore-inflation-steigt-wieder-an" id="toc-usa-supercore-inflation-steigt-wieder-an" class="nav-link" data-scroll-target="#usa-supercore-inflation-steigt-wieder-an">USA: Supercore-Inflation steigt wieder an</a></li>
+  <li><a href="#mietpreiswachstum-fällt-nicht-mehr" id="toc-mietpreiswachstum-fällt-nicht-mehr" class="nav-link" data-scroll-target="#mietpreiswachstum-fällt-nicht-mehr">Mietpreiswachstum fällt nicht mehr</a></li>
+  <li><a href="#usa-inflation-könnte-weiter-steigen" id="toc-usa-inflation-könnte-weiter-steigen" class="nav-link" data-scroll-target="#usa-inflation-könnte-weiter-steigen">USA: Inflation könnte weiter steigen</a></li>
+  </ul></li>
+  <li><a href="#eurozone" id="toc-eurozone" class="nav-link" data-scroll-target="#eurozone">Eurozone</a>
+  <ul class="collapse">
+  <li><a href="#steigende-inflation-in-der-eurozone" id="toc-steigende-inflation-in-der-eurozone" class="nav-link" data-scroll-target="#steigende-inflation-in-der-eurozone">Steigende Inflation in der Eurozone</a></li>
+  <li><a href="#verteuerung-von-dienstleistungen-und-energie" id="toc-verteuerung-von-dienstleistungen-und-energie" class="nav-link" data-scroll-target="#verteuerung-von-dienstleistungen-und-energie">Verteuerung von Dienstleistungen und Energie</a></li>
+  <li><a href="#der-inflationsdruck-bleibt" id="toc-der-inflationsdruck-bleibt" class="nav-link" data-scroll-target="#der-inflationsdruck-bleibt">Der Inflationsdruck bleibt</a></li>
+  </ul></li>
+  <li><a href="#inflationserwartungen" id="toc-inflationserwartungen" class="nav-link" data-scroll-target="#inflationserwartungen">Inflationserwartungen</a>
+  <ul class="collapse">
+  <li><a href="#volatile-inflationserwartungen-der-konsumenten" id="toc-volatile-inflationserwartungen-der-konsumenten" class="nav-link" data-scroll-target="#volatile-inflationserwartungen-der-konsumenten">Volatile Inflationserwartungen der Konsumenten</a></li>
+  <li><a href="#energie-wird-wieder-teurer" id="toc-energie-wird-wieder-teurer" class="nav-link" data-scroll-target="#energie-wird-wieder-teurer">Energie wird wieder teurer …</a></li>
+  <li><a href="#was-den-us-republikanern-schaden-dürfte" id="toc-was-den-us-republikanern-schaden-dürfte" class="nav-link" data-scroll-target="#was-den-us-republikanern-schaden-dürfte">… was den US-Republikanern schaden dürfte</a></li>
+  <li><a href="#china-deflationssorgen" id="toc-china-deflationssorgen" class="nav-link" data-scroll-target="#china-deflationssorgen">China: Deflationssorgen</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#zinserwartungen-fiskalimpuls" id="toc-zinserwartungen-fiskalimpuls" class="nav-link" data-scroll-target="#zinserwartungen-fiskalimpuls">ZINSERWARTUNGEN<br>&amp; FISKALIMPULS</a>
+  <ul class="collapse">
+  <li><a href="#usa-sinkender-realzins" id="toc-usa-sinkender-realzins" class="nav-link" data-scroll-target="#usa-sinkender-realzins">USA: Sinkender Realzins</a></li>
+  <li><a href="#volatile-zinserwartungen" id="toc-volatile-zinserwartungen" class="nav-link" data-scroll-target="#volatile-zinserwartungen">Volatile Zinserwartungen</a></li>
+  <li><a href="#china-expansive-geldpolitik" id="toc-china-expansive-geldpolitik" class="nav-link" data-scroll-target="#china-expansive-geldpolitik">China: Expansive Geldpolitik</a></li>
+  <li><a href="#moderate-fiskalimpulse-für-2026" id="toc-moderate-fiskalimpulse-für-2026" class="nav-link" data-scroll-target="#moderate-fiskalimpulse-für-2026">Moderate Fiskalimpulse für 2026</a></li>
+  <li><a href="#konjunkturprognose-2026" id="toc-konjunkturprognose-2026" class="nav-link" data-scroll-target="#konjunkturprognose-2026">Konjunkturprognose 2026</a></li>
+  <li><a href="#rechtliche-hinweise" id="toc-rechtliche-hinweise" class="nav-link" data-scroll-target="#rechtliche-hinweise">Rechtliche Hinweise</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Konjunkturbericht</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor:in</div>
+    <div class="quarto-title-meta-contents">
+             <p>Pablo Duarte </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Veröffentlichungsdatum</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">1. Juni 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="report-cover">
+<p><a href="logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="logo.png" class="cover-logo img-fluid" alt="Flossbach von Storch Research Institute"></a></p>
+<div class="cover-title">
+Konjunkturbericht
+</div>
+<div class="cover-subtitle">
+Pablo Duarte
+</div>
+<div class="cover-date">
+Juni 2026
+</div>
+</div>
+<section id="makroausblick-in-kürze" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="makroausblick-in-kürze">Makroausblick in Kürze</h3>
+<p><strong>Global: Vom Öl- zum Zins-Schock</strong><br>
+Die Teuerung der Energie hat die Inflation getrieben und das Wachstum belastet.<br>
+Bei Zinserhöhungen dürften verschärfte <strong>Finanzierungsbedingungen</strong> zur Wachstumsbremse werden.</p>
+<p><strong>USA: Robust, aber vorsichtiger Konsum</strong><br>
+Der Arbeitsmarkt ist überraschend stark und der Konsum bleibt solide. Bleibt die Inflation hartnäckig, könnten Zinsanstiege den Konsum schwächen und das Wachstum dämpfen.</p>
+<p><strong>Euroraum: Strukturprobleme treffen Zinsbremse</strong><br>
+Eingepreiste Leitzinsanhebungen treffen auf eine bereits geschwächte Wirtschaft. Restriktive Kreditstandards und hohe Energiekosten verstärken bestehende strukturelle Schwächen.</p>
+<p><strong>China: Politik stützt eine schwache Binnenwirtschaft</strong><br>
+Expansive Geld- und Fiskalpolitik stabilisieren, während Immobilienmarkt und Binnenkonjunktur schwach bleiben. Die Exportdynamik hält an, doch geopolitische Risiken machen das Wachstum anfällig.</p>
+</section>
+<section id="wachstumsbremse-zinsen" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="wachstumsbremse-zinsen">Wachstumsbremse: Zinsen?</h3>
+<p><img src="burro.png" class="feature-image nolightbox img-fluid"></p>
+</section>
+<section id="realwirtschaft" class="level1">
+<h1>REALWIRTSCHAFT</h1>
+<section id="wachstum" class="level2">
+<h2 class="anchored" data-anchor-id="wachstum">Wachstum</h2>
+<p><img src="schiff.png" class="feature-image nolightbox img-fluid"></p>
+<section id="usa-und-eurozone-ölpreisschock" class="level3">
+<h3 class="anchored" data-anchor-id="usa-und-eurozone-ölpreisschock">USA und Eurozone: Ölpreisschock</h3>
+<div class="chart-wrapper">
+<img id="img-pmis_global" src="charts/de/pmis_global_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pmis_global', 'pmis_global.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im Mai blieb die Geschäftslage in den USA positiv, während sie sich im Euroraum weiter eintrübte. Der Einkaufsmanagerindex (PMI) misst die aktuelle Geschäftslage und die kurzfristigen Erwartungen der Unternehmen. Er liegt über 50, wenn mehr Unternehmen eine Verbesserung als eine Verschlechterung melden. In der Eurozone ging der PMI auf 48,5 zurück, weil insbesondere der PMI des Dienstleistungssektor stark zurückging. In den USA ging er leicht auf 51,5 zurück. In China lag der offizielle NBS-PMI bei 50,5, während der private RatingDog-PMI auf 54 stieg und volatil blieb.</p>
+</section>
+<section id="eurozone-dienstleistungssektor-schwach" class="level3">
+<h3 class="anchored" data-anchor-id="eurozone-dienstleistungssektor-schwach">Eurozone: Dienstleistungssektor schwach</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-pmis_usa_sectors" src="charts/de/pmis_usa_sectors_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pmis_usa_sectors', 'pmis_usa_sectors.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-pmis_ez_sectors" src="charts/de/pmis_ez_sectors_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pmis_ez_sectors', 'pmis_ez_sectors.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Der Dienstleistungssektor in der Eurozone schwächelt weiter, während die Geschäftslage in der Industrie leicht nachgab, aber im expansiven Bereich blieb. Der Dienstleistungs-PMI fiel im Mai auf 47,7, belastet durch stark steigende Energiepreise und Störungen im Reiseverkehr. Der PMI des verarbeitenden Gewerbes sank leicht auf 51,6. In den USA blieb der Dienstleistungssektor mit einem PMI von 50,7 stabil, während die Industrie mit 55,1 weiter expandierte.</p>
+</section>
+<section id="deutschland-und-frankreich-mit-trüben-aussichten" class="level3">
+<h3 class="anchored" data-anchor-id="deutschland-und-frankreich-mit-trüben-aussichten">Deutschland und Frankreich mit trüben Aussichten</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-pmis_de_sectors" src="charts/de/pmis_de_sectors_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pmis_de_sectors', 'pmis_de_sectors.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-pmis_fr_sectors" src="charts/de/pmis_fr_sectors_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pmis_fr_sectors', 'pmis_fr_sectors.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>In Deutschland und Frankreich hat sich die Geschäftslage weiter eingetrübt. Der Dienstleistungs-PMI lag im Mai in Deutschland bei 48,8 und in Frankreich bei 44,3. Die PMIs des verarbeitenden Gewerbes gaben ebenfalls nach. Ob sie im kommenden Monat wieder zulegen, dürfte weiterhin von der Entwicklung der Energiepreise abhängen.</p>
+</section>
+<section id="die-deutsche-industrieproduktion-schrumpft-weiter" class="level3">
+<h3 class="anchored" data-anchor-id="die-deutsche-industrieproduktion-schrumpft-weiter">Die Deutsche Industrieproduktion schrumpft weiter</h3>
+<div class="chart-wrapper">
+<img id="img-lkw_maut_ip_de" src="charts/de/lkw_maut_ip_de_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('lkw_maut_ip_de', 'lkw_maut_ip_de.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Der LKW-Maut-Fahrleistungsindex, der die Fahrleistung mautpflichtiger Lastwagen auf Autobahnen misst und als Frühindikator der Industrieproduktion gilt, hat sich nach der langen Schwächephase seit 2024 zwar spürbar erholt, weist im Jahresdurchschnitt jedoch kein Wachstum auf. Die Industrieproduktion folgt dieser Entwicklung und geht weniger stark zurück als noch 2025. Die leichte Erholung dürfte jedoch bereits beendet sein. Ein Wachstum der Industrieproduktion ist derzeit nicht in Sicht.</p>
+</section>
+<section id="china-schwache-binnenwirtschaft" class="level3">
+<h3 class="anchored" data-anchor-id="china-schwache-binnenwirtschaft">China: schwache Binnenwirtschaft</h3>
+<div class="chart-wrapper">
+<img id="img-china_pmi" src="charts/de/china_pmi_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_pmi', 'china_pmi.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Einkaufsmanagerindizes für Mai 2026 zeichnen ein gemischtes Bild. Der offizielle NBS-PMI, der vor allem größere und binnenorientierte Unternehmen erfasst, lag bei 50,0 in der Industrie und 50,3 im Dienstleistungssektor. Der private, stärker exportorientierte RatingDog-PMI lag dagegen mit 51,8 (Industrie) und 54,4 (Dienstleistungen) weiterhin höher und volatiler. Die Divergenz spiegelt weiterhin die Schwäche des Binnenmarkts im Vergleich zur Exportwirtschaft wider.</p>
+</section>
+<section id="die-bauaktivitäten-erholen-sich-nicht" class="level3">
+<h3 class="anchored" data-anchor-id="die-bauaktivitäten-erholen-sich-nicht">Die Bauaktivitäten erholen sich nicht</h3>
+<div class="chart-wrapper">
+<img id="img-china_real_estate" src="charts/de/china_real_estate_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_real_estate', 'china_real_estate.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Zahl der begonnenen Neubauten fiel im März weiter und liegt seit 2022 unter dem Niveau von 2010. Dies spiegelt sich auch in der Zahl der unfertigen und fertiggestellten Immobilien wider, die ebenfalls stark zurückgingen.</p>
+</section>
+</section>
+<section id="finanzierungsbedingungen" class="level2">
+<h2 class="anchored" data-anchor-id="finanzierungsbedingungen">Finanzierungsbedingungen</h2>
+<p><img src="bank.png" class="feature-image nolightbox img-fluid"></p>
+<section id="us-banken-restriktive-kreditvergabe-für-unternehmen" class="level3">
+<h3 class="anchored" data-anchor-id="us-banken-restriktive-kreditvergabe-für-unternehmen">US-Banken: restriktive Kreditvergabe für Unternehmen</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-sloos_standards" src="charts/de/sloos_standards_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('sloos_standards', 'sloos_standards.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-sloos_demand" src="charts/de/sloos_demand_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('sloos_demand', 'sloos_demand.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Die SLOOS-Umfrage vom April 2026 zeigt, dass mehr Banken ihre Kreditstandards für Unternehmen verschärft als gelockert haben (leicht positiver Wert). Die Mehrheit der befragten Banken hat über eine stärkere Kreditnachfrage in den letzten drei Monaten berichtet (positiver Wert).</p>
+</section>
+<section id="restriktive-kreditbedingungen-in-der-eurozone" class="level3">
+<h3 class="anchored" data-anchor-id="restriktive-kreditbedingungen-in-der-eurozone">Restriktive Kreditbedingungen in der Eurozone</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-ez_bls_standards" src="charts/de/ez_bls_standards_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ez_bls_standards', 'ez_bls_standards.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-ez_bls_demand" src="charts/de/ez_bls_demand_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ez_bls_demand', 'ez_bls_demand.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Laut dem Bank Lending Survey (BLS) der EZB für das zweite Quartal 2026 dürften die Kreditbedingungen in den kommenden drei Monaten sowohl für Unternehmen als auch für Haushalte restriktiver werden (positiver Wert). Die Nettokreditnachfrage soll laut den Befragten sowohl für Wohnimmobilien als auch für Konsumzwecke zurückgehen.</p>
+</section>
+<section id="schwacher-kreditimpuls" class="level3">
+<h3 class="anchored" data-anchor-id="schwacher-kreditimpuls">Schwacher Kreditimpuls</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-credit_impulse_usa" src="charts/de/credit_impulse_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('credit_impulse_usa', 'credit_impulse_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-credit_impulse_ez" src="charts/de/credit_impulse_ez_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('credit_impulse_ez', 'credit_impulse_ez.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Der Kreditimpuls (die Veränderung des Kreditflusses zum privaten Sektor in Prozentpunkten des BIP) ist ein guter Frühindikator für die private Nachfrage. Zuletzt war er sowohl in den USA als auch im Euroraum zwar leicht positiv, verlor jedoch an Dynamik. Da insbesondere in der Eurozone die Zahl der Banken mit steigender Kreditvergabe und -nachfrage deutlich sinkt, deutet dies auf einen baldigen negativen Kreditimpuls hin.</p>
+</section>
+<section id="nachlassender-kreditimpuls-in-china" class="level3">
+<h3 class="anchored" data-anchor-id="nachlassender-kreditimpuls-in-china">Nachlassender Kreditimpuls in China</h3>
+<div class="chart-wrapper">
+<img id="img-china_credit_impulse" src="charts/de/china_credit_impulse_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_credit_impulse', 'china_credit_impulse.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Der Kreditimpuls war in China Anfang des Jahres leicht positiv und ist im ersten Quartal 2026 ins negative zurückgefallen. Dies deutet weiterhin auf eine schwache private Nachfrage hin.</p>
+</section>
+</section>
+<section id="privater-konsum" class="level2">
+<h2 class="anchored" data-anchor-id="privater-konsum">Privater Konsum</h2>
+<p><img src="markt.png" class="feature-image nolightbox img-fluid"></p>
+<section id="usa-die-einzelhandelsverkäufe-steigen-weiter" class="level3">
+<h3 class="anchored" data-anchor-id="usa-die-einzelhandelsverkäufe-steigen-weiter">USA: Die Einzelhandelsverkäufe steigen weiter</h3>
+<div class="chart-wrapper">
+<img id="img-retail_sales_usa" src="charts/de/retail_sales_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('retail_sales_usa', 'retail_sales_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die offiziellen Einzelhandelsumsätze sind im April im Jahresvergleich um 5,2 % gestiegen, etwas mehr als in den Vormonaten. Der wöchentliche „Johnson Redbook Retail Sales“-Index, der die Verkäufe von Warenhäusern und Einzelhandelsgeschäften erfasst, stieg stark an und zeigt bis Mitte Mai starke US-Einzelhandelsumsätze.</p>
+</section>
+<section id="usa-kreditkartenschulden-steigen-etwas-schneller" class="level3">
+<h3 class="anchored" data-anchor-id="usa-kreditkartenschulden-steigen-etwas-schneller">USA: Kreditkartenschulden steigen etwas schneller</h3>
+<div class="chart-wrapper">
+<img id="img-credit_card_spending" src="charts/de/credit_card_spending_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('credit_card_spending', 'credit_card_spending.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Kreditkartenschulden wuchsen in den letzten Wochen so schnell wie in den letzten Jahren. Die monatliche Veränderung lag zuletzt im üblichen Saisonmuster früherer Jahre.</p>
+</section>
+<section id="usa-google-suchen-deuten-auf-einen-vorsichtigen-konsum-hin" class="level3">
+<h3 class="anchored" data-anchor-id="usa-google-suchen-deuten-auf-einen-vorsichtigen-konsum-hin">USA: Google-Suchen deuten auf einen vorsichtigen Konsum hin</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_restaurant_us" src="charts/de/google_trends_restaurant_us_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_restaurant_us', 'google_trends_restaurant_us.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_travel_us" src="charts/de/google_trends_travel_us_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_travel_us', 'google_trends_travel_us.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Oft beginnt Konsum mit einer Internetsuche. Daher eignen sich Online-Suchdaten gut als Vorlaufindikator für den privaten Konsum. Die Suchintensität nach dem Begriff „Restaurant“ lag in den vergangenen Wochen etwas unter dem Durchschnitt der letzten fünf Jahre, nachdem sie zuvor höher gewesen war. Begriffe aus der Kategorie „Reise“ werden seit zwei Wochen weniger gesucht als im Durchschnitt der letzten fünf Jahre.</p>
+</section>
+<section id="usa-die-us-sparquote-sinkt-weiter" class="level3">
+<h3 class="anchored" data-anchor-id="usa-die-us-sparquote-sinkt-weiter">USA: Die US-Sparquote sinkt weiter</h3>
+<div class="chart-wrapper">
+<img id="img-savings_rate_usa" src="charts/de/savings_rate_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('savings_rate_usa', 'savings_rate_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Sparquote der US-Haushalte lag im Durchschnitt bei 5,2 % seit 2000. In Krisen tendiert diese dazu, zu steigen. Im April ging die Sparquote auf 2,6 % zurück und blieb unter dem historischen Durchschnitt. Die Ungewissheit über die Dauer des Krieges im Iran und die Auswirkungen auf Energiepreise könnten Haushalte dazu motivieren, wieder mehr zu sparen.</p>
+</section>
+<section id="nur-die-stimmung-der-republikaner-bleibt-optimistisch" class="level3">
+<h3 class="anchored" data-anchor-id="nur-die-stimmung-der-republikaner-bleibt-optimistisch">Nur die Stimmung der Republikaner bleibt optimistisch</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-consumer_conf_usa" src="charts/de/consumer_conf_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('consumer_conf_usa', 'consumer_conf_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-umich_partisan" src="charts/de/umich_partisan_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('umich_partisan', 'umich_partisan.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Die Konsumentenstimmung der Amerikaner bleibt im Durchschnitt pessimistisch. Der Consumer Confidence Index des Conference Board liegt auf dem Niveau der Coronakrise. Der Consumer Sentiment Index der Universität Michigan erreichte Werte, wie sie sonst nur in Rezessionen vorkommen. Wie üblich, sind Anhänger der Oppositionspartei pessimistischer. Die Republikaner bleiben dagegen optimistisch.</p>
+</section>
+<section id="energieausgaben-usa-niedriger-als-eurozone" class="level3">
+<h3 class="anchored" data-anchor-id="energieausgaben-usa-niedriger-als-eurozone">Energieausgaben: USA niedriger als Eurozone</h3>
+<div class="chart-wrapper">
+<img id="img-energieausgaben" src="charts/de/energieausgaben_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('energieausgaben', 'energieausgaben.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Historisch lag die Energiebelastung der Haushalte in den USA höher als in Europa. Mit der Coronakrise und dem Ukrainekrieg hat sich dieses Verhältnis jedoch umgekehrt. Bis Ende 2024 war der Anteil der Energieausgaben an den gesamten Haushaltsausgaben in Deutschland und Frankreich höher als in den USA. Der aktuelle Ölpreisschock dürfte diese Tendenz weiter verstärken.</p>
+<!-- EUROZONE  ******************************************
+*********************************************************
+**********************************************************
+-->
+</section>
+<section id="eurozone-energiebelastung-deutsche-haushalte" class="level3">
+<h3 class="anchored" data-anchor-id="eurozone-energiebelastung-deutsche-haushalte">Eurozone: Energiebelastung deutsche Haushalte</h3>
+<div class="chart-wrapper">
+<img id="img-energieausgaben_ea" src="charts/de/energieausgaben_ea_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('energieausgaben_ea', 'energieausgaben_ea.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Energiebelastung deutscher Haushalte liegt seit Mitte der 2000er-Jahre über dem Durchschnitt der Eurozone. Mit dem Ausbruch des Krieges in der Ukraine stieg sie stark an, während sie insbesondere in Spanien und Italien wieder zurückging. In Deutschland verharrte der Anteil der Energieausgaben an den gesamten Haushaltsausgaben hingegen bei rund 5 Prozent.</p>
+</section>
+<section id="eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil" class="level3">
+<h3 class="anchored" data-anchor-id="eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil">Eurozone &amp; Deutschland: Sparquote der Haushalte bleibt stabil</h3>
+<div class="chart-wrapper">
+<img id="img-savings_rate_de_ea" src="charts/de/savings_rate_de_ea_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('savings_rate_de_ea', 'savings_rate_de_ea.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Sparquote bleibt in Deutschland stabil bei 10 %, deutlich höher als in den USA (2,6 %). Historisch lag die deutsche Sparquote ebenfalls höher als in der Eurozone. Während der Coronakrise stieg sie auf fast 20 %.</p>
+</section>
+<section id="google-suchdaten-deuten-auf-zurückhaltung-in-frankreich-und-deutschland-hin" class="level3">
+<h3 class="anchored" data-anchor-id="google-suchdaten-deuten-auf-zurückhaltung-in-frankreich-und-deutschland-hin">Google-Suchdaten deuten auf Zurückhaltung in Frankreich und Deutschland hin</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_restaurant_de" src="charts/de/google_trends_restaurant_de_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_restaurant_de', 'google_trends_restaurant_de.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_restaurant_fr" src="charts/de/google_trends_restaurant_fr_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_restaurant_fr', 'google_trends_restaurant_fr.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Die Google-Suchen nach “Restaurant” in Deutschland und Frankreich deuten auf eine schwache private Nachfrage hin. In beiden Ländern lag die Suchintensität in den letzten Wochen niedriger als im Durchschnitt der letzten fünf Jahre zur selben Jahreszeit.</p>
+</section>
+<section id="weniger-vorsicht-in-spanien" class="level3">
+<h3 class="anchored" data-anchor-id="weniger-vorsicht-in-spanien">Weniger Vorsicht in Spanien</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_restaurant_es" src="charts/de/google_trends_restaurant_es_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_restaurant_es', 'google_trends_restaurant_es.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-google_trends_restaurant_it" src="charts/de/google_trends_restaurant_it_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('google_trends_restaurant_it', 'google_trends_restaurant_it.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Während in Spanien die Suchintensität nach “Restaurant” so hoch wie im Durchschnitt der letzten Jahre blieb, war sie in Italien etwas niedriger.</p>
+<!-- CHINA ************************** -->
+</section>
+<section id="die-stimmung-verbessert-sich-nur-leicht" class="level3">
+<h3 class="anchored" data-anchor-id="die-stimmung-verbessert-sich-nur-leicht">Die Stimmung verbessert sich nur leicht</h3>
+<div class="chart-wrapper">
+<img id="img-china_consumer_confidence" src="charts/de/china_consumer_confidence_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_consumer_confidence', 'china_consumer_confidence.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>In China hat sich das Konsumklima seit Anfang 2025 leicht verbessert, bleibt jedoch historisch niedrig. Auch die Stimmung im Immobiliensektor ist gedrückt. Der „National Real Estate Climate Index“ sinkt im Trend seit drei Jahren.</p>
+</section>
+</section>
+<section id="arbeitsmarkt" class="level2">
+<h2 class="anchored" data-anchor-id="arbeitsmarkt">Arbeitsmarkt</h2>
+<p><img src="Leuchtturm.png" class="feature-image nolightbox img-fluid"></p>
+<section id="usa-weiter-starker-anstieg-der-nominallöhne" class="level3">
+<h3 class="anchored" data-anchor-id="usa-weiter-starker-anstieg-der-nominallöhne">USA: Weiter starker Anstieg der Nominallöhne</h3>
+<div class="chart-wrapper">
+<img id="img-nominal_wages" src="charts/de/nominal_wages_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('nominal_wages', 'nominal_wages.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im Mai stiegen die durchschnittlichen Stundenlöhne in den USA um 3,4 % im Jahresvergleich, erneut etwas langsamer als im Vormonat. Im ersten Quartal 2026 betrug das Lohnwachstum 3,9 % in Deutschland und nur 1,6 % in Frankreich. In Deutschland und in den USA bleibt das Lohnwachstum über dem Durchschnitt von 2011-2019.</p>
+</section>
+<section id="usa-normalisierung-des-lohnwachstums" class="level3">
+<h3 class="anchored" data-anchor-id="usa-normalisierung-des-lohnwachstums">USA: Normalisierung des Lohnwachstums?</h3>
+<div class="chart-wrapper">
+<img id="img-normal_lohn" src="charts/de/normal_lohn_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('normal_lohn', 'normal_lohn.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Das Lohnwachstum nach dem Wage Tracker von Indeed Hiring Lab scheint dem Lohnmedianwachstum der USA etwa sieben Monate vorauszulaufen. Wenn dies stimmt, könnte sich das Lohnwachstum weiter normalisieren.</p>
+</section>
+<section id="usa-schwaches-lohnwachstum-bei-niedrigen-löhnen" class="level3">
+<h3 class="anchored" data-anchor-id="usa-schwaches-lohnwachstum-bei-niedrigen-löhnen">USA: schwaches Lohnwachstum bei niedrigen Löhnen</h3>
+<div class="chart-wrapper">
+<img id="img-us_wages_q" src="charts/de/us_wages_q_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_wages_q', 'us_wages_q.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im April stiegen die Stundenlöhne in den USA im Durchschnitt um 3,8 %. Die Lohnzuwächse der einzelnen Lohngruppen nähern sich an. Im niedrigsten Lohnquartil legten die Löhne um 3,6 % zu, im höchsten Quartil um 3,7 %. Damit wachsen die höchsten Löhne nicht mehr so viel stärker wie auf dem Höhepunkt 2022 und steigen nur knapp etwas schneller als die niedrigsten.</p>
+</section>
+<section id="der-us-arbeitsmarkt-ist-weniger-angespannt" class="level3">
+<h3 class="anchored" data-anchor-id="der-us-arbeitsmarkt-ist-weniger-angespannt">Der US-Arbeitsmarkt ist weniger angespannt</h3>
+<div class="chart-wrapper">
+<img id="img-labor_force_usa" src="charts/de/labor_force_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('labor_force_usa', 'labor_force_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Beveridge-Kurve stellt die Beziehung zwischen der Vakanzquote – die offenen Stellen als Anteil an der Summe aus besetzten und offenen Stellen – und der Arbeitslosenquote dar. Mit der Coronakrise ging die Kurve nach außen, weil aufgrund der Politikmaßnahmen trotz vieler freier Stellen die Arbeitslosigkeit hoch blieb. Die Rigiditäten haben sich wieder abgebaut und die Beveridge-Kurve ist auf das Niveau vor der Coronakrise zurückgekehrt. Die Lage am US-Arbeitsmarkt hat sich also normalisiert.</p>
+</section>
+<section id="stellenwachstum-erholt-sich-bleibt-dennoch-schwach" class="level3">
+<h3 class="anchored" data-anchor-id="stellenwachstum-erholt-sich-bleibt-dennoch-schwach">Stellenwachstum erholt sich, bleibt dennoch schwach</h3>
+<div class="chart-wrapper">
+<img id="img-adp_bls_comparison" src="charts/de/adp_bls_comparison_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('adp_bls_comparison', 'adp_bls_comparison.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im Mai stieg die Zahl der Stellen im privaten Sektor ohne Landwirtschaft laut ADP-Bericht gegenüber dem Vorjahr um 0,5 %, etwas höher als im Vormonat. Die offiziellen Zahlen wiesen ebenfalls ein jährliches Wachstum von 0,5 % aus. Der US-Arbeitsmarkt bleibt stabil, doch das Stellenwachstum verläuft inzwischen langsamer als in den Jahren zwischen Finanz- und Coronakrise.</p>
+</section>
+<section id="usa-entlassungen-und-jobless-claims-im-rahmen" class="level3">
+<h3 class="anchored" data-anchor-id="usa-entlassungen-und-jobless-claims-im-rahmen">USA: Entlassungen und Jobless Claims im Rahmen</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-us_layoffs_sectors" src="charts/de/us_layoffs_sectors_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_layoffs_sectors', 'us_layoffs_sectors.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-us_jobless" src="charts/de/us_jobless_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_jobless', 'us_jobless.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Im Mai wurden rund 97.000 Stellenstreichungen angekündigt und damit etwas mehr als im Vormonat. Gleichzeitig stiegen die wöchentlichen Erstanträge auf Arbeitslosenhilfe zuletzt leicht auf 225.000, blieben jedoch am unteren Rand der Schwankungen der vergangenen drei Jahre sowie auf historisch niedrigem Niveau. Zwischen 1990 und 2019 betrug der Wochendurchschnitt hingegen rund 350.000.</p>
+</section>
+<section id="usa-sinkendes-arbeitsangebot" class="level3">
+<h3 class="anchored" data-anchor-id="usa-sinkendes-arbeitsangebot">USA: sinkendes Arbeitsangebot</h3>
+<div class="chart-wrapper">
+<img id="img-labor_supply_usa" src="charts/de/labor_supply_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('labor_supply_usa', 'labor_supply_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Das Arbeitsangebot in den USA stagniert seit Herbst 2024. Eine methodische Anpassung erhöhte die Erwerbsbevölkerung im Januar 2025 um 2,1 Mio. Menschen. Eine neue rückgerechnete Reihe (gelb) verdeutlicht, dass das Wachstum schon im Herbst 2024 abbrach. Mit der restriktiveren Migrationspolitik von Donald Trump dürfte das Arbeitsangebot weiterhin stagnieren oder sogar sinken.</p>
+<!-- EUROZONE ********** -->
+</section>
+<section id="die-nominallöhne-steigen-in-deutschland-schneller" class="level3">
+<h3 class="anchored" data-anchor-id="die-nominallöhne-steigen-in-deutschland-schneller">Die Nominallöhne steigen in Deutschland schneller</h3>
+<div class="chart-wrapper">
+<img id="img-indeed_wage_tracker" src="charts/de/indeed_wage_tracker_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('indeed_wage_tracker', 'indeed_wage_tracker.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Der Wage Tracker von Indeed Hiring Lab zeigt weiter steigende Nominallöhne. Im April lag die Veränderungsrate in der Eurozone bei 2,3 %, bei 3,2 % in Deutschland, 1,1 % in Frankreich und 2,3 % in den USA. Nur in Deutschland steigen die Löhne schneller als im Vorjahr.</p>
+</section>
+<section id="eurozone-angespannter-arbeitsmarkt" class="level3">
+<h3 class="anchored" data-anchor-id="eurozone-angespannter-arbeitsmarkt">Eurozone: angespannter Arbeitsmarkt</h3>
+<div class="chart-wrapper">
+<img id="img-ea_beveridge" src="charts/de/ea_beveridge_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ea_beveridge', 'ea_beveridge.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Beveridge-Kurve, die die Beziehung zwischen Vakanzquote und Arbeitslosenquote darstellt, weist auf einen angespannten Arbeitsmarkt hin. Während der Coronakrise verschob sich die Kurve nach außen, da politische Maßnahmen dazu führten, dass die Arbeitslosigkeit trotz vieler offener Stellen hoch blieb. Inzwischen haben sich diese Rigiditäten weitgehend abgebaut und die Arbeitslosigkeit liegt auf historisch niedrigem Niveau. Die Vakanzquote ist zwar zurückgegangen, entspricht jedoch wieder dem üblichen Verhältnis zwischen beiden Variablen.</p>
+<!-- China ********** -->
+</section>
+<section id="china-sehr-hohe-jugendarbeitslosigkeit" class="level3">
+<h3 class="anchored" data-anchor-id="china-sehr-hohe-jugendarbeitslosigkeit">China: Sehr hohe Jugendarbeitslosigkeit</h3>
+<div class="chart-wrapper">
+<img id="img-china_unemployment" src="charts/de/china_unemployment_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_unemployment', 'china_unemployment.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Arbeitslosenquote Chinas bewegte sich in den letzten Monaten bei 5 % seitwärts. Die Jugendarbeitslosigkeit, definiert als die Arbeitslosenquote unter den 16- bis 24-Jährigen, erreichte Mitte 2023 21,3 %. Nach einer Veröffentlichungspause von sechs Monaten gibt es eine neue Statistik „ohne Studenten“. Diese lag im Februar bei 16,9 %.</p>
+</section>
+</section>
+</section>
+<section id="preise" class="level1">
+<h1>PREISE</h1>
+<section id="rohstoffe" class="level2">
+<h2 class="anchored" data-anchor-id="rohstoffe">Rohstoffe</h2>
+<p><img src="glut.png" class="feature-image nolightbox img-fluid"></p>
+<section id="hohe-seefrachtkosten-für-rohöl" class="level3">
+<h3 class="anchored" data-anchor-id="hohe-seefrachtkosten-für-rohöl">Hohe Seefrachtkosten für Rohöl</h3>
+<div class="chart-wrapper">
+<img id="img-baltic_drewry" src="charts/de/baltic_drewry_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('baltic_drewry', 'baltic_drewry.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Frachtraten für Rohöltanker sind infolge der Blockade der Straße von Hormus auf neue Rekordstände gestiegen. Trotz eines jüngsten Rückgangs liegen sie weiterhin über dem Höchstniveau von 2022 nach Beginn des Ukrainekriegs. Der World Container Index (WCI), der die Frachtraten im Warenhandel abbildet, verharrt hingegen aufgrund anhaltender Überkapazitäten im Containerschiffbau auf niedrigem Niveau.</p>
+</section>
+<section id="backwardation-sinkende-ölpreise-erwartet" class="level3">
+<h3 class="anchored" data-anchor-id="backwardation-sinkende-ölpreise-erwartet">Backwardation: sinkende Ölpreise erwartet</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-brent_forward_curve" src="charts/de/brent_forward_curve_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('brent_forward_curve', 'brent_forward_curve.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-brent_event_study" src="charts/de/brent_event_study_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('brent_event_study', 'brent_event_study.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Der Markt rechnet mit sinkenden Ölpreisen. Lieferungen in drei Monaten oder einem Jahr sind günstiger als im aktuellen Monat (Frontmonat). Diese „Backwardation“ signalisiert, dass die aktuelle Knappheit als vorübergehend betrachtet wird. Die Preise der Futures mit Lieferung in einem Jahr sind in den letzten Tagen erneut stark gestiegen, stärker als nach dem Anfang des Krieges in der Ukraine 2022.</p>
+</section>
+<section id="wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus" class="level3">
+<h3 class="anchored" data-anchor-id="wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus">Wann normalisiert sich der Schiffsverkehr durch die Straße von Hormus?</h3>
+<div class="chart-wrapper">
+<img id="img-hormuz_payoffs" src="charts/de/hormuz_payoffs_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('hormuz_payoffs', 'hormuz_payoffs.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Eine Wiedereröffnung der Straße von Hormus ist entscheidend für das Ölangebot und damit für die Ölpreise. Ende Mai preisten die Prognosemärkte noch mit 65% Wahrscheinlichkeit eine Öffnung bis Ende Juni ein. Am 8. Juni lag sie jedoch nur bei 10 %. Für Ende Juli liegt die implizite Wahrscheinlichkeit bei 28 %, für Ende Dezember bei 74 %.</p>
+</section>
+<section id="europäische-gaspreise-verlaufen-ähnlich-wie-2022" class="level3">
+<h3 class="anchored" data-anchor-id="europäische-gaspreise-verlaufen-ähnlich-wie-2022">Europäische Gaspreise verlaufen ähnlich wie 2022</h3>
+<div class="chart-wrapper">
+<img id="img-ttf_gas" src="charts/de/ttf_gas_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ttf_gas', 'ttf_gas.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Europa bleibt stark von Importen von Öl und Gas abhängig. Nach einem schnellen Anstieg um rund 75 % sind die niederländischen TTF‑Erdgas‑Futures mit einmonatiger Laufzeit zuletzt etwas zurückgegangen, liegen aber immer noch etwa 50 % über dem Niveau von einer Woche vor Beginn des Iran-Kriegs. In der Energiekrise 2022 hatten sich die europäischen Gaspreise zeitweise verdreifacht.</p>
+</section>
+</section>
+<section id="usa" class="level2">
+<h2 class="anchored" data-anchor-id="usa">USA</h2>
+<p><img src="hitze.png" class="feature-image nolightbox img-fluid"></p>
+<section id="usa-inflationsrate-steigt-stark-an" class="level3">
+<h3 class="anchored" data-anchor-id="usa-inflationsrate-steigt-stark-an">USA: Inflationsrate steigt stark an</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-cpi_vs_expectations_usa" src="charts/de/cpi_vs_expectations_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('cpi_vs_expectations_usa', 'cpi_vs_expectations_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-core_cpi_vs_expectations_usa" src="charts/de/core_cpi_vs_expectations_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('core_cpi_vs_expectations_usa', 'core_cpi_vs_expectations_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Im Mai stiegen in den USA die Konsumentenpreise weiter an. Der Verbraucherpreisindex (CPI) erhöhte sich wie erwartet um 4,2 % im Vergleich zum Vorjahr. Die Kerninflation lag bei 2,9 %, gleich den Medianerwartungen der Teilnehmer einer monatlichen Bloomberg-Umfrage. Der starke Anstieg geht insbesondere auf den Ölpreisschock zurück.</p>
+</section>
+<section id="inflation-in-den-usa-cpi-pce-bip-deflator" class="level3">
+<h3 class="anchored" data-anchor-id="inflation-in-den-usa-cpi-pce-bip-deflator">Inflation in den USA: CPI, PCE &amp; BIP-Deflator</h3>
+<div class="chart-wrapper">
+<img id="img-pce_cpi_deflator_usa" src="charts/de/pce_cpi_deflator_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('pce_cpi_deflator_usa', 'pce_cpi_deflator_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Inflation wird über verschiedene Indizes ermittelt. Der CPI erfasst Konsumentenpreise, der PCE-Index die Ausgaben der Haushalte und der BIP-Deflator die Preise aller im Inland produzierten Wirtschaftsgüter. Die Veränderungsraten aller drei Indizes erreichten Mitte 2022 einen Höhepunkt. Im April 2026 lag die Inflationsrate des von der Fed favorisierten Kern-PCE-Index (ohne Energie und Lebensmittel) bei 3,3 %.</p>
+</section>
+<section id="inflationstreiber-dienstleistungen-und-energie" class="level3">
+<h3 class="anchored" data-anchor-id="inflationstreiber-dienstleistungen-und-energie">Inflationstreiber: Dienstleistungen und Energie</h3>
+<div class="chart-wrapper">
+<img id="img-cpi_components_usa" src="charts/de/cpi_components_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('cpi_components_usa', 'cpi_components_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die Teuerung bei Dienstleistungen ist weiterhin der dominante Treiber der US-Inflation. Während der Beitrag der Lebensmittelpreise moderat positiv bleibt, schlägt der jüngste Ölpreisschock nun voll durch: Der Inflationsbeitrag der Energiepreise ist so hoch wie seit 2022 nicht mehr und treibt die Gesamtrate wieder spürbar nach oben.</p>
+</section>
+<section id="usa-steigender-inflationsdruck" class="level3">
+<h3 class="anchored" data-anchor-id="usa-steigender-inflationsdruck">USA: Steigender Inflationsdruck</h3>
+<div class="chart-wrapper">
+<img id="img-us_cpi_contributions" src="charts/de/us_cpi_contributions_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_cpi_contributions', 'us_cpi_contributions.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im Mai stiegen die Dienstleistungspreise gegenüber dem Vorjahr um 3,5 %. Die Lebensmittelpreise zogen mit einer jährlichen Veränderungsrate von 2,7 % weiterhin stark an. Besonders stark legten die Energiepreise zu: Mit einem Anstieg von 23 % gegenüber dem Vorjahr fielen sie so hoch aus wie zuletzt im Jahr 2022.</p>
+</section>
+<section id="usa-supercore-inflation-steigt-wieder-an" class="level3">
+<h3 class="anchored" data-anchor-id="usa-supercore-inflation-steigt-wieder-an">USA: Supercore-Inflation steigt wieder an</h3>
+<div class="chart-wrapper">
+<img id="img-supercore_usa" src="charts/de/supercore_usa_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('supercore_usa', 'supercore_usa.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Supercore wird als der Dienstleistungspreisindex ohne Energie- und Wohnkosten definiert. Auf der Grundlage des CPI-Index lag die Jahresrate der Supercore-Inflation im Mai bei rund 3,7 %. Gemessen am PCE-Index stieg die Supercore-Inflation im April auf knapp 3,6 %. Dies zeigt, dass der Inflationsdruck im Dienstleistungssektor auch ohne Wohnkosten weiterhin hoch bleibt.</p>
+</section>
+<section id="mietpreiswachstum-fällt-nicht-mehr" class="level3">
+<h3 class="anchored" data-anchor-id="mietpreiswachstum-fällt-nicht-mehr">Mietpreiswachstum fällt nicht mehr</h3>
+<div class="chart-wrapper">
+<img id="img-zillow_rent" src="charts/de/zillow_rent_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('zillow_rent', 'zillow_rent.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Mietkosten machen einen großen Teil der Dienstleistungspreise im CPI aus und sind zudem stark mit den Kosten für eigengenutztes Wohnen korreliert. Während der Corona-Jahre war der Zillow-Mietindex für Neuvermietungen ein guter Frühindikator für die Mietentwicklung, da Bestandsmieten träger reagieren. Aktuell signalisiert der Zillow-Mietindex mit rund 1,7 % ein langsameres Mietwachstum als der wieder anziehende CPI-Mietindex mit etwa 2,9 %.</p>
+</section>
+<section id="usa-inflation-könnte-weiter-steigen" class="level3">
+<h3 class="anchored" data-anchor-id="usa-inflation-könnte-weiter-steigen">USA: Inflation könnte weiter steigen</h3>
+<div class="chart-wrapper">
+<img id="img-ism_services_prices" src="charts/de/ism_services_prices_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ism_services_prices', 'ism_services_prices.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Der Preisindex im ISM-Dienstleistungs-PMI läuft der Verbraucherpreisinflation etwa sechs Monate voraus. Wenn sich dieser Zusammenhang bestätigt, dürfte die Inflation in den kommenden Monaten weiter steigen.</p>
+</section>
+</section>
+<section id="eurozone" class="level2">
+<h2 class="anchored" data-anchor-id="eurozone">Eurozone</h2>
+<p><img src="warenkorb.png" class="feature-image nolightbox img-fluid"></p>
+<section id="steigende-inflation-in-der-eurozone" class="level3">
+<h3 class="anchored" data-anchor-id="steigende-inflation-in-der-eurozone">Steigende Inflation in der Eurozone</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-hicp_core_ea" src="charts/de/hicp_core_ea_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('hicp_core_ea', 'hicp_core_ea.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-hicp_countries_ea" src="charts/de/hicp_countries_ea_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('hicp_countries_ea', 'hicp_countries_ea.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Im Mai stieg der HVPI der Eurozone im Jahresvergleich um 3,2 %, die Kerninflation (ohne Energie und Lebensmittel) lag bei 2,5 %. In Deutschland (2,7 %), Frankreich (2,8 %), Italien (3,3 %) und Spanien (3,6 %) lag die Inflation im Mai erneut klar über der Zielmarke von 2 %.</p>
+</section>
+<section id="verteuerung-von-dienstleistungen-und-energie" class="level3">
+<h3 class="anchored" data-anchor-id="verteuerung-von-dienstleistungen-und-energie">Verteuerung von Dienstleistungen und Energie</h3>
+<div class="chart-wrapper">
+<img id="img-hicp_contributions_ea" src="charts/de/hicp_contributions_ea_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('hicp_contributions_ea', 'hicp_contributions_ea.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Bis Ende 2022 trugen vor allem Energie- und Lebensmittelpreise zur Inflation bei. Derzeit wird die Teuerung überwiegend von steigenden Dienstleistungspreisen getrieben, in geringerem Maß auch von Lebensmitteln und erneut von Energie. Zwischenzeitlich wirkten die Energiepreise jedoch über mehrere Monate dämpfend auf die Inflation.</p>
+</section>
+<section id="der-inflationsdruck-bleibt" class="level3">
+<h3 class="anchored" data-anchor-id="der-inflationsdruck-bleibt">Der Inflationsdruck bleibt</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-core_inflation_3m_ann" src="charts/de/core_inflation_3m_ann_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('core_inflation_3m_ann', 'core_inflation_3m_ann.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-core_inflation_6m_ann" src="charts/de/core_inflation_6m_ann_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('core_inflation_6m_ann', 'core_inflation_6m_ann.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Die 3- und 6-Monats-annualisierten Kerninflationsraten zeigen den kurzfristigen Inflationsdruck. Im Mai lagen in der Eurozone sowohl die 3- als auch die 6-Monats-Rate bei 2,4 %. In den USA betrug die 3-Monats-Rate 3,2 % und die 6-Monats-Rate 2,9 %.</p>
+</section>
+</section>
+<section id="inflationserwartungen" class="level2">
+<h2 class="anchored" data-anchor-id="inflationserwartungen">Inflationserwartungen</h2>
+<p><img src="einkaufen.png" class="feature-image nolightbox img-fluid"></p>
+<section id="volatile-inflationserwartungen-der-konsumenten" class="level3">
+<h3 class="anchored" data-anchor-id="volatile-inflationserwartungen-der-konsumenten">Volatile Inflationserwartungen der Konsumenten</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-us_infl_expectations" src="charts/de/us_infl_expectations_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_infl_expectations', 'us_infl_expectations.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-ea_infl_expectations" src="charts/de/ea_infl_expectations_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ea_infl_expectations', 'ea_infl_expectations.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Im Mai 2026 lagen die Inflationserwartungen der US-Konsumenten für die nächsten zwölf Monate bei 4,8 % (Universität Michigan) und 3,6 % (New York Fed). In der Eurozone erwarteten die Haushalte im Februar laut EZB im Median 4 % für das kommende Jahr und 2,9% für die nächsten drei Jahre.</p>
+</section>
+<section id="energie-wird-wieder-teurer" class="level3">
+<h3 class="anchored" data-anchor-id="energie-wird-wieder-teurer">Energie wird wieder teurer …</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-us_cpi_en" src="charts/de/us_cpi_en_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_cpi_en', 'us_cpi_en.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-ea_hicp_en" src="charts/de/ea_hicp_en_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('ea_hicp_en', 'ea_hicp_en.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Lebensmittel- und Energiepreise werden ausgeblendet, um die grundlegende Inflationsentwicklung zu analysieren. Für die Wahrnehmung der Kaufkraft und das Wahlverhalten sind jedoch gerade diese Preise entscheidend. Nach dem starken Anstieg 2021 haben sich die Energiepreise zwar stabilisiert, die Lebensmittelpreise steigen jedoch weiter. Der Krieg im Iran hat die Energiekosten nun erneut nach oben getrieben: In den USA liegen sie 24 % über dem Niveau von Trumps Wahl (Nov.&nbsp;2024), im Euroraum sind es 9 %.</p>
+</section>
+<section id="was-den-us-republikanern-schaden-dürfte" class="level3">
+<h3 class="anchored" data-anchor-id="was-den-us-republikanern-schaden-dürfte">… was den US-Republikanern schaden dürfte</h3>
+<div class="chart-wrapper">
+<img id="img-polymarket_congress" src="charts/de/polymarket_congress_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('polymarket_congress', 'polymarket_congress.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Im November 2026 werden das gesamte Repräsentantenhaus und 35 der 100 Sitze im Senat neu gewählt. In den Prognosemärkten ist eine republikanische Mehrheit im Repräsentantenhaus derzeit nur mit 19 % eingepreist. Für den Senat ist die Wahrscheinlichkeit zuletzt wieder gestiegen und liegt aktuell bei rund 56 %.</p>
+</section>
+<section id="china-deflationssorgen" class="level3">
+<h3 class="anchored" data-anchor-id="china-deflationssorgen">China: Deflationssorgen</h3>
+<div class="chart-wrapper">
+<img id="img-china_cpi" src="charts/de/china_cpi_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_cpi', 'china_cpi.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die chinesische Inflationsrate lag seit Mitte 2023 unter 1 %. Im April betrug sie 1,2 %, die Kerninflation (ohne Lebensmittel und Energie) lag bei 1,1 %. Dies unterstreicht die schwache wirtschaftliche Dynamik des Landes. Hohe Öl- und Energiepreise dürften die Inflationsrate zumindest vorübergehend weiter erhöhen.</p>
+</section>
+</section>
+</section>
+<section id="zinserwartungen-fiskalimpuls" class="level1">
+<h1>ZINSERWARTUNGEN<br>&amp; FISKALIMPULS</h1>
+<section id="usa-sinkender-realzins" class="level3">
+<h3 class="anchored" data-anchor-id="usa-sinkender-realzins">USA: Sinkender Realzins</h3>
+<div class="chart-wrapper">
+<img id="img-us_real_rate" src="charts/de/us_real_rate_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('us_real_rate', 'us_real_rate.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Der Realzins ist die Differenz von Nominalzins und (erwarteter) Inflation. Während man den Nominalzins am Markt ablesen kann, muss man sich für die erwartete Inflation einer Schätzung bedienen. Je nach gewähltem Ansatz liegt der Realzins für die US-Wirtschaft derzeit zwischen -1,0 % und 0,3 %. Alternativ kann man die Rendite inflationsindizierter Staatsanleihen (TIPS in den USA) am Markt ablesen. Für eine Laufzeit von zwei Jahren ist der Realzins seit April 2022 positiv und stieg zuletzt auf rund 1,1 %.</p>
+</section>
+<section id="volatile-zinserwartungen" class="level3">
+<h3 class="anchored" data-anchor-id="volatile-zinserwartungen">Volatile Zinserwartungen</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-implied_fed_rates" src="charts/de/implied_fed_rates_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('implied_fed_rates', 'implied_fed_rates.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="chart-wrapper">
+<img id="img-implied_ecb_rates" src="charts/de/implied_ecb_rates_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('implied_ecb_rates', 'implied_ecb_rates.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+</div>
+</div>
+<p>Die Futures-Märkte preisen für die Fed bis Dezember 2026 eine Zinsanhebung von höchstens 25 Basispunkten ein. Im Euroraum werden Zinserhöhungen um rund 50 Basispunkte eingepreist. Das erwartete Zinsniveau liegt in Europa dennoch deutlich unter dem der USA.</p>
+</section>
+<section id="china-expansive-geldpolitik" class="level3">
+<h3 class="anchored" data-anchor-id="china-expansive-geldpolitik">China: Expansive Geldpolitik</h3>
+<div class="chart-wrapper">
+<img id="img-china_policy_rates" src="charts/de/china_policy_rates_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('china_policy_rates', 'china_policy_rates.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die chinesische Zentralbank steuert ihre Geldpolitik vor allem über drei Instrumente: den 7-Tage-Reverse-Repo-Satz, die einjährige Loan Prime Rate (LPR) der Geschäftsbanken und den Mindestreservesatz (RRR). In den vergangenen Jahren hat sie alle drei Sätze mehrfach gesenkt, um mehr Liquidität bereitzustellen und damit über Kreditexpansion die Konjunktur zu stützen. Für 2026 signalisiert sie eine weiterhin moderat lockere Geldpolitik.</p>
+</section>
+<section id="moderate-fiskalimpulse-für-2026" class="level3">
+<h3 class="anchored" data-anchor-id="moderate-fiskalimpulse-für-2026">Moderate Fiskalimpulse für 2026</h3>
+<div class="chart-wrapper">
+<img id="img-fiscal_impulse" src="charts/de/fiscal_impulse_de.svg" class="chart-img lightbox">
+<div class="chart-actions">
+<button class="btn-download" onclick="downloadChart('fiscal_impulse', 'fiscal_impulse.svg', 'svg')">
+Speichern
+</button>
+</div>
+</div>
+<p>Die jüngsten Schätzungen des IWF haben insbesondere das Bild für China im Jahr 2026 verändert. Statt eines zuvor erwarteten neutralen Fiskalimpulses wird nun ein starker positiver Impuls prognostiziert, getragen von umfangreichen staatlichen Maßnahmen zur Stützung der Binnennachfrage. In den USA blieb der Fiskalimpuls 2024 und 2025 negativ, für 2026 wird jedoch eine leichte Lockerung erwartet. In der Eurozone verschiebt sich der Fiskalimpuls von 2025 auf 2026, da insbesondere das deutsche Rüstungs- und Infrastrukturprogramm erst mit Verzögerung wirksam wird.</p>
+</section>
+<section id="konjunkturprognose-2026" class="level3">
+<h3 class="anchored" data-anchor-id="konjunkturprognose-2026">Konjunkturprognose 2026</h3>
+<div style="max-width: fit-content; margin: 1.6rem auto;">
+<div class="forecast-block">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Mom.</th>
+<th style="text-align: center;">Fiskal.</th>
+<th style="text-align: center;">Finanz.</th>
+<th style="text-align: center;">FvS-RI</th>
+<th style="text-align: center;">Bloomberg-Konsensus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>USA</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>2,0 %</strong></td>
+<td style="text-align: center;">2,1 %</td>
+</tr>
+<tr class="even">
+<td><strong>CN</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>4,6 %</strong></td>
+<td style="text-align: center;">4,6 %</td>
+</tr>
+<tr class="odd">
+<td><strong>EA</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>0,6 %</strong></td>
+<td style="text-align: center;">0,8 %</td>
+</tr>
+<tr class="even">
+<td><strong>DE</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"><strong>0,4 %</strong></td>
+<td style="text-align: center;">0,6 %</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size: 0.9em !important; color: #666; text-align: justify; margin: 0.5rem 0; width: 100%;">
+<em>Unsere Wachstumsprognose für 2026 basiert auf einer qualitativen Einschätzung des wirtschaftlichen Momentums, des Wachstumseffekts der Fiskalpolitik sowie der Finanzierungsbedingungen, einschließlich der Geldpolitik. Diese Prognosen sind als Orientierungsgrößen und nicht als präzise Punktvorhersagen zu verstehen.</em>
+</p>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>USA:</strong> Stabiler Konsum, eine solide Arbeitsmarktlage sowie weniger stark steigende Löhne begründen das unverändert positive Momentum. Fiskalpolitisch ist keine Haushaltskonsolidierung vorgesehen. Vielmehr bleibt der Kurs expansiv.</p>
+<p>Geldpolitisch werden keine Zinssenkungen mehr bis Ende des Jahres erwartet. Der Krieg im Iran erhöht die Unsicherheit und das Rezessionsrisiko.</p>
+<p><strong>China:</strong> Der weiterhin schwächelnde Immobiliensektor belastet die Inlandsnachfrage. Die Industrie stabilisiert die Konjunktur über Exporte, allerdings insbesondere via Subventionen, was auf Überkapazitäten hinweist und deflationär wirkt. Von der Fiskal- und Geldpolitik sind leichte Impulse zu erwarten.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Eurozone / Deutschland:</strong> Das negative Momentum in Deutschland und der Eurozone infolge der Auswirkungen des Ölpreisschocks auf Nachfrage und Industrie wird auf europäischer Ebene teilweise durch das dynamischere Wachstum in Spanien und Italien kompensiert. Spanien schwächelt jedoch zunehmend. Schuldenfinanzierte Konjunkturprogramme dürften 2026 einen Impuls geben. Ohne Deregulierung dürften deutsche Infrastruktur- und Rüstungsinvestitionen allerdings nur schwach wirken. Steigende Öl- und Gaspreise sowie ein schwacher Euro belasten die Konjunktur zusätzlich. Angesichts der schlechten Geschäftsaussichten und der erhöhten Unsicherheit haben wir unsere Prognose erneut gesenkt.</p>
+</div>
+</div>
+</section>
+<section id="rechtliche-hinweise" class="level3">
+<h3 class="anchored" data-anchor-id="rechtliche-hinweise">Rechtliche Hinweise</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Die in diesem Dokument enthaltenen Informationen und zum Ausdruck gebrachten Meinungen geben die Einschätzungen des Verfassers zum Zeitpunkt der Veröffentlichung wieder und können sich jederzeit ohne vorherige Ankündigung ändern. Angaben zu in die Zukunft gerichteten Aussagen spiegeln die Ansicht und die Zukunftserwartung des Verfassers wider. Die Meinungen und Erwartungen können von Einschätzungen abweichen, die in anderen Dokumenten der Flossbach von Storch SE dargestellt werden. Die Beiträge werden nur zu Informationszwecken und ohne vertragliche oder sonstige Verpflichtung zur Verfügung gestellt. Die enthaltenen Informationen und Einschätzungen stellen keine Anlageberatung oder sonstige Empfehlung dar. Eine Haftung für die Vollständigkeit, Aktualität und Richtigkeit der gemachten Angaben und Einschätzungen ist ausgeschlossen. <strong>Die historische Entwicklung ist kein verlässlicher Indikator für die zukünftige Entwicklung.</strong></p>
+</div><div class="column" style="width:50%;">
+<p>Sämtliche Urheberrechte und sonstige Rechte, Titel und Ansprüche an, für und aus allen Informationen dieser Veröffentlichung unterliegen uneingeschränkt den jeweils gültigen Bestimmungen und den Besitzrechten der jeweiligen eingetragenen Eigentümer. Sie erlangen keine Rechte an dem Inhalt. Das Copyright für veröffentlichte, von der Flossbach von Storch SE selbst erstellte Inhalte bleibt allein bei der Flossbach von Storch SE. Eine Vervielfältigung oder Verwendung solcher Inhalte, ganz oder in Teilen, ist ohne schriftliche Zustimmung der Flossbach von Storch SE nicht gestattet. <strong>Nachdrucke dieser Veröffentlichung sowie öffentliches Zugänglichmachen bedürfen der vorherigen schriftlichen Zustimmung durch die Flossbach von Storch SE.</strong> © 2026 Flossbach von Storch. Alle Rechte vorbehalten.</p>
+</div>
+</div>
+<script>
+</script>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Kopiert");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Kopiert");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

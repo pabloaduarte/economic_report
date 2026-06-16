@@ -1,0 +1,25 @@
+# ==========================================
+# 1. RStudio, Quarto, & Local Cache Ignores
+# ==========================================
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+/.quarto/
+**/*.quarto_ipynb
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# 2. Strict Repository Filtering
+# ==========================================
+# Step A: Ignore everything in the root by default
+/*
+
+# Step B: Explicitly allow the files you want to keep track of
+!.gitignore
+!make_report.R
+
+# Step C: Whitelist the entire generated website folder and all its contents
+!docs/
+!docs/**
