@@ -8,7 +8,7 @@
 
 <meta name="author" content="Pablo Duarte">
 
-<title>Informe de Coyuntura</title>
+<title>Informe Económico</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,149 +40,230 @@ ul.task-list li input[type="checkbox"] {
 <link href="libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <style>html{ scroll-behavior: smooth; }</style>
-<style>
-  #language-switcher {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 8px 15px;
-    border-radius: 20px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    font-family: sans-serif;
-    display: flex;
-    gap: 15px;
-    border: 1px solid #eee;
-    align-items: center;
-  }
-  #language-switcher a {
-    text-decoration: none;
-    color: #666;
-    font-weight: 600;
-    font-size: 13px;
-    transition: color 0.2s;
-  }
-  #language-switcher a:hover {
-    color: #c05948;
-  }
-  .lang-active {
-    color: #c05948 !important;
-    border-bottom: 2px solid #c05948;
-  }
-  .pdf-link {
-    margin-left: 10px;
-    padding-left: 15px;
-    border-left: 1px solid #ddd;
-    color: #c05948 !important;
-  }
-
-  /* Navigation Links */
-  .back-link {
-    font-size: 0.6em;
-    font-weight: normal;
-    margin-left: 15px;
-    color: #888 !important;
-    text-decoration: none !important;
-    vertical-align: middle;
-  }
-  .back-link:hover {
-    color: #c05948 !important;
-  }
-
-  /* Download UI - Flexible & Simple */
-  .chart-wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2em;
-  }
-  .chart-img {
-    width: 100%;
-    display: block;
-    cursor: zoom-in;
-  }
-  .chart-actions {
-    align-self: flex-end;
-    margin-top: 0.2em;
-    opacity: 0.7;
-    display: flex;
-    gap: 1em;
-  }
-  .btn-download {
-    font-size: 0.75em;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    background: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    color: #888;
-    text-decoration: underline;
-    font-family: inherit;
-    transition: color 0.2s;
-  }
-  .btn-download:hover {
-    color: #002f6a;
-  }
-</style>
-</head><body class="quarto-light"><div id="language-switcher">
-  <a href="de.html" id="link-de">DE</a>
-  <a href="index.html" id="link-en">EN</a>
-  <a href="es.html" id="link-es">ES</a>
-  <a href="it.html" id="link-it">IT</a>
-  <a href="Konjunkturbericht_es.pdf" class="pdf-link" target="_blank">Informe (PDF)</a>
-</div>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const path = window.location.pathname;
-    if (path.includes("de.html")) document.getElementById("link-de").classList.add("lang-active");
-    else if (path.includes("es.html")) document.getElementById("link-es").classList.add("lang-active");
-    else if (path.includes("it.html")) document.getElementById("link-it").classList.add("lang-active");
-    else document.getElementById("link-en").classList.add("lang-active");
+    let docLang = "de";
+    if (path.includes("es.html")) docLang = "es";
+    else if (path.includes("it.html")) docLang = "it";
+    else if (path.includes("index.html") || (!path.includes("es.html") && !path.includes("es.html") && !path.includes("it.html"))) docLang = "en";
 
-    // Automatic Navigation Links
-    const labelSection = "Sección";
-    const labelIntro = "Introducción";
-    const introId = "panorama-macroeconómico-en-breve";
+    // 1. Create floating header dynamically
+    const header = document.createElement('header');
+    header.className = 'floating-header';
 
-    function createNavLink(id, label) {
+    const headerLeft = document.createElement('div');
+    headerLeft.className = 'header-left';
+
+    const toggleBtn = document.createElement('button');
+    toggleBtn.className = 'hamburger-btn';
+    toggleBtn.id = 'drawer-toggle';
+    toggleBtn.setAttribute('aria-label', 'Toggle Navigation');
+    toggleBtn.innerHTML = '<span></span><span></span><span></span>';
+
+    const breadcrumbs = document.createElement('div');
+    breadcrumbs.className = 'breadcrumbs';
+    breadcrumbs.id = 'breadcrumbs';
+
+    const rootBc = document.createElement('span');
+    rootBc.className = 'root-breadcrumb';
+
+    let reportTitle = "Konjunkturbericht";
+    if (docLang === 'en') reportTitle = "Economic Report";
+    else if (docLang === 'es') reportTitle = "Informe Económico";
+    else if (docLang === 'it') reportTitle = "Rapporto Congiunturale";
+
+    rootBc.innerText = reportTitle;
+
+    const separator = document.createElement('span');
+    separator.className = 'separator';
+    separator.innerText = ' / ';
+
+    const currentBc = document.createElement('span');
+    currentBc.className = 'current';
+    currentBc.id = 'current-breadcrumb';
+    currentBc.innerText = docLang === 'de' ? 'Einleitung' : (docLang === 'en' ? 'Introduction' : (docLang === 'es' ? 'Introducción' : 'Introduzione'));
+
+    breadcrumbs.appendChild(rootBc);
+    breadcrumbs.appendChild(separator);
+    breadcrumbs.appendChild(currentBc);
+
+    headerLeft.appendChild(toggleBtn);
+    headerLeft.appendChild(breadcrumbs);
+
+    const headerRight = document.createElement('div');
+    headerRight.className = 'header-right';
+
+    const customLangSwitcher = document.createElement('div');
+    customLangSwitcher.className = 'lang-switcher';
+
+    const langs = [
+      { code: 'de', label: 'DE', url: 'de.html' },
+      { code: 'en', label: 'EN', url: 'index.html' },
+      { code: 'es', label: 'ES', url: 'es.html' },
+      { code: 'it', label: 'IT', url: 'it.html' }
+    ];
+
+    langs.forEach(l => {
       const a = document.createElement('a');
-      a.href = "#" + id;
-      a.className = "back-link";
-      a.innerText = label;
-      return a;
-    }
-
-    // Add Links to H2s
-    document.querySelectorAll('h2').forEach(h2 => {
-      const nav = document.createElement('span');
-      nav.className = "nav-links-wrapper";
-      nav.appendChild(document.createTextNode(" [ "));
-      nav.appendChild(createNavLink(introId, labelIntro));
-      nav.appendChild(document.createTextNode(" ]"));
-      h2.appendChild(nav);
+      a.href = l.url;
+      a.innerText = l.label;
+      if (l.code === docLang) {
+        a.className = 'lang-active';
+      }
+      customLangSwitcher.appendChild(a);
     });
 
-    // Add Links to H3s
-    document.querySelectorAll('h3').forEach(h3 => {
-      if (h3.closest('.report-cover')) return;
+    const customPdfLink = document.createElement('a');
+    customPdfLink.className = 'pdf-download-link';
+    customPdfLink.target = '_blank';
+    customPdfLink.href = docLang === 'de' ? 'Konjunkturbericht_es.pdf' : `Konjunkturbericht_${docLang}.pdf`;
+    customPdfLink.innerText = docLang === 'de' ? 'Informe (PDF)' : 'Report (PDF)';
 
-      // Find nearest preceding H2
-      let prev = h3.previousElementSibling;
-      while (prev && prev.tagName !== 'H2') {
-        prev = prev.previousElementSibling;
+    headerRight.appendChild(customLangSwitcher);
+    headerRight.appendChild(customPdfLink);
+
+    header.appendChild(headerLeft);
+    header.appendChild(headerRight);
+
+    document.body.prepend(header);
+
+    // 2. Create Drawer Overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'drawer-overlay';
+    overlay.id = 'drawer-overlay';
+    document.body.appendChild(overlay);
+
+    // 3. Toggle Drawer
+    const sidebar = document.getElementById('quarto-sidebar');
+
+    function toggleDrawer() {
+      document.body.classList.toggle('drawer-open');
+    }
+
+    function closeDrawer() {
+      document.body.classList.remove('drawer-open');
+    }
+
+    toggleBtn.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    if (sidebar) {
+      sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+      });
+    }
+
+    // 4. Breadcrumb Scroll Tracking
+    const sections = Array.from(document.querySelectorAll('section.level2, section.level1'));
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-60px 0px -60% 0px',
+      threshold: 0
+    };
+
+    let activeSection = null;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target;
+          updateBreadcrumb();
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    function updateBreadcrumb() {
+      if (!activeSection) return;
+
+      let titleText = "";
+      const h1 = activeSection.querySelector('h1');
+      const h2 = activeSection.querySelector('h2');
+
+      if (activeSection.tagName === 'SECTION' && activeSection.classList.contains('level1') && h1) {
+        titleText = h1.textContent.split('[')[0].trim();
+      } else if (h2) {
+        titleText = h2.textContent.split('[')[0].trim();
       }
 
-      const nav = document.createElement('span');
-      nav.className = "nav-links-wrapper";
-      nav.appendChild(document.createTextNode(" [ "));
-      nav.appendChild(createNavLink(introId, labelIntro));
-      if (prev && prev.id) {
-        nav.appendChild(document.createTextNode(" | "));
-        nav.appendChild(createNavLink(prev.id, labelSection));
+      if (titleText) {
+        titleText = titleText.replace(/\[\s*Einleitung\s*(?:\|\s*Abschnitt)?\s*\]/, "").trim();
+        currentBc.innerText = titleText;
       }
-      nav.appendChild(document.createTextNode(" ]"));
-      h3.appendChild(nav);
+    }
+
+    // 5. Card Split-Pane Restructuring (Only if BOTH visual AND text exist)
+    document.querySelectorAll('section.level3').forEach(section => {
+      if (section.classList.contains('report-cover') ||
+          section.id === 'rechtliche-hinweise' ||
+          section.id === 'legal-notice' ||
+          section.id === 'aviso-legal' ||
+          section.id === 'avviso-legale') {
+        return;
+      }
+
+      const h3 = section.querySelector('h3');
+      const children = Array.from(section.children);
+
+      let hasVisual = false;
+      let hasText = false;
+
+      children.forEach(child => {
+        if (child === h3) return;
+
+        const isVisual = child.classList.contains('chart-wrapper') ||
+                         child.classList.contains('columns') ||
+                         child.classList.contains('panel-tabset') ||
+                         child.classList.contains('forecast-block') ||
+                         child.tagName === 'TABLE' ||
+                         (child.querySelector('img') !== null && child.querySelector('.feature-image') === null && !child.classList.contains('feature-image'));
+
+        if (isVisual) {
+          hasVisual = true;
+        } else {
+          if (child.textContent.trim() !== "") {
+            hasText = true;
+          }
+        }
+      });
+
+      // Only restructure if it's a true split content slide
+      if (hasVisual && hasText) {
+        const splitPane = document.createElement('div');
+        splitPane.className = 'card-split-pane';
+
+        const paneLeft = document.createElement('div');
+        paneLeft.className = 'pane-left';
+
+        const paneRight = document.createElement('div');
+        paneRight.className = 'pane-right';
+
+        children.forEach(child => {
+          if (child === h3) return;
+
+          const isVisual = child.classList.contains('chart-wrapper') ||
+                           child.classList.contains('columns') ||
+                           child.classList.contains('panel-tabset') ||
+                           child.classList.contains('forecast-block') ||
+                           child.tagName === 'TABLE' ||
+                           (child.querySelector('img') !== null && child.querySelector('.feature-image') === null && !child.classList.contains('feature-image'));
+
+          if (isVisual) {
+            paneLeft.appendChild(child);
+          } else {
+            paneRight.appendChild(child);
+          }
+        });
+
+        splitPane.appendChild(paneLeft);
+        splitPane.appendChild(paneRight);
+        section.appendChild(splitPane);
+      }
     });
   });
 
@@ -190,121 +271,42 @@ ul.task-list li input[type="checkbox"] {
     if (type === 'svg') {
       const img = document.getElementById('img-' + id);
       if (!img) return;
-      fetch(img.src)
-        .then(res => res.blob())
-        .then(blob => {
-          const url = window.URL.createObjectURL(blob);
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          window.URL.revokeObjectURL(url);
-          document.body.removeChild(a);
-        });
+      const a = document.createElement('a');
+      a.href = img.src;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   }
 </script>
 
 
 <link rel="stylesheet" href="konjunkturbericht-html.css">
+</head>
 
-
-
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
-    <h2 id="toc-title">Índice</h2>
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Informe Económico</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#economía-real" id="toc-economía-real" class="nav-link active" data-scroll-target="#economía-real">ECONOMÍA REAL</a>
   <ul class="collapse">
-  <li><a href="#crecimiento" id="toc-crecimiento" class="nav-link" data-scroll-target="#crecimiento">Crecimiento</a>
-  <ul class="collapse">
-  <li><a href="#ee.-uu.-y-eurozona-choque-de-los-precios-del-petróleo" id="toc-ee.-uu.-y-eurozona-choque-de-los-precios-del-petróleo" class="nav-link" data-scroll-target="#ee.-uu.-y-eurozona-choque-de-los-precios-del-petróleo">EE. UU. y Eurozona: Choque de los precios del petróleo</a></li>
-  <li><a href="#eurozona-debilidad-del-sector-servicios" id="toc-eurozona-debilidad-del-sector-servicios" class="nav-link" data-scroll-target="#eurozona-debilidad-del-sector-servicios">Eurozona: Debilidad del sector servicios</a></li>
-  <li><a href="#alemania-y-francia-con-perspectivas-sombrías" id="toc-alemania-y-francia-con-perspectivas-sombrías" class="nav-link" data-scroll-target="#alemania-y-francia-con-perspectivas-sombrías">Alemania y Francia con perspectivas sombrías</a></li>
-  <li><a href="#la-producción-industrial-alemana-sigue-contrayéndose" id="toc-la-producción-industrial-alemana-sigue-contrayéndose" class="nav-link" data-scroll-target="#la-producción-industrial-alemana-sigue-contrayéndose">La producción industrial alemana sigue contrayéndose</a></li>
-  <li><a href="#china-economía-doméstica-débil" id="toc-china-economía-doméstica-débil" class="nav-link" data-scroll-target="#china-economía-doméstica-débil">China: Economía doméstica débil</a></li>
-  <li><a href="#la-actividad-de-construcción-no-se-recupera" id="toc-la-actividad-de-construcción-no-se-recupera" class="nav-link" data-scroll-target="#la-actividad-de-construcción-no-se-recupera">La actividad de construcción no se recupera</a></li>
-  </ul></li>
-  <li><a href="#condiciones-de-financiación" id="toc-condiciones-de-financiación" class="nav-link" data-scroll-target="#condiciones-de-financiación">Condiciones de Financiación</a>
-  <ul class="collapse">
-  <li><a href="#bancos-de-ee.-uu.-préstamos-restrictivos-a-empresas" id="toc-bancos-de-ee.-uu.-préstamos-restrictivos-a-empresas" class="nav-link" data-scroll-target="#bancos-de-ee.-uu.-préstamos-restrictivos-a-empresas">Bancos de EE. UU.: Préstamos restrictivos a empresas</a></li>
-  <li><a href="#condiciones-crediticias-restrictivas-en-la-eurozona" id="toc-condiciones-crediticias-restrictivas-en-la-eurozona" class="nav-link" data-scroll-target="#condiciones-crediticias-restrictivas-en-la-eurozona">Condiciones crediticias restrictivas en la eurozona</a></li>
-  <li><a href="#impulso-crediticio-débil" id="toc-impulso-crediticio-débil" class="nav-link" data-scroll-target="#impulso-crediticio-débil">Impulso crediticio débil</a></li>
-  <li><a href="#debilitamiento-del-impulso-crediticio-en-china" id="toc-debilitamiento-del-impulso-crediticio-en-china" class="nav-link" data-scroll-target="#debilitamiento-del-impulso-crediticio-en-china">Debilitamiento del impulso crediticio en China</a></li>
-  </ul></li>
-  <li><a href="#consumo-privado" id="toc-consumo-privado" class="nav-link" data-scroll-target="#consumo-privado">Consumo privado</a>
-  <ul class="collapse">
-  <li><a href="#ee.-uu.-las-ventas-minoristas-siguen-aumentando" id="toc-ee.-uu.-las-ventas-minoristas-siguen-aumentando" class="nav-link" data-scroll-target="#ee.-uu.-las-ventas-minoristas-siguen-aumentando">EE. UU.: Las ventas minoristas siguen aumentando</a></li>
-  <li><a href="#ee.-uu.-la-deuda-de-tarjetas-de-crédito-sube-algo-más-rápido" id="toc-ee.-uu.-la-deuda-de-tarjetas-de-crédito-sube-algo-más-rápido" class="nav-link" data-scroll-target="#ee.-uu.-la-deuda-de-tarjetas-de-crédito-sube-algo-más-rápido">EE. UU.: La deuda de tarjetas de crédito sube algo más rápido</a></li>
-  <li><a href="#ee.-uu.-las-búsquedas-en-google-apuntan-a-un-consumo-cauteloso" id="toc-ee.-uu.-las-búsquedas-en-google-apuntan-a-un-consumo-cauteloso" class="nav-link" data-scroll-target="#ee.-uu.-las-búsquedas-en-google-apuntan-a-un-consumo-cauteloso">EE. UU.: Las búsquedas en Google apuntan a un consumo cauteloso</a></li>
-  <li><a href="#ee.-uu.-la-tasa-de-ahorro-sigue-bajando" id="toc-ee.-uu.-la-tasa-de-ahorro-sigue-bajando" class="nav-link" data-scroll-target="#ee.-uu.-la-tasa-de-ahorro-sigue-bajando">EE. UU.: La tasa de ahorro sigue bajando</a></li>
-  <li><a href="#solo-el-sentimiento-republicano-sigue-siendo-optimista" id="toc-solo-el-sentimiento-republicano-sigue-siendo-optimista" class="nav-link" data-scroll-target="#solo-el-sentimiento-republicano-sigue-siendo-optimista">Solo el sentimiento republicano sigue siendo optimista</a></li>
-  <li><a href="#gasto-energético-ee.-uu.-más-bajo-que-la-eurozona" id="toc-gasto-energético-ee.-uu.-más-bajo-que-la-eurozona" class="nav-link" data-scroll-target="#gasto-energético-ee.-uu.-más-bajo-que-la-eurozona">Gasto energético: EE. UU. más bajo que la eurozona</a></li>
-  <li><a href="#eurozona-carga-energética-de-los-hogares-alemanes" id="toc-eurozona-carga-energética-de-los-hogares-alemanes" class="nav-link" data-scroll-target="#eurozona-carga-energética-de-los-hogares-alemanes">Eurozona: Carga energética de los hogares alemanes</a></li>
-  <li><a href="#eurozona-y-alemania-la-tasa-de-ahorro-de-los-hogares-se-mantiene-estable" id="toc-eurozona-y-alemania-la-tasa-de-ahorro-de-los-hogares-se-mantiene-estable" class="nav-link" data-scroll-target="#eurozona-y-alemania-la-tasa-de-ahorro-de-los-hogares-se-mantiene-estable">Eurozona y Alemania: La tasa de ahorro de los hogares se mantiene estable</a></li>
-  <li><a href="#búsquedas-en-google-apuntan-a-la-cautela-en-francia-y-alemania" id="toc-búsquedas-en-google-apuntan-a-la-cautela-en-francia-y-alemania" class="nav-link" data-scroll-target="#búsquedas-en-google-apuntan-a-la-cautela-en-francia-y-alemania">Búsquedas en Google apuntan a la cautela en Francia y Alemania</a></li>
-  <li><a href="#menos-cautela-en-españa" id="toc-menos-cautela-en-españa" class="nav-link" data-scroll-target="#menos-cautela-en-españa">Menos cautela en España</a></li>
-  <li><a href="#el-sentimiento-mejora-solo-ligeramente" id="toc-el-sentimiento-mejora-solo-ligeramente" class="nav-link" data-scroll-target="#el-sentimiento-mejora-solo-ligeramente">El sentimiento mejora solo ligeramente</a></li>
-  </ul></li>
-  <li><a href="#mercado-laboral" id="toc-mercado-laboral" class="nav-link" data-scroll-target="#mercado-laboral">Mercado Laboral</a>
-  <ul class="collapse">
-  <li><a href="#ee.-uu.-continuo-fuerte-aumento-de-los-salarios-nominales" id="toc-ee.-uu.-continuo-fuerte-aumento-de-los-salarios-nominales" class="nav-link" data-scroll-target="#ee.-uu.-continuo-fuerte-aumento-de-los-salarios-nominales">EE. UU.: Continuo fuerte aumento de los salarios nominales</a></li>
-  <li><a href="#ee.-uu.-normalización-del-crecimiento-salarial" id="toc-ee.-uu.-normalización-del-crecimiento-salarial" class="nav-link" data-scroll-target="#ee.-uu.-normalización-del-crecimiento-salarial">EE. UU.: ¿Normalización del crecimiento salarial?</a></li>
-  <li><a href="#ee.-uu.-débil-crecimiento-salarial-en-los-salarios-bajos" id="toc-ee.-uu.-débil-crecimiento-salarial-en-los-salarios-bajos" class="nav-link" data-scroll-target="#ee.-uu.-débil-crecimiento-salarial-en-los-salarios-bajos">EE. UU.: Débil crecimiento salarial en los salarios bajos</a></li>
-  <li><a href="#el-mercado-laboral-de-ee.-uu.-está-menos-tensionado" id="toc-el-mercado-laboral-de-ee.-uu.-está-menos-tensionado" class="nav-link" data-scroll-target="#el-mercado-laboral-de-ee.-uu.-está-menos-tensionado">El mercado laboral de EE. UU. está menos tensionado</a></li>
-  <li><a href="#el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil" id="toc-el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil" class="nav-link" data-scroll-target="#el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil">El crecimiento del empleo se recupera pero sigue siendo débil</a></li>
-  <li><a href="#ee.-uu.-despidos-y-solicitudes-de-subsidio-por-desempleo-dentro-de-lo-normal" id="toc-ee.-uu.-despidos-y-solicitudes-de-subsidio-por-desempleo-dentro-de-lo-normal" class="nav-link" data-scroll-target="#ee.-uu.-despidos-y-solicitudes-de-subsidio-por-desempleo-dentro-de-lo-normal">EE. UU.: Despidos y solicitudes de subsidio por desempleo dentro de lo normal</a></li>
-  <li><a href="#ee.-uu.-oferta-de-trabajo-a-la-baja" id="toc-ee.-uu.-oferta-de-trabajo-a-la-baja" class="nav-link" data-scroll-target="#ee.-uu.-oferta-de-trabajo-a-la-baja">EE. UU.: Oferta de trabajo a la baja</a></li>
-  <li><a href="#los-salarios-nominales-suben-más-rápido-en-alemania" id="toc-los-salarios-nominales-suben-más-rápido-en-alemania" class="nav-link" data-scroll-target="#los-salarios-nominales-suben-más-rápido-en-alemania">Los salarios nominales suben más rápido en Alemania</a></li>
-  <li><a href="#eurozona-mercado-laboral-tensionado" id="toc-eurozona-mercado-laboral-tensionado" class="nav-link" data-scroll-target="#eurozona-mercado-laboral-tensionado">Eurozona: Mercado laboral tensionado</a></li>
-  <li><a href="#china-muy-alto-desempleo-juvenil" id="toc-china-muy-alto-desempleo-juvenil" class="nav-link" data-scroll-target="#china-muy-alto-desempleo-juvenil">China: Muy alto desempleo juvenil</a></li>
-  </ul></li>
+  <li><a href="#crecimiento" id="toc-crecimiento" class="nav-link" data-scroll-target="#crecimiento">Crecimiento</a></li>
+  <li><a href="#consumo-privado" id="toc-consumo-privado" class="nav-link" data-scroll-target="#consumo-privado">Consumo privado</a></li>
+  <li><a href="#mercado-laboral" id="toc-mercado-laboral" class="nav-link" data-scroll-target="#mercado-laboral">Mercado laboral</a></li>
   </ul></li>
   <li><a href="#precios" id="toc-precios" class="nav-link" data-scroll-target="#precios">PRECIOS</a>
   <ul class="collapse">
-  <li><a href="#materias-primas" id="toc-materias-primas" class="nav-link" data-scroll-target="#materias-primas">Materias Primas</a>
-  <ul class="collapse">
-  <li><a href="#altos-costes-de-flete-marítimo-para-el-crudo" id="toc-altos-costes-de-flete-marítimo-para-el-crudo" class="nav-link" data-scroll-target="#altos-costes-de-flete-marítimo-para-el-crudo">Altos costes de flete marítimo para el crudo</a></li>
-  <li><a href="#backwardation-se-esperan-bajadas-en-los-precios-del-petróleo" id="toc-backwardation-se-esperan-bajadas-en-los-precios-del-petróleo" class="nav-link" data-scroll-target="#backwardation-se-esperan-bajadas-en-los-precios-del-petróleo">Backwardation: Se esperan bajadas en los precios del petróleo</a></li>
-  <li><a href="#cuándo-se-normalizará-el-tráfico-marítimo-por-el-estrecho-de-ormuz" id="toc-cuándo-se-normalizará-el-tráfico-marítimo-por-el-estrecho-de-ormuz" class="nav-link" data-scroll-target="#cuándo-se-normalizará-el-tráfico-marítimo-por-el-estrecho-de-ormuz">¿Cuándo se normalizará el tráfico marítimo por el estrecho de Ormuz?</a></li>
-  <li><a href="#los-precios-del-gas-en-europa-siguen-una-evolución-similar-a-la-de-2022" id="toc-los-precios-del-gas-en-europa-siguen-una-evolución-similar-a-la-de-2022" class="nav-link" data-scroll-target="#los-precios-del-gas-en-europa-siguen-una-evolución-similar-a-la-de-2022">Los precios del gas en Europa siguen una evolución similar a la de 2022</a></li>
+  <li><a href="#materias-primas" id="toc-materias-primas" class="nav-link" data-scroll-target="#materias-primas">Materias primas</a></li>
+  <li><a href="#ee.-uu." id="toc-ee.-uu." class="nav-link" data-scroll-target="#ee.-uu.">EE. UU.</a></li>
+  <li><a href="#eurozona" id="toc-eurozona" class="nav-link" data-scroll-target="#eurozona">Eurozona</a></li>
+  <li><a href="#expectativas-de-inflación" id="toc-expectativas-de-inflación" class="nav-link" data-scroll-target="#expectativas-de-inflación">Expectativas de inflación</a></li>
   </ul></li>
-  <li><a href="#ee.-uu." id="toc-ee.-uu." class="nav-link" data-scroll-target="#ee.-uu.">EE. UU.</a>
-  <ul class="collapse">
-  <li><a href="#ee.-uu.-la-tasa-de-inflación-sube-con-fuerza" id="toc-ee.-uu.-la-tasa-de-inflación-sube-con-fuerza" class="nav-link" data-scroll-target="#ee.-uu.-la-tasa-de-inflación-sube-con-fuerza">EE. UU.: La tasa de inflación sube con fuerza</a></li>
-  <li><a href="#inflación-en-ee.-uu.-ipc-pce-y-deflactor-del-pib" id="toc-inflación-en-ee.-uu.-ipc-pce-y-deflactor-del-pib" class="nav-link" data-scroll-target="#inflación-en-ee.-uu.-ipc-pce-y-deflactor-del-pib">Inflación en EE. UU.: IPC, PCE y deflactor del PIB</a></li>
-  <li><a href="#motores-de-la-inflación-servicios-y-energía" id="toc-motores-de-la-inflación-servicios-y-energía" class="nav-link" data-scroll-target="#motores-de-la-inflación-servicios-y-energía">Motores de la inflación: Servicios y energía</a></li>
-  <li><a href="#ee.-uu.-creciente-presión-inflacionista" id="toc-ee.-uu.-creciente-presión-inflacionista" class="nav-link" data-scroll-target="#ee.-uu.-creciente-presión-inflacionista">EE. UU.: Creciente presión inflacionista</a></li>
-  <li><a href="#ee.-uu.-la-inflación-supercore-vuelve-a-subir" id="toc-ee.-uu.-la-inflación-supercore-vuelve-a-subir" class="nav-link" data-scroll-target="#ee.-uu.-la-inflación-supercore-vuelve-a-subir">EE. UU.: La inflación Supercore vuelve a subir</a></li>
-  <li><a href="#el-crecimiento-del-precio-de-los-alquileres-sigue-bajando" id="toc-el-crecimiento-del-precio-de-los-alquileres-sigue-bajando" class="nav-link" data-scroll-target="#el-crecimiento-del-precio-de-los-alquileres-sigue-bajando">El crecimiento del precio de los alquileres sigue bajando</a></li>
-  <li><a href="#ee.-uu.-la-inflación-podría-seguir-subiendo" id="toc-ee.-uu.-la-inflación-podría-seguir-subiendo" class="nav-link" data-scroll-target="#ee.-uu.-la-inflación-podría-seguir-subiendo">EE. UU.: La inflación podría seguir subiendo</a></li>
-  </ul></li>
-  <li><a href="#eurozone" id="toc-eurozone" class="nav-link" data-scroll-target="#eurozone">Eurozone</a>
-  <ul class="collapse">
-  <li><a href="#creciente-inflación-en-la-eurozona" id="toc-creciente-inflación-en-la-eurozona" class="nav-link" data-scroll-target="#creciente-inflación-en-la-eurozona">Creciente inflación en la eurozona</a></li>
-  <li><a href="#encarecimiento-de-los-servicios-y-la-energía" id="toc-encarecimiento-de-los-servicios-y-la-energía" class="nav-link" data-scroll-target="#encarecimiento-de-los-servicios-y-la-energía">Encarecimiento de los servicios y la energía</a></li>
-  <li><a href="#la-presión-inflacionista-persiste" id="toc-la-presión-inflacionista-persiste" class="nav-link" data-scroll-target="#la-presión-inflacionista-persiste">La presión inflacionista persiste</a></li>
-  </ul></li>
-  <li><a href="#expectativas-de-inflación" id="toc-expectativas-de-inflación" class="nav-link" data-scroll-target="#expectativas-de-inflación">Expectativas de inflación</a>
-  <ul class="collapse">
-  <li><a href="#volátiles-expectativas-de-inflación-de-los-consumidores" id="toc-volátiles-expectativas-de-inflación-de-los-consumidores" class="nav-link" data-scroll-target="#volátiles-expectativas-de-inflación-de-los-consumidores">Volátiles expectativas de inflación de los consumidores</a></li>
-  <li><a href="#la-energía-vuelve-a-encarecerse" id="toc-la-energía-vuelve-a-encarecerse" class="nav-link" data-scroll-target="#la-energía-vuelve-a-encarecerse">La energía vuelve a encarecerse…</a></li>
-  <li><a href="#lo-que-probablemente-perjudicará-a-los-republicanos-de-ee.-uu." id="toc-lo-que-probablemente-perjudicará-a-los-republicanos-de-ee.-uu." class="nav-link" data-scroll-target="#lo-que-probablemente-perjudicará-a-los-republicanos-de-ee.-uu.">… lo que probablemente perjudicará a los republicanos de EE. UU.</a></li>
-  <li><a href="#china-temores-de-deflación" id="toc-china-temores-de-deflación" class="nav-link" data-scroll-target="#china-temores-de-deflación">China: Temores de deflación</a></li>
-  </ul></li>
-  </ul></li>
-  <li><a href="#expectativas-de-tipos-e-impulso-fiscal" id="toc-expectativas-de-tipos-e-impulso-fiscal" class="nav-link" data-scroll-target="#expectativas-de-tipos-e-impulso-fiscal">EXPECTATIVAS DE TIPOS<br>E IMPULSO FISCAL</a>
-  <ul class="collapse">
-  <li><a href="#usa-tipo-de-interés-real-a-la-baja" id="toc-usa-tipo-de-interés-real-a-la-baja" class="nav-link" data-scroll-target="#usa-tipo-de-interés-real-a-la-baja">USA: Tipo de interés real a la baja</a></li>
-  <li><a href="#volátiles-expectativas-de-tipos-de-interés" id="toc-volátiles-expectativas-de-tipos-de-interés" class="nav-link" data-scroll-target="#volátiles-expectativas-de-tipos-de-interés">Volátiles expectativas de tipos de interés</a></li>
-  <li><a href="#china-política-monetaria-expansiva" id="toc-china-política-monetaria-expansiva" class="nav-link" data-scroll-target="#china-política-monetaria-expansiva">China: Política monetaria expansiva</a></li>
-  <li><a href="#impulsos-fiscales-moderados-para-2026" id="toc-impulsos-fiscales-moderados-para-2026" class="nav-link" data-scroll-target="#impulsos-fiscales-moderados-para-2026">Impulsos fiscales moderados para 2026</a></li>
-  <li><a href="#previsión-económica-2026" id="toc-previsión-económica-2026" class="nav-link" data-scroll-target="#previsión-económica-2026">Previsión económica 2026</a></li>
-  </ul></li>
+  <li><a href="#expectativas-de-tipos-de-interés-e-impulso-fiscal" id="toc-expectativas-de-tipos-de-interés-e-impulso-fiscal" class="nav-link" data-scroll-target="#expectativas-de-tipos-de-interés-e-impulso-fiscal">EXPECTATIVAS DE TIPOS DE INTERÉS<br>E IMPULSO FISCAL</a></li>
   </ul>
 </nav>
 </div>
@@ -314,7 +316,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Informe de Coyuntura</h1>
+<h1 class="title">Informe Económico</h1>
+<p class="subtitle lead">Informe Económico</p>
 </div>
 
 
@@ -331,7 +334,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">1 de junio de 2026</p>
+      <p class="date">1 de julio de 2026</p>
     </div>
   </div>
   
@@ -346,117 +349,88 @@ ul.task-list li input[type="checkbox"] {
 <div class="report-cover">
 <p><a href="logo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="logo.png" class="cover-logo img-fluid" alt="Flossbach von Storch Research Institute"></a></p>
 <div class="cover-title">
-Informe de Coyuntura
+Informe Económico
 </div>
 <div class="cover-subtitle">
 Pablo Duarte
 </div>
 <div class="cover-date">
-Junio 2026
+Julio 2026
 </div>
 </div>
-<section id="panorama-macroeconómico-en-breve" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="panorama-macroeconómico-en-breve">Panorama macroeconómico en breve</h3>
-<p><strong>Global: Del choque del petróleo al choque de los tipos de interés</strong><br>
-El encarecimiento de la energía ha impulsado la inflación y ha lastrado el crecimiento.<br>
-Con las subidas de tipos, es probable que unas <strong>condiciones de financiación</strong> más estrictas se conviertan en un freno para el crecimiento.</p>
-<p><strong>EE. UU.: Consumo robusto pero cauteloso</strong><br>
-El mercado laboral es sorprendentemente fuerte y el consumo se mantiene sólido. Si la inflación se mantiene persistente, las subidas de tipos podrían debilitar el consumo y frenar el crecimiento.</p>
-<p><strong>Eurozona: Problemas estructurales se topan con el freno de los tipos</strong><br>
-Las subidas de los tipos de interés oficiales ya descontadas coinciden con una economía ya debilitada. Los criterios de concesión de préstamos restrictivos y los elevados costes de la energía refuerzan las debilidades estructurales existentes.</p>
-<p><strong>China: La política apoya una economía doméstica débil</strong><br>
-Las políticas monetaria y fiscal expansivas estabilizan la economía, mientras que el mercado inmobiliario y la demanda interna siguen débiles. La dinámica de las exportaciones continúa, pero los riesgos geopolíticos hacen que el crecimiento sea vulnerable.</p>
+<section id="perspectiva-macroeconómica-en-síntesis" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="perspectiva-macroeconómica-en-síntesis">Perspectiva macroeconómica en síntesis</h3>
+<p><strong>Global: La incertidumbre pesa sobre el crecimiento</strong> La reciente escalada en el conflicto de Irán vuelve a aumentar la incertidumbre y es probable que afecte a la recuperación de la actividad empresarial.</p>
+<p><strong>USA: Consumo robusto pero cauteloso</strong> El mercado laboral es sorprendentemente fuerte y el consumo se mantiene sólido. Si la inflación sigue siendo de carácter persistente, los aumentos de los tipos de interés podrían debilitar el consumo y frenar el crecimiento.</p>
+<p><strong>Eurozona: Viento en contra por los precios de la energía y los tipos de interés</strong> El aumento de los precios del petróleo y del gas, así como unos tipos de interés oficiales más elevados, pesan sobre la demanda de crédito y la coyuntura.</p>
+<p><strong>China: La política apoya una economía nacional débil</strong> Las políticas monetaria y fiscal expansivas estabilizan la economía, pero la débil demanda interna y los riesgos geopolíticos frenan el crecimiento.</p>
 </section>
-<section id="freno-al-crecimiento-tipos-de-interés" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="freno-al-crecimiento-tipos-de-interés">¿Freno al crecimiento: tipos de interés?</h3>
-<p><img src="burro.png" class="feature-image nolightbox img-fluid"></p>
+<section id="recuperación-en-fuera-de-lugar" class="level3 unlisted">
+<h3 class="unlisted anchored" data-anchor-id="recuperación-en-fuera-de-lugar">¿Recuperación en fuera de lugar?</h3>
+<p><img src="offside.png" class="feature-image nolightbox img-fluid"></p>
 </section>
 <section id="economía-real" class="level1">
 <h1>ECONOMÍA REAL</h1>
 <section id="crecimiento" class="level2">
 <h2 class="anchored" data-anchor-id="crecimiento">Crecimiento</h2>
 <p><img src="schiff.png" class="feature-image nolightbox img-fluid"></p>
-<section id="ee.-uu.-y-eurozona-choque-de-los-precios-del-petróleo" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-y-eurozona-choque-de-los-precios-del-petróleo">EE. UU. y Eurozona: Choque de los precios del petróleo</h3>
+<section id="ee.-uu.-y-eurozona-recuperación-efímera" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-y-eurozona-recuperación-efímera">¿EE. UU. y eurozona: recuperación efímera?</h3>
 <div class="chart-wrapper">
-<img id="img-pmis_global" src="charts/es/pmis_global_es.svg" class="chart-img lightbox">
+<a href="charts/es/pmis_global_es.svg" class="lightbox"><img id="img-pmis_global" src="charts/es/pmis_global_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_global', 'pmis_global.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En mayo, la situación empresarial en EE. UU. se mantuvo positiva, mientras que se ensombreció aún más en la eurozona. El Índice de Gerentes de Compras (PMI) mide la situación empresarial actual y las expectativas a corto plazo de las empresas. Se sitúa por encima de 50 si más empresas informan de una mejora que de un deterioro. En la eurozona, el PMI cayó hasta 48,5, debido sobre todo a la fuerte caída del PMI del sector servicios. En EE. UU., bajó ligeramente hasta 51,5. En China, el PMI oficial del NBS se situó en 50,5, mientras que el PMI privado de RatingDog subió hasta 54 y se mantuvo volátil.</p>
+<p>En mayo, la situación empresarial en los EE. UU. siguió siendo positiva, mientras que en la eurozona se deterioró aún más. El Índice de Gerentes de Compras (PMI) mide la situación empresarial actual y las expectativas a corto plazo de las empresas. Se sitúa por encima de 50 si más empresas informan de una mejora que de un deterioro. En la eurozona, el PMI cayó a 48,5, debido en particular a la fuerte caída del sector servicios. En los EE. UU., bajó ligeramente a 51,5, mientras que el nuevo bloqueo vuelve a empañar las perspectivas.</p>
 </section>
-<section id="eurozona-debilidad-del-sector-servicios" class="level3">
-<h3 class="anchored" data-anchor-id="eurozona-debilidad-del-sector-servicios">Eurozona: Debilidad del sector servicios</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="sector-servicios-débil" class="level3">
+<h3 class="anchored" data-anchor-id="sector-servicios-débil">Sector servicios débil</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">USA</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="chart-wrapper">
-<img id="img-pmis_usa_sectors" src="charts/es/pmis_usa_sectors_es.svg" class="chart-img lightbox">
+<a href="charts/es/pmis_usa_sectors_es.svg" class="lightbox"><img id="img-pmis_usa_sectors" src="charts/es/pmis_usa_sectors_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_usa_sectors', 'pmis_usa_sectors.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+<p>Eurozona</p>
 <div class="chart-wrapper">
-<img id="img-pmis_ez_sectors" src="charts/es/pmis_ez_sectors_es.svg" class="chart-img lightbox">
+<a href="charts/es/pmis_ez_sectors_es.svg" class="lightbox"><img id="img-pmis_ez_sectors" src="charts/es/pmis_ez_sectors_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_ez_sectors', 'pmis_ez_sectors.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 </div>
 </div>
-<p>El sector servicios en la eurozona continuó debilitándose, mientras que la situación empresarial en la industria descendió ligeramente pero se mantuvo en zona expansiva. El PMI de servicios cayó al 47,7 en mayo, lastrado por el fuerte aumento de los precios de la energía y las perturbaciones en los viajes. El PMI de manufacturas bajó ligeramente al 51,6. En EE. UU., el sector servicios se mantuvo estable con un PMI del 50,7, mientras que la industria continuó expandiéndose con un 55,1.</p>
+</div>
+<p>El sector servicios de la eurozona <strong>se recuperó ligeramente en junio</strong>. El PMI de servicios <strong>subió</strong> a <strong>49,4</strong>, pero se mantiene en territorio de contracción. El PMI manufacturero cayó ligeramente a <strong>51,4</strong>. En EE. UU., el sector servicios <strong>subió</strong> con un PMI de <strong>51,2</strong>, mientras que la industria continuó expandiéndose <strong>significativamente</strong> a <strong>53,9</strong>. Un nuevo aumento de los precios del petróleo y la incertidumbre sobre la duración de la guerra en Irán probablemente empeorarán las perspectivas comerciales, especialmente en la eurozona, en los próximos meses.</p>
 </section>
 <section id="alemania-y-francia-con-perspectivas-sombrías" class="level3">
 <h3 class="anchored" data-anchor-id="alemania-y-francia-con-perspectivas-sombrías">Alemania y Francia con perspectivas sombrías</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-pmis_de_sectors" src="charts/es/pmis_de_sectors_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('pmis_de_sectors', 'pmis_de_sectors.svg', 'svg')">
-Guardar
-</button>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-pmis_fr_sectors" src="charts/es/pmis_fr_sectors_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('pmis_fr_sectors', 'pmis_fr_sectors.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>En Alemania y Francia, la situación empresarial se ha ensombrecido aún más. El PMI de servicios en mayo fue del 48,8 en Alemania y del 44,3 en Francia. Los PMI de manufacturas también descendieron. El hecho de que vuelvan a subir en el próximo mes probablemente seguirá dependiendo de la evolución de los precios de la energía.</p>
-</section>
-<section id="la-producción-industrial-alemana-sigue-contrayéndose" class="level3">
-<h3 class="anchored" data-anchor-id="la-producción-industrial-alemana-sigue-contrayéndose">La producción industrial alemana sigue contrayéndose</h3>
-<div class="chart-wrapper">
-<img id="img-lkw_maut_ip_de" src="charts/es/lkw_maut_ip_de_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('lkw_maut_ip_de', 'lkw_maut_ip_de.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-<p>El índice de kilometraje de peaje de camiones, que mide el kilometraje de los camiones sujetos a peaje en las autopistas y se considera un indicador adelantado de la producción industrial, se ha recuperado notablemente tras la larga fase de debilidad desde 2024, pero no muestra crecimiento en el promedio anual. La producción industrial sigue esta evolución y desciende con menos fuerza que en 2025. Sin embargo, es probable que la ligera recuperación ya haya terminado. Actualmente no se vislumbra un crecimiento de la producción industrial.</p>
+<p>En Alemania y Francia, la situación empresarial se ha ensombrecido aún más. El PMI de servicios en mayo fue de 48,8 en Alemania y de 44,3 en Francia. Los PMIs manufactureros también descendieron. El hecho de que vuelvan a subir en el próximo mes seguirá dependiendo de la evolución de los precios de la energía.</p>
 </section>
 <section id="china-economía-doméstica-débil" class="level3">
 <h3 class="anchored" data-anchor-id="china-economía-doméstica-débil">China: Economía doméstica débil</h3>
 <div class="chart-wrapper">
-<img id="img-china_pmi" src="charts/es/china_pmi_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_pmi_es.svg" class="lightbox"><img id="img-china_pmi" src="charts/es/china_pmi_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_pmi', 'china_pmi.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
@@ -465,105 +439,14 @@ Guardar
 <section id="la-actividad-de-construcción-no-se-recupera" class="level3">
 <h3 class="anchored" data-anchor-id="la-actividad-de-construcción-no-se-recupera">La actividad de construcción no se recupera</h3>
 <div class="chart-wrapper">
-<img id="img-china_real_estate" src="charts/es/china_real_estate_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_real_estate_es.svg" class="lightbox"><img id="img-china_real_estate" src="charts/es/china_real_estate_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_real_estate', 'china_real_estate.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 <p>El número de viviendas nuevas iniciadas volvió a caer en marzo y se sitúa por debajo del nivel de 2010 desde 2022. Esto también se refleja en el número de inmuebles inacabados y terminados, que también descendieron con fuerza.</p>
-</section>
-</section>
-<section id="condiciones-de-financiación" class="level2">
-<h2 class="anchored" data-anchor-id="condiciones-de-financiación">Condiciones de Financiación</h2>
-<p><img src="bank.png" class="feature-image nolightbox img-fluid"></p>
-<section id="bancos-de-ee.-uu.-préstamos-restrictivos-a-empresas" class="level3">
-<h3 class="anchored" data-anchor-id="bancos-de-ee.-uu.-préstamos-restrictivos-a-empresas">Bancos de EE. UU.: Préstamos restrictivos a empresas</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-sloos_standards" src="charts/es/sloos_standards_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('sloos_standards', 'sloos_standards.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-sloos_demand" src="charts/es/sloos_demand_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('sloos_demand', 'sloos_demand.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>La encuesta SLOOS de abril de 2026 muestra que más bancos endurecieron sus estándares de crédito para las empresas que los que los flexibilizaron (valor ligeramente positivo). La mayoría de los bancos encuestados informaron de una mayor demanda de crédito en los últimos tres meses (valor positivo).</p>
-</section>
-<section id="condiciones-crediticias-restrictivas-en-la-eurozona" class="level3">
-<h3 class="anchored" data-anchor-id="condiciones-crediticias-restrictivas-en-la-eurozona">Condiciones crediticias restrictivas en la eurozona</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-ez_bls_standards" src="charts/es/ez_bls_standards_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('ez_bls_standards', 'ez_bls_standards.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-ez_bls_demand" src="charts/es/ez_bls_demand_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('ez_bls_demand', 'ez_bls_demand.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>Según la Encuesta sobre Préstamos Bancarios (BLS) del BCE para el segundo trimestre de 2026, se espera que las condiciones de crédito se vuelvan más restrictivas tanto para las empresas como para los hogares en los próximos tres meses (valor positivo). Se espera que la demanda neta de crédito disminuya tanto para la vivienda residencial como para fines de consumo, según los encuestados.</p>
-</section>
-<section id="impulso-crediticio-débil" class="level3">
-<h3 class="anchored" data-anchor-id="impulso-crediticio-débil">Impulso crediticio débil</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-credit_impulse_usa" src="charts/es/credit_impulse_usa_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('credit_impulse_usa', 'credit_impulse_usa.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-credit_impulse_ez" src="charts/es/credit_impulse_ez_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('credit_impulse_ez', 'credit_impulse_ez.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>El impulso crediticio (la variación del flujo de crédito al sector privado en puntos porcentuales del PIB) es un buen indicador adelantado de la demanda privada. Recientemente fue ligeramente positivo tanto en EE. UU. como en la eurozona, pero perdió impulso. Dado que, especialmente en la eurozona, el número de bancos con un aumento de la concesión y la demanda de préstamos está disminuyendo significativamente, esto apunta a un pronto impulso crediticio negativo.</p>
-</section>
-<section id="debilitamiento-del-impulso-crediticio-en-china" class="level3">
-<h3 class="anchored" data-anchor-id="debilitamiento-del-impulso-crediticio-en-china">Debilitamiento del impulso crediticio en China</h3>
-<div class="chart-wrapper">
-<img id="img-china_credit_impulse" src="charts/es/china_credit_impulse_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('china_credit_impulse', 'china_credit_impulse.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-<p>El impulso crediticio en China fue ligeramente positivo a principios de año y volvió a caer en terreno negativo en el primer trimestre de 2026. Esto sigue apuntando a una débil demanda privada.</p>
 </section>
 </section>
 <section id="consumo-privado" class="level2">
@@ -572,398 +455,295 @@ Guardar
 <section id="ee.-uu.-las-ventas-minoristas-siguen-aumentando" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-las-ventas-minoristas-siguen-aumentando">EE. UU.: Las ventas minoristas siguen aumentando</h3>
 <div class="chart-wrapper">
-<img id="img-retail_sales_usa" src="charts/es/retail_sales_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/retail_sales_usa_es.svg" class="lightbox"><img id="img-retail_sales_usa" src="charts/es/retail_sales_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('retail_sales_usa', 'retail_sales_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Las ventas minoristas oficiales subieron un 5,2 % interanual en abril, algo más que en los meses anteriores. El índice semanal “Johnson Redbook Retail Sales”, que recoge las ventas de grandes almacenes y tiendas minoristas, subería con fuerza y muestra unas sólidas ventas minoristas en EE. UU. hasta mediados de mayo.</p>
+<p>Las ventas minoristas aumentaron un 7,5% interanual en mayo. El índice semanal ‘Johnson Redbook Retail Sales’, que registra las ventas de grandes almacenes y tiendas minoristas, subió con fuerza y señala un fuerte crecimiento de las ventas minoristas en EE. UU. hasta <strong>mediados de julio</strong>.</p>
 </section>
-<section id="ee.-uu.-la-deuda-de-tarjetas-de-crédito-sube-algo-más-rápido" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-la-deuda-de-tarjetas-de-crédito-sube-algo-más-rápido">EE. UU.: La deuda de tarjetas de crédito sube algo más rápido</h3>
+<section id="ee.-uu.-la-deuda-de-tarjetas-de-crédito-crece-algo-más-despacio" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-la-deuda-de-tarjetas-de-crédito-crece-algo-más-despacio">EE. UU.: La deuda de tarjetas de crédito crece algo más despacio</h3>
 <div class="chart-wrapper">
-<img id="img-credit_card_spending" src="charts/es/credit_card_spending_es.svg" class="chart-img lightbox">
+<a href="charts/es/credit_card_spending_es.svg" class="lightbox"><img id="img-credit_card_spending" src="charts/es/credit_card_spending_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('credit_card_spending', 'credit_card_spending.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La deuda de las tarjetas de crédito creció tan rápido en las últimas semanas como en años anteriores. La variación mensual se situó recientemente dentro del patrón estacional habitual de años anteriores.</p>
+<p>La deuda de tarjetas de crédito en EE. UU. cayó ligeramente en junio, pero sigue siendo alta. Desde mediados de 2021, la deuda de tarjetas de crédito ha estado aumentando tan rápido como de media desde 2012.</p>
 </section>
-<section id="ee.-uu.-las-búsquedas-en-google-apuntan-a-un-consumo-cauteloso" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-las-búsquedas-en-google-apuntan-a-un-consumo-cauteloso">EE. UU.: Las búsquedas en Google apuntan a un consumo cauteloso</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<section id="ee.-uu.-las-búsquedas-de-google-apuntan-a-un-consumo-más-cauteloso" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-las-búsquedas-de-google-apuntan-a-un-consumo-más-cauteloso">EE. UU.: Las búsquedas de Google apuntan a un consumo más cauteloso</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Restaurants</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="chart-wrapper">
-<img id="img-google_trends_restaurant_us" src="charts/es/google_trends_restaurant_us_es.svg" class="chart-img lightbox">
+<a href="charts/es/google_trends_restaurant_us_es.svg" class="lightbox"><img id="img-google_trends_restaurant_us" src="charts/es/google_trends_restaurant_us_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_us', 'google_trends_restaurant_us.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+<p>Viajes</p>
 <div class="chart-wrapper">
-<img id="img-google_trends_travel_us" src="charts/es/google_trends_travel_us_es.svg" class="chart-img lightbox">
+<a href="charts/es/google_trends_travel_us_es.svg" class="lightbox"><img id="img-google_trends_travel_us" src="charts/es/google_trends_travel_us_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_travel_us', 'google_trends_travel_us.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 </div>
 </div>
-<p>A menudo, el consumo comienza con una búsqueda en internet. Por ello, los datos de búsqueda online son un buen indicador adelantado del consumo privado. La intensidad de búsqueda del término “restaurante” ha estado ligeramente por debajo de la media de los últimos cinco años en las últimas semanas, tras haber sido superior anteriormente. Los términos de la categoría “viajes” se buscan menos que la media de los últimos cinco años desde hace dos semanas.</p>
+</div>
+<p>A menudo el consumo comienza con una búsqueda en Internet. Por lo tanto, los datos de búsqueda online son un buen indicador adelantado del consumo privado. En las últimas semanas, la intensidad de búsqueda del término ‘restaurante’ se situó ligeramente por debajo de la media de los últimos cinco años, tras haber sido superior anteriormente. Los términos de la categoría ‘viajes’ se buscan desde hace dos semanas menos que la media de los últimos cinco años, a pesar del Mundial de fútbol.</p>
 </section>
-<section id="ee.-uu.-la-tasa-de-ahorro-sigue-bajando" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-la-tasa-de-ahorro-sigue-bajando">EE. UU.: La tasa de ahorro sigue bajando</h3>
+<section id="ee.-uu.-la-tasa-de-ahorro-en-ee.-uu.-se-mantiene-baja" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-la-tasa-de-ahorro-en-ee.-uu.-se-mantiene-baja">EE. UU.: La tasa de ahorro en EE. UU. se mantiene baja</h3>
 <div class="chart-wrapper">
-<img id="img-savings_rate_usa" src="charts/es/savings_rate_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/savings_rate_usa_es.svg" class="lightbox"><img id="img-savings_rate_usa" src="charts/es/savings_rate_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('savings_rate_usa', 'savings_rate_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La tasa de ahorro de los hogares estadounidenses ha promediado un 5,2 % desde el año 2000. En las crisis, suele tender a subir. En abril, la tasa de ahorro bajó hasta el 2,6 % y se mantuvo por debajo de la media histórica. La incertidumbre sobre la duración de la guerra en Irán y el impacto en los precios de la energía podrían motivar a los hogares a ahorrar más de nuevo.</p>
+<p>La tasa de ahorro en EE. UU. cayó ligeramente en junio y se mantuvo significativamente por debajo de la media histórica del 5,2%. A diferencia de lo que ocurre en la eurozona, los hogares estadounidenses han agotado en gran medida el exceso de ahorro acumulado durante la pandemia. Al mismo tiempo, el crecimiento de los ingresos reales disponibles se ha ralentizado.</p>
 </section>
 <section id="solo-el-sentimiento-republicano-sigue-siendo-optimista" class="level3">
 <h3 class="anchored" data-anchor-id="solo-el-sentimiento-republicano-sigue-siendo-optimista">Solo el sentimiento republicano sigue siendo optimista</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-consumer_conf_usa" src="charts/es/consumer_conf_usa_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('consumer_conf_usa', 'consumer_conf_usa.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-umich_partisan" src="charts/es/umich_partisan_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('umich_partisan', 'umich_partisan.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
 <p>La confianza de los consumidores estadounidenses se mantiene pesimista en promedio. El Índice de Confianza del Consumidor del Conference Board se encuentra al nivel de la crisis del coronavirus. El Índice de Sentimiento del Consumidor de la Universidad de Michigan alcanzó valores que de otro modo solo se dan en recesiones. Como es habitual, los partidarios del partido de la oposición son más pesimistas. Los republicanos, por el contrario, se mantienen optimistas.</p>
 </section>
-<section id="gasto-energético-ee.-uu.-más-bajo-que-la-eurozona" class="level3">
-<h3 class="anchored" data-anchor-id="gasto-energético-ee.-uu.-más-bajo-que-la-eurozona">Gasto energético: EE. UU. más bajo que la eurozona</h3>
+<section id="gasto-en-energía-ee.-uu.-por-debajo-de-la-eurozona" class="level3">
+<h3 class="anchored" data-anchor-id="gasto-en-energía-ee.-uu.-por-debajo-de-la-eurozona">Gasto en energía: EE. UU. por debajo de la eurozona</h3>
 <div class="chart-wrapper">
-<img id="img-energieausgaben" src="charts/es/energieausgaben_es.svg" class="chart-img lightbox">
+<a href="charts/es/energieausgaben_es.svg" class="lightbox"><img id="img-energieausgaben" src="charts/es/energieausgaben_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('energieausgaben', 'energieausgaben.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Históricamente, la carga energética de los hogares era mayor en EE. UU. que en Europa. Sin embargo, esta relación se ha invertido con la crisis del coronavirus y la guerra de Ucrania. A finales de 2024, la proporción del gasto en energía sobre el gasto total de los hogares era mayor en Alemania y Francia que en EE. UU. El actual choque de los precios del petróleo probablemente reforzará esta tendencia.</p>
-<!-- EUROZONE  ******************************************
-*********************************************************
-**********************************************************
--->
-</section>
-<section id="eurozona-carga-energética-de-los-hogares-alemanes" class="level3">
-<h3 class="anchored" data-anchor-id="eurozona-carga-energética-de-los-hogares-alemanes">Eurozona: Carga energética de los hogares alemanes</h3>
-<div class="chart-wrapper">
-<img id="img-energieausgaben_ea" src="charts/es/energieausgaben_ea_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('energieausgaben_ea', 'energieausgaben_ea.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-<p>La carga energética de los hogares alemanes se sitúa por encima de la media de la eurozona desde mediados de la década de 2000. Con el estallido de la guerra en Ucrania subió significativamente, mientras que bajó de nuevo especialmente en España e Italia. En Alemania, por el contrario, la proporción del gasto en energía sobre el gasto total de los hogares se mantuvo en torno al 5 %.</p>
+<p>Históricamente, el gasto de los hogares en energía en los EE. UU. era superior al de Europa. Sin embargo, con la crisis del Covid y la guerra en Ucrania, esta relación se ha invertido. Hasta finales de 2024, la proporción del gasto en energía sobre el gasto total de los hogares en Alemania y Francia era superior a la de los EE. UU. El actual choque de los precios del petróleo probablemente reforzará aún más esta tendencia.</p>
 </section>
 <section id="eurozona-y-alemania-la-tasa-de-ahorro-de-los-hogares-se-mantiene-estable" class="level3">
 <h3 class="anchored" data-anchor-id="eurozona-y-alemania-la-tasa-de-ahorro-de-los-hogares-se-mantiene-estable">Eurozona y Alemania: La tasa de ahorro de los hogares se mantiene estable</h3>
 <div class="chart-wrapper">
-<img id="img-savings_rate_de_ea" src="charts/es/savings_rate_de_ea_es.svg" class="chart-img lightbox">
+<a href="charts/es/savings_rate_de_ea_es.svg" class="lightbox"><img id="img-savings_rate_de_ea" src="charts/es/savings_rate_de_ea_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('savings_rate_de_ea', 'savings_rate_de_ea.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La tasa de ahorro en Alemania se mantiene estable en el 10 %, significativamente más alta que en EE. UU. (2,6 %). Históricamente, la tasa de ahorro alemana también ha sido más alta que en la eurozona. Durante la crisis del coronavirus, subió a casi el 20 %.</p>
+<p>A diferencia de lo que ocurre en los EE. UU., la tasa de ahorro de los hogares en la eurozona se mantuvo estable y ligeramente por encima de la media histórica. La tasa de ahorro alemana también es más alta que en el resto de la eurozona.</p>
 </section>
-<section id="búsquedas-en-google-apuntan-a-la-cautela-en-francia-y-alemania" class="level3">
-<h3 class="anchored" data-anchor-id="búsquedas-en-google-apuntan-a-la-cautela-en-francia-y-alemania">Búsquedas en Google apuntan a la cautela en Francia y Alemania</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-google_trends_restaurant_de" src="charts/es/google_trends_restaurant_de_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('google_trends_restaurant_de', 'google_trends_restaurant_de.svg', 'svg')">
-Guardar
-</button>
+<section id="búsquedas-de-google-cautela-en-el-consumo-en-francia-y-alemania" class="level3">
+<h3 class="anchored" data-anchor-id="búsquedas-de-google-cautela-en-el-consumo-en-francia-y-alemania">Búsquedas de Google: Cautela en el consumo en Francia y Alemania</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-google_trends_restaurant_fr" src="charts/es/google_trends_restaurant_fr_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('google_trends_restaurant_fr', 'google_trends_restaurant_fr.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>Las búsquedas en Google de “restaurante” en Alemania y Francia apuntan a una débil demanda privada. En ambos países, la intensidad de búsqueda en las últimas semanas fue inferior a la media de los últimos cinco años para la misma época del año.</p>
+<p>Las búsquedas de Google de ‘restaurante’ en Alemania y Francia apuntan a una demanda privada débil y en descenso. En ambos países, la intensidad de las búsquedas en las últimas semanas fue inferior a la media de los últimos cinco años para la misma temporada.</p>
 </section>
-<section id="menos-cautela-en-españa" class="level3">
-<h3 class="anchored" data-anchor-id="menos-cautela-en-españa">Menos cautela en España</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-google_trends_restaurant_es" src="charts/es/google_trends_restaurant_es_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('google_trends_restaurant_es', 'google_trends_restaurant_es.svg', 'svg')">
-Guardar
-</button>
+<section id="menos-cautela-en-españa-que-en-italia" class="level3">
+<h3 class="anchored" data-anchor-id="menos-cautela-en-españa-que-en-italia">Menos cautela en España que en Italia</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-google_trends_restaurant_it" src="charts/es/google_trends_restaurant_it_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('google_trends_restaurant_it', 'google_trends_restaurant_it.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>Mientras que la intensidad de búsqueda de “restaurante” en España se mantuvo tan alta como la media de los últimos años, fue algo menor en Italia.</p>
-<!-- CHINA ************************** -->
+<p>Mientras que en España la intensidad de búsqueda de ‘restaurante’ se mantuvo tan alta como la media de los últimos años, fue algo inferior en Italia.</p>
 </section>
-<section id="el-sentimiento-mejora-solo-ligeramente" class="level3">
-<h3 class="anchored" data-anchor-id="el-sentimiento-mejora-solo-ligeramente">El sentimiento mejora solo ligeramente</h3>
+<section id="china-el-estado-de-ánimo-apenas-mejora" class="level3">
+<h3 class="anchored" data-anchor-id="china-el-estado-de-ánimo-apenas-mejora">China: El estado de ánimo apenas mejora</h3>
 <div class="chart-wrapper">
-<img id="img-china_consumer_confidence" src="charts/es/china_consumer_confidence_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_consumer_confidence_es.svg" class="lightbox"><img id="img-china_consumer_confidence" src="charts/es/china_consumer_confidence_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_consumer_confidence', 'china_consumer_confidence.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En China, el clima de consumo ha mejorado ligeramente desde principios de 2025, pero se mantiene históricamente bajo. También el sentimiento en el sector inmobiliario está deprimido. El “National Real Estate Climate Index” sigue una tendencia bajista desde hace tres años.</p>
+<p>En China, la confianza de los consumidores se recuperó ligeramente en mayo, pero sigue siendo históricamente baja. El estado de ánimo en el sector inmobiliario también está deprimido. El ‘Índice Nacional del Clima Inmobiliario’ lleva tres años a la baja.</p>
 </section>
 </section>
 <section id="mercado-laboral" class="level2">
-<h2 class="anchored" data-anchor-id="mercado-laboral">Mercado Laboral</h2>
+<h2 class="anchored" data-anchor-id="mercado-laboral">Mercado laboral</h2>
 <p><img src="Leuchtturm.png" class="feature-image nolightbox img-fluid"></p>
-<section id="ee.-uu.-continuo-fuerte-aumento-de-los-salarios-nominales" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-continuo-fuerte-aumento-de-los-salarios-nominales">EE. UU.: Continuo fuerte aumento de los salarios nominales</h3>
+<section id="los-salarios-nominales-aumentan-más-lentamente" class="level3">
+<h3 class="anchored" data-anchor-id="los-salarios-nominales-aumentan-más-lentamente">Los salarios nominales aumentan más lentamente</h3>
 <div class="chart-wrapper">
-<img id="img-nominal_wages" src="charts/es/nominal_wages_es.svg" class="chart-img lightbox">
+<a href="charts/es/nominal_wages_es.svg" class="lightbox"><img id="img-nominal_wages" src="charts/es/nominal_wages_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('nominal_wages', 'nominal_wages.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En mayo, el promedio de los salarios por hora en EE. UU. subió un 3,4 % interanual, de nuevo algo más lento que el mes anterior. En el primer trimestre de 2026, el crecimiento salarial fue del 3,9 % en Alemania y de solo el 1,6 % en Francia. En Alemania y en EE. UU., el crecimiento salarial se mantiene por encima de la media de 2011-2019.</p>
+<p>En <strong>junio</strong>, los salarios por hora promedio en los EE. UU. aumentaron un <strong>3,6%</strong> interanual. En el primer trimestre de 2026, el crecimiento salarial fue del 3,9% en Alemania y de solo el 1,6% en Francia. Tanto en Alemania como en los EE. UU., el crecimiento salarial se mantiene por el promedio de 2011-2019.</p>
 </section>
-<section id="ee.-uu.-normalización-del-crecimiento-salarial" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-normalización-del-crecimiento-salarial">EE. UU.: ¿Normalización del crecimiento salarial?</h3>
+<section id="ee.-uu.-normalización-del-crecimiento-de-los-salarios" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-normalización-del-crecimiento-de-los-salarios">EE. UU.: ¿Normalización del crecimiento de los salarios?</h3>
 <div class="chart-wrapper">
-<img id="img-normal_lohn" src="charts/es/normal_lohn_es.svg" class="chart-img lightbox">
+<a href="charts/es/normal_lohn_es.svg" class="lightbox"><img id="img-normal_lohn" src="charts/es/normal_lohn_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('normal_lohn', 'normal_lohn.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>El crecimiento salarial según el Wage Tracker de Indeed Hiring Lab parece adelantarse unos siete meses al crecimiento del salario medio en EE. UU. Si esto es correcto, el crecimiento salarial podría seguir normalizándose.</p>
+<p>El crecimiento de los salarios según el rastreador de salarios de Indeed Hiring Lab parece adelantarse al crecimiento del salario medio en EE. UU. en unos siete meses. En <strong>junio, los salarios anunciados en las ofertas de empleo en EE. UU. subieron un 2,4%</strong>, lo que indica una estabilización en este nivel.</p>
 </section>
-<section id="ee.-uu.-débil-crecimiento-salarial-en-los-salarios-bajos" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-débil-crecimiento-salarial-en-los-salarios-bajos">EE. UU.: Débil crecimiento salarial en los salarios bajos</h3>
+<section id="ee.-uu.-convergencia-del-crecimiento-salarial" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-convergencia-del-crecimiento-salarial">EE. UU.: Convergencia del crecimiento salarial</h3>
 <div class="chart-wrapper">
-<img id="img-us_wages_q" src="charts/es/us_wages_q_es.svg" class="chart-img lightbox">
+<a href="charts/es/us_wages_q_es.svg" class="lightbox"><img id="img-us_wages_q" src="charts/es/us_wages_q_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_wages_q', 'us_wages_q.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En abril, los salarios por hora en EE. UU. subieron un promedio del 3,8 %. Los incrementos salariales de los distintos grupos salariales están convergiendo. En el cuartil salarial más bajo, los salarios subieron un 3,6 %, en el cuartil más alto un 3,7 %. Con ello, los salarios más altos ya no crecen mucho más rápido que en el punto álgido de 2022 y suben solo ligeramente más rápido que los más bajos.</p>
+<p>En <strong>junio</strong>, los salarios por hora en los EE. UU. aumentaron en promedio un <strong>3,8%</strong>. Los incrementos salariales de los diferentes grupos salariales se están acercando: en el cuartil salarial más bajo los salarios aumentaron un <strong>3,6%</strong>, mientras que en el cuartil más alto aumentaron un <strong>3,9%</strong>. Esto significa que los salarios más altos ya no crecen tanto más rápido como en el pico de 2022.</p>
 </section>
 <section id="el-mercado-laboral-de-ee.-uu.-está-menos-tensionado" class="level3">
 <h3 class="anchored" data-anchor-id="el-mercado-laboral-de-ee.-uu.-está-menos-tensionado">El mercado laboral de EE. UU. está menos tensionado</h3>
 <div class="chart-wrapper">
-<img id="img-labor_force_usa" src="charts/es/labor_force_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/labor_force_usa_es.svg" class="lightbox"><img id="img-labor_force_usa" src="charts/es/labor_force_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('labor_force_usa', 'labor_force_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 <p>La curva de Beveridge representa la relación entre la tasa de vacantes (los puestos vacantes como proporción de la suma de puestos ocupados y vacantes) y la tasa de desempleo. Con la crisis del coronavirus, la curva se desplazó hacia fuera porque, debido a las medidas políticas, el desempleo se mantuvo alto a pesar de que había muchos puestos libres. Las rigideces se han vuelto a reducir y la curva de Beveridge ha vuelto al nivel anterior a la crisis del coronavirus. Por lo tanto, la situación en el mercado laboral estadounidense se ha normalizado.</p>
 </section>
 <section id="el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil" class="level3">
-<h3 class="anchored" data-anchor-id="el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil">El crecimiento del empleo se recupera pero sigue siendo débil</h3>
+<h3 class="anchored" data-anchor-id="el-crecimiento-del-empleo-se-recupera-pero-sigue-siendo-débil">El crecimiento del empleo se recupera, pero sigue siendo débil</h3>
 <div class="chart-wrapper">
-<img id="img-adp_bls_comparison" src="charts/es/adp_bls_comparison_es.svg" class="chart-img lightbox">
+<a href="charts/es/adp_bls_comparison_es.svg" class="lightbox"><img id="img-adp_bls_comparison" src="charts/es/adp_bls_comparison_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('adp_bls_comparison', 'adp_bls_comparison.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En mayo, el número de puestos de trabajo en el sector privado no agrícola subió un 0,5 % respecto al año anterior según el informe de ADP, algo más que el mes anterior. Las cifras oficiales también arrojaron un crecimiento anual del 0,5 %. El mercado laboral estadounidense se mantiene estable, pero el crecimiento del empleo es ahora más lento que en los años transcurridos entre la crisis financiera y la del coronavirus.</p>
+<p>En <strong>junio</strong>, el número de puestos de trabajo en el sector privado no agrícola aumentó un <strong>0,5%</strong> interanual según el informe ADP. Las cifras oficiales de la BLS mostraron un crecimiento anual del <strong>0,6%</strong>. El mercado laboral de EE. UU. se mantiene estable, pero el crecimiento del empleo es más lento que en los años transcurridos entre la crisis financiera y la del COVID.</p>
 </section>
 <section id="ee.-uu.-despidos-y-solicitudes-de-subsidio-por-desempleo-dentro-de-lo-normal" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-despidos-y-solicitudes-de-subsidio-por-desempleo-dentro-de-lo-normal">EE. UU.: Despidos y solicitudes de subsidio por desempleo dentro de lo normal</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-us_layoffs_sectors" src="charts/es/us_layoffs_sectors_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('us_layoffs_sectors', 'us_layoffs_sectors.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-us_jobless" src="charts/es/us_jobless_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('us_jobless', 'us_jobless.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
 <p>En mayo se anunciaron unos 97.000 recortes de empleo, algo más que el mes anterior. Al mismo tiempo, las solicitudes iniciales semanales de subsidio por desempleo subieron ligeramente hasta las 225.000 recientemente, pero se mantuvieron en el extremo inferior de las fluctuaciones de los últimos tres años y en un nivel históricamente bajo. Entre 1990 y 2019, el promedio semanal fue de unas 350.000.</p>
 </section>
-<section id="ee.-uu.-oferta-de-trabajo-a-la-baja" class="level3">
-<h3 class="anchored" data-anchor-id="ee.-uu.-oferta-de-trabajo-a-la-baja">EE. UU.: Oferta de trabajo a la baja</h3>
+<section id="los-salarios-nominales-aumentan-más-rápido-en-alemania" class="level3">
+<h3 class="anchored" data-anchor-id="los-salarios-nominales-aumentan-más-rápido-en-alemania">Los salarios nominales aumentan más rápido en Alemania</h3>
 <div class="chart-wrapper">
-<img id="img-labor_supply_usa" src="charts/es/labor_supply_usa_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('labor_supply_usa', 'labor_supply_usa.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-<p>La oferta de trabajo en EE. UU. se ha estancado desde el otoño de 2024. Un ajuste metodológico aumentó la población activa en 2,1 millones de personas en enero de 2025. Una nueva serie calculada retroactivamente (amarilla) pone de manifiesto que el crecimiento ya se detuvo en el otoño de 2024. Con la política migratoria más restrictiva de Donald Trump, es probable que la oferta de trabajo siga estancada o incluso disminuya.</p>
-<!-- EUROZONE ********** -->
-</section>
-<section id="los-salarios-nominales-suben-más-rápido-en-alemania" class="level3">
-<h3 class="anchored" data-anchor-id="los-salarios-nominales-suben-más-rápido-en-alemania">Los salarios nominales suben más rápido en Alemania</h3>
-<div class="chart-wrapper">
-<img id="img-indeed_wage_tracker" src="charts/es/indeed_wage_tracker_es.svg" class="chart-img lightbox">
+<a href="charts/es/indeed_wage_tracker_es.svg" class="lightbox"><img id="img-indeed_wage_tracker" src="charts/es/indeed_wage_tracker_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('indeed_wage_tracker', 'indeed_wage_tracker.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>El Wage Tracker de Indeed Hiring Lab muestra que los salarios nominales siguen subiendo. En abril, la tasa de variación fue del 2,3 % en la eurozona, del 3,2 % en Alemania, del 1,1 % en Francia y del 2,3 % en EE. UU. Solo en Alemania los salarios suben más rápido que el año anterior.</p>
+<p>El rastreador de salarios de Indeed Hiring Lab muestra que los salarios nominales continúan aumentando en la eurozona. En <strong>mayo</strong>, la tasa de variación fue del <strong>2,4%</strong> en la eurozona, del <strong>2,9%</strong> en Alemania, del <strong>1,2%</strong> en Francia y del <strong>2,40%</strong> en los EE. UU. Solo en Alemania los salarios suben más lentamente que en meses anteriores, pero se mantienen en un nivel alto.</p>
 </section>
-<section id="eurozona-mercado-laboral-tensionado" class="level3">
-<h3 class="anchored" data-anchor-id="eurozona-mercado-laboral-tensionado">Eurozona: Mercado laboral tensionado</h3>
+<section id="eurozona-mercado-laboral-tenso" class="level3">
+<h3 class="anchored" data-anchor-id="eurozona-mercado-laboral-tenso">Eurozona: Mercado laboral tenso</h3>
 <div class="chart-wrapper">
-<img id="img-ea_beveridge" src="charts/es/ea_beveridge_es.svg" class="chart-img lightbox">
+<a href="charts/es/ea_beveridge_es.svg" class="lightbox"><img id="img-ea_beveridge" src="charts/es/ea_beveridge_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_beveridge', 'ea_beveridge.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La curva de Beveridge, que muestra la relación entre la tasa de vacantes y la tasa de desempleo, apunta a un mercado laboral tensionado. Durante la crisis del coronavirus, la curva se desplazó hacia fuera ya que las medidas políticas hicieron que el desempleo se mantuviera alto a pesar de que había muchos puestos vacantes. Mientras tanto, estas rigideces se han suavizado en gran medida y el desempleo se encuentra en un nivel históricamente bajo. La tasa de vacantes ha disminuido, pero vuelve a corresponder a la relación habitual entre ambas variables.</p>
-<!-- China ********** -->
+<p>La curva de Beveridge, que muestra la relación entre la tasa de vacantes y la tasa de desempleo, apunta a un mercado laboral tenso en la eurozona. Durante la crisis del Covid, la curva se desplazó hacia fuera porque las medidas políticas hicieron que el desempleo se mantuviera alto a pesar de las muchas ofertas de trabajo. Entre tanto, estas rigideces se han reducido en gran medida y el desempleo se sitúa en un nivel históricamente bajo. Aunque la tasa de vacantes ha disminuido, vuelve a corresponder a la relación habitual entre ambas variables.</p>
 </section>
-<section id="china-muy-alto-desempleo-juvenil" class="level3">
-<h3 class="anchored" data-anchor-id="china-muy-alto-desempleo-juvenil">China: Muy alto desempleo juvenil</h3>
+<section id="china-desempleo-juvenil-muy-alto" class="level3">
+<h3 class="anchored" data-anchor-id="china-desempleo-juvenil-muy-alto">China: Desempleo juvenil muy alto</h3>
 <div class="chart-wrapper">
-<img id="img-china_unemployment" src="charts/es/china_unemployment_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_unemployment_es.svg" class="lightbox"><img id="img-china_unemployment" src="charts/es/china_unemployment_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_unemployment', 'china_unemployment.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La tasa de desempleo de China se movió lateralmente en el 5 % en los últimos meses. El desempleo juvenil, definido como la tasa de desempleo entre los jóvenes de 16 a 24 años, alcanzó el 21,3 % a mediados de 2023. Tras una pausa en la publicación de seis meses, existe una nueva estadística “sin estudiantes”. Esta se situó en el 16,9 % en febrero.</p>
+<p>La tasa de desempleo en China se movió lateralmente en el 5% en los últimos meses. El desempleo juvenil (excluyendo estudiantes) <strong>cayó ligeramente al 15,6% en mayo</strong>.</p>
 </section>
 </section>
 </section>
 <section id="precios" class="level1">
 <h1>PRECIOS</h1>
 <section id="materias-primas" class="level2">
-<h2 class="anchored" data-anchor-id="materias-primas">Materias Primas</h2>
+<h2 class="anchored" data-anchor-id="materias-primas">Materias primas</h2>
 <p><img src="glut.png" class="feature-image nolightbox img-fluid"></p>
-<section id="altos-costes-de-flete-marítimo-para-el-crudo" class="level3">
-<h3 class="anchored" data-anchor-id="altos-costes-de-flete-marítimo-para-el-crudo">Altos costes de flete marítimo para el crudo</h3>
+<section id="suben-los-costes-de-flete-marítimo-para-el-crudo-y-los-contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="suben-los-costes-de-flete-marítimo-para-el-crudo-y-los-contenedores">Suben los costes de flete marítimo para el crudo y los contenedores</h3>
 <div class="chart-wrapper">
-<img id="img-baltic_drewry" src="charts/es/baltic_drewry_es.svg" class="chart-img lightbox">
+<a href="charts/es/baltic_drewry_es.svg" class="lightbox"><img id="img-baltic_drewry" src="charts/es/baltic_drewry_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('baltic_drewry', 'baltic_drewry.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Los fletes de los petroleros de crudo han subido a nuevos niveles récord como consecuencia del bloqueo del estrecho de Ormuz. Aunque han disminuido recientemente, siguen estando por encima del nivel máximo de 2022 tras el inicio de la guerra de Ucrania. El World Container Index (WCI), que refleja los fletes en el comercio de mercancías, se mantiene por el contrario en un nivel bajo debido al persistente exceso de capacidad en la construcción de portacontenedores.</p>
+<p>Las tarifas de flete para los petroleros de crudo han subido a nuevos niveles récord como consecuencia del bloqueo del estrecho de Ormuz. A pesar de un descenso reciente, siguen estando por encima del nivel máximo de 2022 tras el inicio de la guerra en Ucrania. El World Container Index (WCI), que refleja las tarifas de flete en el comercio de mercancías, se mantuvo inicialmente en un nivel bajo debido al continuo exceso de capacidad en la construcción de portacontenedores, pero ha subido con fuerza en las últimas semanas.</p>
 </section>
-<section id="backwardation-se-esperan-bajadas-en-los-precios-del-petróleo" class="level3">
-<h3 class="anchored" data-anchor-id="backwardation-se-esperan-bajadas-en-los-precios-del-petróleo">Backwardation: Se esperan bajadas en los precios del petróleo</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-brent_forward_curve" src="charts/es/brent_forward_curve_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('brent_forward_curve', 'brent_forward_curve.svg', 'svg')">
-Guardar
-</button>
+<section id="backwardation-se-esperan-de-nuevo-precios-del-petróleo-a-la-baja" class="level3">
+<h3 class="anchored" data-anchor-id="backwardation-se-esperan-de-nuevo-precios-del-petróleo-a-la-baja">Backwardation: Se esperan de nuevo precios del petróleo a la baja</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-brent_event_study" src="charts/es/brent_event_study_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('brent_event_study', 'brent_event_study.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>El mercado cuenta con una bajada de los precios del petróleo. Las entregas a tres meses o a un año son más baratas que en el mes actual (mes más próximo). Esta “backwardation” indica que la escasez actual se considera temporal. Los precios de los futuros con entrega a un año han vuelto a subir con fuerza en los últimos días, más que tras el inicio de la guerra en Ucrania en 2022.</p>
+<p>Los mercados petroleros esperaban que los precios del petróleo se estabilizaran tras la anunciada reapertura del estrecho de Ormuz. La diferencia entre los precios de los futuros para la entrega de petróleo en tres meses y en un año ha vuelto a aumentar recientemente debido a la continua incertidumbre sobre el bloqueo. Esta ‘Backwardation’ señala que la actual escasez se considera temporal. Los precios de los futuros con entrega en un año han vuelto a subir con fuerza en los últimos días, más que tras el inicio de la guerra en Ucrania en 2022.</p>
 </section>
 <section id="cuándo-se-normalizará-el-tráfico-marítimo-por-el-estrecho-de-ormuz" class="level3">
 <h3 class="anchored" data-anchor-id="cuándo-se-normalizará-el-tráfico-marítimo-por-el-estrecho-de-ormuz">¿Cuándo se normalizará el tráfico marítimo por el estrecho de Ormuz?</h3>
 <div class="chart-wrapper">
-<img id="img-hormuz_payoffs" src="charts/es/hormuz_payoffs_es.svg" class="chart-img lightbox">
+<a href="charts/es/hormuz_payoffs_es.svg" class="lightbox"><img id="img-hormuz_payoffs" src="charts/es/hormuz_payoffs_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hormuz_payoffs', 'hormuz_payoffs.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La reapertura del estrecho de Ormuz es crucial para la oferta de petróleo y, por tanto, para los precios del mismo. A finales de mayo, los mercados de predicción todavía daban una probabilidad del 65 % a una reapertura para finales de junio. El 8 de junio, sin embargo, era de solo el 10 %. Para finales de julio, la probabilidad implícita es del 28 %, y para finales de diciembre, del 74 %.</p>
+<p>La reapertura del estrecho de Ormuz es crucial para el suministro de petróleo. <strong>Tras los nuevos ataques</strong>, los mercados de predicción descuentan una reapertura a finales de julio <strong>con solo un 3% de probabilidad aproximadamente</strong>. Para <strong>finales de diciembre</strong>, la probabilidad implícita es del <strong>62%</strong>.</p>
 </section>
-<section id="los-precios-del-gas-en-europa-siguen-una-evolución-similar-a-la-de-2022" class="level3">
-<h3 class="anchored" data-anchor-id="los-precios-del-gas-en-europa-siguen-una-evolución-similar-a-la-de-2022">Los precios del gas en Europa siguen una evolución similar a la de 2022</h3>
+<section id="los-precios-del-gas-en-europa-siguen-una-trayectoria-similar-a-la-de-2022" class="level3">
+<h3 class="anchored" data-anchor-id="los-precios-del-gas-en-europa-siguen-una-trayectoria-similar-a-la-de-2022">Los precios del gas en Europa siguen una trayectoria similar a la de 2022</h3>
 <div class="chart-wrapper">
-<img id="img-ttf_gas" src="charts/es/ttf_gas_es.svg" class="chart-img lightbox">
+<a href="charts/es/ttf_gas_es.svg" class="lightbox"><img id="img-ttf_gas" src="charts/es/ttf_gas_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ttf_gas', 'ttf_gas.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Europa sigue dependiendo fuertemente de las importaciones de petróleo y gas. Tras un rápido aumento de alrededor del 75 %, los futuros del gas natural holandés TTF a un mes han descendido algo recientemente, pero siguen estando un 50 % por encima del nivel de una semana antes del inicio de la guerra de Irán. En la crisis energética de 2022, los precios del gas en Europa llegaron a triplicarse en algunos momentos.</p>
+<p>Europa sigue dependiendo en gran medida de las importaciones de petróleo y gas. Tras una rápida subida de alrededor del 75%, los futuros del gas natural holandés TTF con vencimiento a un mes han bajado ligeramente en los últimos días, pero se mantienen cerca de un 50% por encima del nivel de una semana antes del inicio de la guerra de Irán. In la crisis energética de 2022, los precios del gas en Europa se habían triplicado temporalmente.</p>
 </section>
 </section>
 <section id="ee.-uu." class="level2">
@@ -971,126 +751,96 @@ Guardar
 <p><img src="hitze.png" class="feature-image nolightbox img-fluid"></p>
 <section id="ee.-uu.-la-tasa-de-inflación-sube-con-fuerza" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-la-tasa-de-inflación-sube-con-fuerza">EE. UU.: La tasa de inflación sube con fuerza</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-cpi_vs_expectations_usa" src="charts/es/cpi_vs_expectations_usa_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('cpi_vs_expectations_usa', 'cpi_vs_expectations_usa.svg', 'svg')">
-Guardar
-</button>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-core_cpi_vs_expectations_usa" src="charts/es/core_cpi_vs_expectations_usa_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('core_cpi_vs_expectations_usa', 'core_cpi_vs_expectations_usa.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>En mayo, los precios al consumo siguieron subiendo en EE. UU. El Índice de Precios al Consumo (IPC) aumentó un 4,2 % interanual, tal como se esperaba. La inflación subyacente se situó en el 2,9 %, igual a las expectativas medianas de los participantes en una encuesta mensual de Bloomberg. El fuerte aumento se debe sobre todo al choque del petróleo.</p>
+<p>En <strong>junio</strong>, los precios de consumo en EE. UU. subieron con menos fuerza que el mes anterior. El Índice de Precios de Consumo (IPC) aumentó un <strong>3,5%</strong> interanual, menos de lo esperado. La inflación subyacente se situó en el <strong>2,6%</strong>, por debajo de las expectativas medianas de los participantes en una encuesta mensual de Bloomberg. El continuo fuerte aumento del nivel de precios se debe en particular, aunque no únicamente, al choque del precio del petróleo.</p>
 </section>
-<section id="inflación-en-ee.-uu.-ipc-pce-y-deflactor-del-pib" class="level3">
-<h3 class="anchored" data-anchor-id="inflación-en-ee.-uu.-ipc-pce-y-deflactor-del-pib">Inflación en EE. UU.: IPC, PCE y deflactor del PIB</h3>
+<section id="diferentes-índices-muestran-una-alta-inflación" class="level3">
+<h3 class="anchored" data-anchor-id="diferentes-índices-muestran-una-alta-inflación">Diferentes índices muestran una alta inflación</h3>
 <div class="chart-wrapper">
-<img id="img-pce_cpi_deflator_usa" src="charts/es/pce_cpi_deflator_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/pce_cpi_deflator_usa_es.svg" class="lightbox"><img id="img-pce_cpi_deflator_usa" src="charts/es/pce_cpi_deflator_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pce_cpi_deflator_usa', 'pce_cpi_deflator_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La inflación se determina a través de diferentes índices. El IPC recoge los precios al consumo, el índice PCE los gastos de los hogares y el deflactor del PIB los precios de todos los bienes económicos producidos en el país. Las tasas de variación de los tres índices alcanzaron un máximo a mediados de 2022. En abril de 2026, la tasa de inflación del índice PCE subyacente (sin energía ni alimentos), preferido por la Fed, se situó en el 3,3 %.</p>
+<p>La inflación se determina mediante diferentes índices. El IPC mide los precios de consumo, el índice PCE mide el gasto de los hogares y el deflactor del PIB mide los precios de todos los bienes económicos producidos en el país. Las tasas de variación de los tres índices alcanzaron su punto máximo a mediados de 2022. En <strong>mayo de 2026</strong>, la tasa de inflación del índice PCE subyacente preferido de la Fed (excluyendo energía y alimentos) fue del 3,3%.</p>
 </section>
-<section id="motores-de-la-inflación-servicios-y-energía" class="level3">
-<h3 class="anchored" data-anchor-id="motores-de-la-inflación-servicios-y-energía">Motores de la inflación: Servicios y energía</h3>
+<section id="factores-de-la-inflación-servicios-y-energía" class="level3">
+<h3 class="anchored" data-anchor-id="factores-de-la-inflación-servicios-y-energía">Factores de la inflación: Servicios y energía</h3>
 <div class="chart-wrapper">
-<img id="img-cpi_components_usa" src="charts/es/cpi_components_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/cpi_components_usa_es.svg" class="lightbox"><img id="img-cpi_components_usa" src="charts/es/cpi_components_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('cpi_components_usa', 'cpi_components_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>El encarecimiento de los servicios sigue siendo el motor dominante de la inflación estadounidense. Mientras que la contribución de los precios de los alimentos sigue siendo moderadamente positiva, el último choque de los precios del petróleo está teniendo ahora un impacto total: la contribución de los precios de la energía a la inflación es la más alta desde 2022 y vuelve a impulsar la tasa general de forma notable.</p>
+<p>La inflación de los servicios sigue siendo el motor dominante de la inflación en EE. UU. Mientras que la contribución de los precios de los alimentos se mantiene moderadamente positiva, el reciente choque del precio del petróleo continúa teniendo un fuerte impacto: la contribución de los precios de la energía a la inflación es la más alta desde 2022 y vuelve a impulsar notablemente la tasa general.</p>
 </section>
 <section id="ee.-uu.-creciente-presión-inflacionista" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-creciente-presión-inflacionista">EE. UU.: Creciente presión inflacionista</h3>
 <div class="chart-wrapper">
-<img id="img-us_cpi_contributions" src="charts/es/us_cpi_contributions_es.svg" class="chart-img lightbox">
+<a href="charts/es/us_cpi_contributions_es.svg" class="lightbox"><img id="img-us_cpi_contributions" src="charts/es/us_cpi_contributions_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_cpi_contributions', 'us_cpi_contributions.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En mayo, los precios de los servicios subieron un 3,5 % interanual. Los precios de los alimentos siguieron subiendo con fuerza, con una tasa de variación anual del 2,7 %. Los precios de la energía subieron con especial fuerza: con un incremento del 23 % interanual, fueron tan altos como la última vez en 2022.</p>
+<p>En <strong>junio</strong>, los precios de los servicios subieron un <strong>3,2%</strong> interanual. Los precios de los alimentos continuaron subiendo con fuerza con una tasa de variación anual del <strong>2,7%</strong>. Los precios de la energía aumentaron con especial fuerza, un <strong>15,5%</strong>.</p>
 </section>
 <section id="ee.-uu.-la-inflación-supercore-vuelve-a-subir" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-la-inflación-supercore-vuelve-a-subir">EE. UU.: La inflación Supercore vuelve a subir</h3>
 <div class="chart-wrapper">
-<img id="img-supercore_usa" src="charts/es/supercore_usa_es.svg" class="chart-img lightbox">
+<a href="charts/es/supercore_usa_es.svg" class="lightbox"><img id="img-supercore_usa" src="charts/es/supercore_usa_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('supercore_usa', 'supercore_usa.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La Supercore se define como el índice de precios de los servicios sin energía ni costes de vivienda. Sobre la base del índice IPC, la tasa anual de la inflación Supercore fue del 3,7 % en mayo. Medida por el índice PCE, la inflación Supercore subió a casi el 3,6 % en abril. Esto demuestra que la presión inflacionista en el sector servicios sigue siendo alta incluso sin los costes de la vivienda.</p>
+<p>El Supercore se define como el índice de precios de servicios que excluye los costes de energía y vivienda. Basado en el índice IPC, la tasa anual de la inflación Supercore en <strong>junio</strong> fue del <strong>3,2%</strong> aproximadamente. Medida por el índice PCE, la inflación Supercore subió a casi el <strong>3,9%</strong> en <strong>mayo</strong>. Esto demuestra que la presión inflacionaria en el sector de servicios sigue siendo alta incluso sin costes de energía y vivienda.</p>
 </section>
-<section id="el-crecimiento-del-precio-de-los-alquileres-sigue-bajando" class="level3">
-<h3 class="anchored" data-anchor-id="el-crecimiento-del-precio-de-los-alquileres-sigue-bajando">El crecimiento del precio de los alquileres sigue bajando</h3>
+<section id="el-crecimiento-de-los-alquileres-ya-no-cae" class="level3">
+<h3 class="anchored" data-anchor-id="el-crecimiento-de-los-alquileres-ya-no-cae">El crecimiento de los alquileres ya no cae</h3>
 <div class="chart-wrapper">
-<img id="img-zillow_rent" src="charts/es/zillow_rent_es.svg" class="chart-img lightbox">
+<a href="charts/es/zillow_rent_es.svg" class="lightbox"><img id="img-zillow_rent" src="charts/es/zillow_rent_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('zillow_rent', 'zillow_rent.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Los costes de alquiler representan una gran parte de los precios de los servicios en el IPC y también están fuertemente correlacionados con los costes de la vivienda en propiedad. Durante los años del coronavirus, el índice de alquileres de Zillow para nuevos alquileres fue un buen indicador adelantado de la evolución de los alquileres, porque los alquileres existentes reaccionan con mayor lentitud. Actualmente, con cerca de un 1,7 %, el índice de alquileres de Zillow señala un crecimiento de los alquileres más lento que el índice de alquileres del IPC, que se sitúa en torno al 2,9 %.</p>
+<p>Los costes de vivienda representan una gran parte de los precios de los servicios en el IPC y también están fuertemente correlacionados con los costes de la vivienda habitual. Durante los años del Covid, el índice de alquileres de Zillow para nuevos contratos de arrendamiento fue un buen indicador adelantado de la evolución de los alquileres, ya que los alquileres existentes reaccionan con mayor lentitud. Actualmente, el índice de alquileres de Zillow con alrededor del <strong>1,9%</strong> señala un crecimiento de alquileres más lento que el del índice de alquileres IPC que se recupera con cerca del <strong>3,1%</strong>.</p>
 </section>
 <section id="ee.-uu.-la-inflación-podría-seguir-subiendo" class="level3">
 <h3 class="anchored" data-anchor-id="ee.-uu.-la-inflación-podría-seguir-subiendo">EE. UU.: La inflación podría seguir subiendo</h3>
 <div class="chart-wrapper">
-<img id="img-ism_services_prices" src="charts/es/ism_services_prices_es.svg" class="chart-img lightbox">
+<a href="charts/es/ism_services_prices_es.svg" class="lightbox"><img id="img-ism_services_prices" src="charts/es/ism_services_prices_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ism_services_prices', 'ism_services_prices.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>El índice de precios del PMI de servicios del ISM se adelanta unos seis meses a la inflación de los precios al consumo. Si se confirma esta relación, es probable que la inflación siga subiendo en los próximos meses.</p>
+<p>El índice de precios del PMI de servicios del ISM lidera la inflación de los precios de consumo en unos seis meses. En <strong>junio, el índice de precios del ISM cayó ligeramente</strong>, pero se mantiene en un nivel elevado.</p>
 </section>
 </section>
-<section id="eurozone" class="level2">
-<h2 class="anchored" data-anchor-id="eurozone">Eurozone</h2>
+<section id="eurozona" class="level2">
+<h2 class="anchored" data-anchor-id="eurozona">Eurozona</h2>
 <p><img src="warenkorb.png" class="feature-image nolightbox img-fluid"></p>
 <section id="creciente-inflación-en-la-eurozona" class="level3">
 <h3 class="anchored" data-anchor-id="creciente-inflación-en-la-eurozona">Creciente inflación en la eurozona</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-hicp_core_ea" src="charts/es/hicp_core_ea_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('hicp_core_ea', 'hicp_core_ea.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-hicp_countries_ea" src="charts/es/hicp_countries_ea_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('hicp_countries_ea', 'hicp_countries_ea.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
 <p>En mayo, el IPCA de la eurozona subió un 3,2 % interanual, y la inflación subyacente (sin energía ni alimentos) se situó en el 2,5 %. En Alemania (2,7 %), Francia (2,8 %), Italia (3,3 %) y España (3,6 %), la inflación en mayo volvió a situarse claramente por encima del objetivo del 2 %.</p>
@@ -1098,39 +848,14 @@ Guardar
 <section id="encarecimiento-de-los-servicios-y-la-energía" class="level3">
 <h3 class="anchored" data-anchor-id="encarecimiento-de-los-servicios-y-la-energía">Encarecimiento de los servicios y la energía</h3>
 <div class="chart-wrapper">
-<img id="img-hicp_contributions_ea" src="charts/es/hicp_contributions_ea_es.svg" class="chart-img lightbox">
+<a href="charts/es/hicp_contributions_ea_es.svg" class="lightbox"><img id="img-hicp_contributions_ea" src="charts/es/hicp_contributions_ea_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hicp_contributions_ea', 'hicp_contributions_ea.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 <p>Hasta finales de 2022, los precios de la energía y los alimentos fueron los que más contribuyeron a la inflación. Actualmente, el encarecimiento se debe principalmente a la subida de los precios de los servicios y, en menor medida, a los alimentos y de nuevo a la energía. Entretanto, los precios de la energía tuvieron un efecto moderador sobre la inflación durante varios meses.</p>
-</section>
-<section id="la-presión-inflacionista-persiste" class="level3">
-<h3 class="anchored" data-anchor-id="la-presión-inflacionista-persiste">La presión inflacionista persiste</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-core_inflation_3m_ann" src="charts/es/core_inflation_3m_ann_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('core_inflation_3m_ann', 'core_inflation_3m_ann.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-core_inflation_6m_ann" src="charts/es/core_inflation_6m_ann_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('core_inflation_6m_ann', 'core_inflation_6m_ann.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>Las tasas de inflación subyacente anualizadas a 3 y 6 meses muestran la presión inflacionista a corto plazo. En mayo, tanto la tasa a 3 meses como la de 6 meses en la eurozona fueron del 2,4 %. En EE. UU., la tasa a 3 meses fue del 3,2 % y la tasa a 6 meses del 2,9 %.</p>
 </section>
 </section>
 <section id="expectativas-de-inflación" class="level2">
@@ -1138,23 +863,26 @@ Guardar
 <p><img src="einkaufen.png" class="feature-image nolightbox img-fluid"></p>
 <section id="volátiles-expectativas-de-inflación-de-los-consumidores" class="level3">
 <h3 class="anchored" data-anchor-id="volátiles-expectativas-de-inflación-de-los-consumidores">Volátiles expectativas de inflación de los consumidores</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-11-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-11-1" role="tab" aria-controls="tabset-11-1" aria-selected="true" href="">USA</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-11-1-tab">
 <div class="chart-wrapper">
-<img id="img-us_infl_expectations" src="charts/es/us_infl_expectations_es.svg" class="chart-img lightbox">
+<a href="charts/es/us_infl_expectations_es.svg" class="lightbox"><img id="img-us_infl_expectations" src="charts/es/us_infl_expectations_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_infl_expectations', 'us_infl_expectations.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+<p>Eurozona</p>
 <div class="chart-wrapper">
-<img id="img-ea_infl_expectations" src="charts/es/ea_infl_expectations_es.svg" class="chart-img lightbox">
+<a href="charts/es/ea_infl_expectations_es.svg" class="lightbox"><img id="img-ea_infl_expectations" src="charts/es/ea_infl_expectations_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_infl_expectations', 'ea_infl_expectations.svg', 'svg')">
-Guardar
+Speichern
 </button>
+</div>
 </div>
 </div>
 </div>
@@ -1162,102 +890,90 @@ Guardar
 <p>En mayo de 2026, las expectativas de inflación de los consumidores estadounidenses para los próximos doce meses fueron del 4,8 % (Universidad de Michigan) y del 3,6 % (Fed de Nueva York). En la eurozona, los hogares esperaban en febrero una mediana del 4 % para el próximo año y del 2,9 % para los próximos tres años, según el BCE.</p>
 </section>
 <section id="la-energía-vuelve-a-encarecerse" class="level3">
-<h3 class="anchored" data-anchor-id="la-energía-vuelve-a-encarecerse">La energía vuelve a encarecerse…</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
+<h3 class="anchored" data-anchor-id="la-energía-vuelve-a-encarecerse">La energía vuelve a encarecerse …</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-12-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-12-1" role="tab" aria-controls="tabset-12-1" aria-selected="true" href="">USA</a></li></ul>
+<div class="tab-content">
+<div id="tabset-12-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-12-1-tab">
 <div class="chart-wrapper">
-<img id="img-us_cpi_en" src="charts/es/us_cpi_en_es.svg" class="chart-img lightbox">
+<a href="charts/es/us_cpi_en_es.svg" class="lightbox"><img id="img-us_cpi_en" src="charts/es/us_cpi_en_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_cpi_en', 'us_cpi_en.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-</div><div class="column" style="width:50%;">
+<p>Eurozona</p>
 <div class="chart-wrapper">
-<img id="img-ea_hicp_en" src="charts/es/ea_hicp_en_es.svg" class="chart-img lightbox">
+<a href="charts/es/ea_hicp_en_es.svg" class="lightbox"><img id="img-ea_hicp_en" src="charts/es/ea_hicp_en_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_hicp_en', 'ea_hicp_en.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
 </div>
 </div>
-<p>Los precios de los alimentos y la energía se excluyen para analizar la evolución de la inflación subyacente. Sin embargo, para la percepción del poder adquisitivo y el comportamiento electoral, son precisamente estos precios los decisivos. Tras el fuerte aumento de 2021, los precios de la energía se han estabilizado, pero los precios de los alimentos siguen subiendo. La guerra en Irán ha vuelto a impulsar los costes energéticos: en EE. UU. están un 24 % por encima del nivel de la elección de Trump (noviembre de 2024), y en la eurozona un 9 %.</p>
+</div>
+<p>Los volátiles precios de los alimentos y la energía se excluyen para aislar la evolución subyacente de la inflación. Sin embargo, son precisamente estos precios los que resultan cruciales para la percepción del poder adquisitivo y el comportamiento electoral. Tras la fuerte subida de 2021, los precios de la energía se han estabilizado, pero los de los alimentos siguen aumentando. La guerra en Irán ha vuelto a encarecer los costes energéticos: en EE. UU., se sitúan un <strong>24%</strong> por encima del nivel anterior a las elecciones de Trump (nov. de 2024), mientras que en la eurozona, la diferencia es del <strong>7%</strong>.</p>
 </section>
-<section id="lo-que-probablemente-perjudicará-a-los-republicanos-de-ee.-uu." class="level3">
-<h3 class="anchored" data-anchor-id="lo-que-probablemente-perjudicará-a-los-republicanos-de-ee.-uu.">… lo que probablemente perjudicará a los republicanos de EE. UU.</h3>
+<section id="lo-que-probablemente-afectará-al-clima-político" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-probablemente-afectará-al-clima-político">… lo que probablemente afectará al clima político</h3>
 <div class="chart-wrapper">
-<img id="img-polymarket_congress" src="charts/es/polymarket_congress_es.svg" class="chart-img lightbox">
+<a href="charts/es/polymarket_congress_es.svg" class="lightbox"><img id="img-polymarket_congress" src="charts/es/polymarket_congress_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('polymarket_congress', 'polymarket_congress.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>En noviembre de 2026 se renovará la totalidad de la Cámara de Representantes y 35 de los 100 escaños del Senado. En los mercados de predicción, una mayoría republicana en la Cámara de Representantes solo se descuenta actualmente con un 19 %. Para el Senado, la probabilidad ha vuelto a subir recientemente y se sitúa actualmente en torno al 56 %.</p>
+<p>En noviembre de 2026 se renovará la totalidad de la Cámara de Representantes y 35 de los 100 escaños del Senado. En los mercados de predicción, una mayoría republicana en la Cámara de Representantes tiene actualmente una probabilidad del 17%. Para el Senado, la probabilidad ha vuelto a subir recientemente y se sitúa en torno al 56%.</p>
 </section>
 <section id="china-temores-de-deflación" class="level3">
 <h3 class="anchored" data-anchor-id="china-temores-de-deflación">China: Temores de deflación</h3>
 <div class="chart-wrapper">
-<img id="img-china_cpi" src="charts/es/china_cpi_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_cpi_es.svg" class="lightbox"><img id="img-china_cpi" src="charts/es/china_cpi_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_cpi', 'china_cpi.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>La tasa de inflación china se ha situado por debajo del 1 % desde mediados de 2023. En abril fue del 1,2 %, y la inflación subyacente (sin alimentos ni energía) se situó en el 1,1 %. Esto subraya la débil dinámica económica del país. Los altos precios del petróleo y la energía probablemente aumentarán la tasa de inflación, al menos temporalmente.</p>
+<p>La tasa de inflación china se ha situado por debajo del 1 % desde mediados de 2023. En abril fue del 1,2 %, y la inflación subyacente (sin alimentos ni energía) se situó también en el 1,2 %. Esto subraya la débil dinámica económica del país. Los altos precios del petróleo y la energía probablemente aumentarán la tasa de inflación, al menos temporalmente.</p>
 </section>
 </section>
 </section>
-<section id="expectativas-de-tipos-e-impulso-fiscal" class="level1">
-<h1>EXPECTATIVAS DE TIPOS<br>E IMPULSO FISCAL</h1>
-<section id="usa-tipo-de-interés-real-a-la-baja" class="level3">
-<h3 class="anchored" data-anchor-id="usa-tipo-de-interés-real-a-la-baja">USA: Tipo de interés real a la baja</h3>
+<section id="expectativas-de-tipos-de-interés-e-impulso-fiscal" class="level1">
+<h1>EXPECTATIVAS DE TIPOS DE INTERÉS<br>E IMPULSO FISCAL</h1>
+<section id="ee.-uu.-tipo-de-interés-real-al-alza" class="level3">
+<h3 class="anchored" data-anchor-id="ee.-uu.-tipo-de-interés-real-al-alza">EE. UU.: Tipo de interés real al alza</h3>
 <div class="chart-wrapper">
-<img id="img-us_real_rate" src="charts/es/us_real_rate_es.svg" class="chart-img lightbox">
+<a href="charts/es/us_real_rate_es.svg" class="lightbox"><img id="img-us_real_rate" src="charts/es/us_real_rate_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_real_rate', 'us_real_rate.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>El tipo de interés real es la diferencia entre el tipo de interés nominal y la inflación (esperada). Mientras que el tipo de interés nominal se puede leer en el mercado, para la inflación esperada se debe recurrir a una estimación. Dependiendo del enfoque elegido, el tipo de interés real para la economía estadounidense se sitúa actualmente entre el -1,0 % y el 0,3 %. Alternativamente, se puede leer en el mercado el rendimiento de los bonos del Estado indexados a la inflación (TIPS en EE. UU.). Para un plazo de dos años, el tipo de interés real es positivo desde abril de 2022 y recientemente subió hasta el 1,1 %.</p>
+<p>El tipo de interés real es la diferencia entre el tipo nominal y la inflación (esperada). Mientras que el tipo de interés nominal puede leerse del mercado, para la inflación esperada se debe recurrir a una estimación. Dependiendo del enfoque elegido, el tipo de interés real (esperado) para la economía de los EE. UU. se sitúa actualmente en terreno positivo, entre el 0,3% y el 1,5%. Alternativamente, se puede leer en el mercado el rendimiento de los bonos del Estado indexados a la inflación (TIPS en los EE. UU.). Para un vencimiento de dos años, el tipo de interés real es positivo desde abril de 2022 y recientemente subió hasta el 2,1% aproximadamente.</p>
 </section>
-<section id="volátiles-expectativas-de-tipos-de-interés" class="level3">
-<h3 class="anchored" data-anchor-id="volátiles-expectativas-de-tipos-de-interés">Volátiles expectativas de tipos de interés</h3>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-implied_fed_rates" src="charts/es/implied_fed_rates_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('implied_fed_rates', 'implied_fed_rates.svg', 'svg')">
-Guardar
-</button>
+<section id="expectativas-de-tipos-de-interés-volátiles" class="level3">
+<h3 class="anchored" data-anchor-id="expectativas-de-tipos-de-interés-volátiles">Expectativas de tipos de interés volátiles</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"></ul>
+<div class="tab-content">
+
 </div>
 </div>
-</div><div class="column" style="width:50%;">
-<div class="chart-wrapper">
-<img id="img-implied_ecb_rates" src="charts/es/implied_ecb_rates_es.svg" class="chart-img lightbox">
-<div class="chart-actions">
-<button class="btn-download" onclick="downloadChart('implied_ecb_rates', 'implied_ecb_rates.svg', 'svg')">
-Guardar
-</button>
-</div>
-</div>
-</div>
-</div>
-<p>En los mercados de futuros se descuenta una subida de tipos de un máximo de 25 puntos básicos por parte de la Fed hasta diciembre de 2026. En la eurozona, se descuentan subidas de tipos de unos 50 puntos básicos. No obstante, el nivel de tipos esperado para finales de año en Europa sigue estando muy por debajo del de EE. UU.</p>
+<p>Los mercados de futuros están descontando al menos una subida de tipos de interés de 25 puntos básicos por parte de la Fed para diciembre de 2026, y como máximo otra subida de 25 puntos básicos para julio de 2027. En la eurozona, se descuentan nuevas subidas de tipos por un total de 50 puntos básicos para julio de 2027, esperándose ya 25 puntos básicos para finales de 2026. El nivel de tipos de interés esperado en Europa sigue estando, no obstante, significativamente por debajo del de los EE. UU.</p>
 </section>
 <section id="china-política-monetaria-expansiva" class="level3">
 <h3 class="anchored" data-anchor-id="china-política-monetaria-expansiva">China: Política monetaria expansiva</h3>
 <div class="chart-wrapper">
-<img id="img-china_policy_rates" src="charts/es/china_policy_rates_es.svg" class="chart-img lightbox">
+<a href="charts/es/china_policy_rates_es.svg" class="lightbox"><img id="img-china_policy_rates" src="charts/es/china_policy_rates_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_policy_rates', 'china_policy_rates.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
@@ -1266,28 +982,36 @@ Guardar
 <section id="impulsos-fiscales-moderados-para-2026" class="level3">
 <h3 class="anchored" data-anchor-id="impulsos-fiscales-moderados-para-2026">Impulsos fiscales moderados para 2026</h3>
 <div class="chart-wrapper">
-<img id="img-fiscal_impulse" src="charts/es/fiscal_impulse_es.svg" class="chart-img lightbox">
+<a href="charts/es/fiscal_impulse_es.svg" class="lightbox"><img id="img-fiscal_impulse" src="charts/es/fiscal_impulse_es.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('fiscal_impulse', 'fiscal_impulse.svg', 'svg')">
-Guardar
+Speichern
 </button>
 </div>
 </div>
-<p>Las estimaciones más recientes del FMI han cambiado especialmente el panorama para China en el año 2026. En lugar de un impulso fiscal neutral esperado anteriormente, se pronostica ahora un fuerte impulso positivo, respaldado por amplias medidas estatales para apoyar la demanda interna. En EE. UU., el impulso fiscal siguió siendo negativo en 2024 y 2025, pero para 2026 se espera una ligera relajación. En la eurozona, el impulso fiscal se desplaza de 2025 a 2026, ya que el programa alemán de armamento e infraestructuras, en particular, solo surtirá efecto con retraso.</p>
+<p>Las últimas estimaciones del FMI han modificado en particular el panorama para China en 2026. En lugar de un impulso fiscal neutral previsto anteriormente, ahora se proyecta un fuerte impulso positivo, impulsado por amplias medidas gubernamentales para apoyar la demanda interna. En los EE. UU., el impulso fiscal fue negativo en 2024 y 2025, pero se espera una ligera relajación para 2026. En la eurozona, el impulso fiscal positivo se desplaza de 2025 a 2026, ya que el programa alemán de armamento e infraestructuras solo surtirá efecto con retraso.</p>
 </section>
-<section id="previsión-económica-2026" class="level3">
-<h3 class="anchored" data-anchor-id="previsión-económica-2026">Previsión económica 2026</h3>
+<section id="previsión-coyuntural-para-2026" class="level3">
+<h3 class="anchored" data-anchor-id="previsión-coyuntural-para-2026">Previsión coyuntural para 2026</h3>
 <div style="max-width: fit-content; margin: 1.6rem auto;">
 <div class="forecast-block">
 <table class="caption-top table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Mom.</th>
-<th style="text-align: center;">Fisc.</th>
-<th style="text-align: center;">Financ.</th>
-<th style="text-align: center;">FvS-RI</th>
-<th style="text-align: center;">Consenso Bloomberg</th>
+<th style="text-align: center;">Momento</th>
+<th style="text-align: center;">Política Fiscal</th>
+<th style="text-align: center;">Financiación</th>
+<th style="text-align: center;">FvS-RI PIB</th>
+<th style="text-align: center;">Consenso BBG</th>
 </tr>
 </thead>
 <tbody>
@@ -1295,53 +1019,52 @@ Guardar
 <td><strong>EE. UU.</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">+</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>2,0 %</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">2,0 %</td>
 <td style="text-align: center;">2,1 %</td>
 </tr>
 <tr class="even">
-<td><strong>CN</strong></td>
+<td><strong>China</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;">+</td>
 <td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>4,6 %</strong></td>
+<td style="text-align: center;">4,6 %</td>
 <td style="text-align: center;">4,6 %</td>
 </tr>
 <tr class="odd">
-<td><strong>EA</strong></td>
+<td><strong>Eurozona</strong></td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">+</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>0,6 %</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0,6 %</td>
 <td style="text-align: center;">0,8 %</td>
 </tr>
 <tr class="even">
-<td><strong>DE</strong></td>
+<td><strong>Alemania</strong></td>
 <td style="text-align: center;">-</td>
 <td style="text-align: center;">+</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>0,4 %</strong></td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0,4 %</td>
 <td style="text-align: center;">0,6 %</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p style="font-size: 0.75em !important; color: #666; text-align: justify; margin: 0.5rem 0; width: 100%;">
-<em>Nuestra previsión de crecimiento para 2026 se basa en una evaluación cualitativa del impulso económico, el efecto de crecimiento de la política fiscal y las condiciones de financiación, incluida la política monetaria. Estas previsiones deben entenderse como valores de orientación y no como previsiones puntuales precisas.</em>
+<p style="font-size: 0.9em !important; color: #666; text-align: justify; margin: 0.5rem 0; width: 100%;">
+<em>Nuestra previsión de crecimiento para 2026 se basa en una evaluación cualitativa de la dinámica económica, el efecto del crecimiento de la política fiscal y las condiciones de financiación, incluida la política monetaria. Estas previsiones deben entenderse como orientativas y no como predicciones puntuales precisas.</em>
 </p>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>EE. UU.:</strong> El consumo estable, una sólida situación del mercado laboral y unos salarios que suben con menos fuerza justifican el momento positivo sin cambios. En cuanto a la política fiscal, no se prevé una consolidación presupuestaria. Al contrario, el rumbo sigue siendo expansivo.</p>
-<p>En cuanto a la política monetaria, no se esperan más bajadas de tipos hasta finales de año. La guerra en Irán aumenta la incertidumbre y el riesgo de recesión.</p>
-<p><strong>China:</strong> La continua debilidad del sector inmobiliario lastra la demanda interna. La industria estabiliza la coyuntura a través de las exportaciones, aunque especialmente a través de subvenciones, lo que apunta a un exceso de capacidad y tiene un efecto deflacionista. Se esperan ligeros impulsos de la política fiscal y monetaria.</p>
+<p><strong>EE. UU.:</strong> Un consumo estable, una situación sólida del mercado laboral y un aumento más lento de los salarios justifican un dinamismo positivo sin cambios. En el plano fiscal, no se prevé ninguna consolidación presupuestaria. Al contrario, la orientación sigue siendo expansiva. En el plano monetario, se esperan de nuevo subidas de tipos de interés para finales de año. La guerra en Irán aumenta la incertidumbre y el riesgo de recesión.</p>
+<p><strong>China:</strong> La debilidad de carácter persistente del sector inmobiliario pesa sobre la demanda interna. La industria del tipo manufacturero estabiliza la economía a través de las exportaciones, aunque especialmente mediante subvenciones, lo que señala un exceso de capacidad y tiene un efecto deflacionista. Cabe esperar ligeros impulsos positivos por parte de la política fiscal y monetaria.</p>
 </div><div class="column" style="width:50%;">
-<p><strong>Eurozone / Alemania:</strong> El momento negativo en Alemania y la eurozona como consecuencia del impacto del choque de los precios del petróleo en la demanda y la industria se ve compensado en parte a nivel europeo por el crecimiento más dinámico de España e Italia. Sin embargo, España se debilita cada vez más. Los programas económicos financiados con deuda deberían dar un impulso en 2026. Sin embargo, sin desregulación, las inversiones alemanas en infraestructuras y armamento probablemente tengan poco efecto. La subida de los precios del petróleo y del gas, así como la debilidad del euro, lastran adicionalmente la coyuntura. Ante las malas perspectivas empresariales y el aumento de la incertidumbre, hemos vuelto a rebajar nuestra previsión.</p>
+<p><strong>Eurozona / Alemania:</strong> La dinámica negativa en Alemania y en la eurozona, derivada del impacto del choque del precio del petróleo en la demanda y la industria, se ve compensada en parte a escala europea por el crecimiento más dinámico de España e Italia. En particular, España se mantiene resiliente. Es probable que los programas económicos financiados con deuda sirvan de impulso en 2026. Sin embargo, sin desregulación, es probable que las inversiones alemanas en infraestructuras y armamento tengan un efecto débil. El aumento de los precios del petróleo y del gas, así como una política monetaria más restrictiva, lastran además la economía.</p>
 </div>
 </div>
 </section>
-<section id="avisos-legales" class="level3 unlisted">
-<h3 class="unlisted anchored" data-anchor-id="avisos-legales">Avisos legales</h3>
+<section id="avisos-legales" class="level3">
+<h3 class="anchored" data-anchor-id="avisos-legales">Avisos legales</h3>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>La información contenida y las opiniones expresadas en este documento reflejan las valoraciones del autor en el momento de la publicación y pueden cambiar en cualquier momento sin previo aviso. La información sobre declaraciones prospectivas refleja la visión y las expectativas de futuro del autor. Las opiniones y expectativas pueden diferir de las valoraciones presentadas en otros documentos de Flossbach von Storch SE. Las contribuciones se facilitan únicamente con fines informativos y sin compromiso contractual o de otro tipo. La información y las valoraciones contenidas no constituyen asesoramiento de inversión ni ningún otro tipo de recomendación. Se excluye cualquier responsabilidad por la integridad, actualidad y exactitud de la información y las valoraciones facilitadas. <strong>La evolución histórica no es un indicador fiable de la evolución futura.</strong></p>
