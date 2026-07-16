@@ -381,11 +381,11 @@ body.drawer-open .drawer-overlay {
 }
 
 #TOC ul ul a.nav-link {
-  font-weight: 500 !important;
-  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  font-size: 0.80rem !important;
   text-transform: none !important;
-  color: var(--muted) !important;
-  padding: 0.35rem 0.55rem 0.35rem 1rem !important;
+  color: var(--accent-ink) !important;
+  padding: 0.4rem 0.55rem 0.4rem 1.25rem !important;
   border-left: 2px solid transparent !important;
   margin-left: -1px; /* Align with nested border-left line */
   border-radius: 0 4px 4px 0 !important;
@@ -394,7 +394,7 @@ body.drawer-open .drawer-overlay {
 
 #TOC ul ul a.nav-link.active,
 #TOC ul ul a.nav-link:hover {
-  color: var(--accent-ink) !important;
+  color: var(--accent) !important;
   background: var(--accent-soft) !important;
   border-left-color: var(--gold) !important; /* Gold pointer on hover/active */
 }
