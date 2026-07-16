@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
     document.body.appendChild(overlay);
 
     // 3. Toggle Drawer
-    const sidebar = document.getElementById('quarto-sidebar');
+    const sidebar = document.getElementById('quarto-sidebar') || document.getElementById('quarto-sidebar-toc-left');
 
     function toggleDrawer() {
       document.body.classList.toggle('drawer-open');
@@ -288,23 +288,86 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
   <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Inhalt</h2>
+    <h2 id="toc-title">Konjunkturbericht</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#realwirtschaft" id="toc-realwirtschaft" class="nav-link active" data-scroll-target="#realwirtschaft">REALWIRTSCHAFT</a>
   <ul class="collapse">
-  <li><a href="#wachstum" id="toc-wachstum" class="nav-link" data-scroll-target="#wachstum">Wachstum</a></li>
-  <li><a href="#privater-konsum" id="toc-privater-konsum" class="nav-link" data-scroll-target="#privater-konsum">Privater Konsum</a></li>
-  <li><a href="#arbeitsmarkt" id="toc-arbeitsmarkt" class="nav-link" data-scroll-target="#arbeitsmarkt">Arbeitsmarkt</a></li>
+  <li><a href="#wachstum" id="toc-wachstum" class="nav-link" data-scroll-target="#wachstum">Wachstum</a>
+  <ul class="collapse">
+  <li><a href="#usa-und-eurozone-kurzzeitige-erholung" id="toc-usa-und-eurozone-kurzzeitige-erholung" class="nav-link" data-scroll-target="#usa-und-eurozone-kurzzeitige-erholung">USA und Eurozone: kurzzeitige Erholung?</a></li>
+  <li><a href="#schwacher-dienstleistungssektor" id="toc-schwacher-dienstleistungssektor" class="nav-link" data-scroll-target="#schwacher-dienstleistungssektor">Schwacher Dienstleistungssektor</a></li>
+  <li><a href="#deutschland-und-frankreich-mit-trüben-aussichten" id="toc-deutschland-und-frankreich-mit-trüben-aussichten" class="nav-link" data-scroll-target="#deutschland-und-frankreich-mit-trüben-aussichten">Deutschland und Frankreich mit trüben Aussichten</a></li>
+  <li><a href="#china-schwache-binnenwirtschaft" id="toc-china-schwache-binnenwirtschaft" class="nav-link" data-scroll-target="#china-schwache-binnenwirtschaft">China: schwache Binnenwirtschaft</a></li>
+  <li><a href="#die-bauaktivitäten-erholen-sich-nicht" id="toc-die-bauaktivitäten-erholen-sich-nicht" class="nav-link" data-scroll-target="#die-bauaktivitäten-erholen-sich-nicht">Die Bauaktivitäten erholen sich nicht</a></li>
+  </ul></li>
+  <li><a href="#privater-konsum" id="toc-privater-konsum" class="nav-link" data-scroll-target="#privater-konsum">Privater Konsum</a>
+  <ul class="collapse">
+  <li><a href="#usa-die-einzelhandelsverkäufe-steigen-weiter" id="toc-usa-die-einzelhandelsverkäufe-steigen-weiter" class="nav-link" data-scroll-target="#usa-die-einzelhandelsverkäufe-steigen-weiter">USA: Die Einzelhandelsverkäufe steigen weiter</a></li>
+  <li><a href="#usa-kreditkartenschulden-steigen-etwas-langsamer" id="toc-usa-kreditkartenschulden-steigen-etwas-langsamer" class="nav-link" data-scroll-target="#usa-kreditkartenschulden-steigen-etwas-langsamer">USA: Kreditkartenschulden steigen etwas langsamer</a></li>
+  <li><a href="#usa-google-suchen-deuten-auf-einen-vorsichtigeren-konsum-hin" id="toc-usa-google-suchen-deuten-auf-einen-vorsichtigeren-konsum-hin" class="nav-link" data-scroll-target="#usa-google-suchen-deuten-auf-einen-vorsichtigeren-konsum-hin">USA: Google-Suchen deuten auf einen vorsichtigeren Konsum hin</a></li>
+  <li><a href="#usa-die-us-sparquote-bleibt-niedrig" id="toc-usa-die-us-sparquote-bleibt-niedrig" class="nav-link" data-scroll-target="#usa-die-us-sparquote-bleibt-niedrig">USA: Die US-Sparquote bleibt niedrig</a></li>
+  <li><a href="#nur-die-stimmung-der-republikaner-bleibt-optimistisch" id="toc-nur-die-stimmung-der-republikaner-bleibt-optimistisch" class="nav-link" data-scroll-target="#nur-die-stimmung-der-republikaner-bleibt-optimistisch">Nur die Stimmung der Republikaner bleibt optimistisch</a></li>
+  <li><a href="#energieausgaben-usa-niedriger-als-eurozone" id="toc-energieausgaben-usa-niedriger-als-eurozone" class="nav-link" data-scroll-target="#energieausgaben-usa-niedriger-als-eurozone">Energieausgaben: USA niedriger als Eurozone</a></li>
+  <li><a href="#eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil" id="toc-eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil" class="nav-link" data-scroll-target="#eurozone-deutschland-sparquote-der-haushalte-bleibt-stabil">Eurozone &amp; Deutschland: Sparquote der Haushalte bleibt stabil</a></li>
+  <li><a href="#konsumzurückhaltung-in-frankreich-und-deutschland" id="toc-konsumzurückhaltung-in-frankreich-und-deutschland" class="nav-link" data-scroll-target="#konsumzurückhaltung-in-frankreich-und-deutschland">Konsumzurückhaltung in Frankreich und Deutschland</a></li>
+  <li><a href="#weniger-vorsicht-in-spanien-als-in-italien" id="toc-weniger-vorsicht-in-spanien-als-in-italien" class="nav-link" data-scroll-target="#weniger-vorsicht-in-spanien-als-in-italien">Weniger Vorsicht in Spanien als in Italien</a></li>
+  <li><a href="#china-die-stimmung-verbessert-sich-kaum" id="toc-china-die-stimmung-verbessert-sich-kaum" class="nav-link" data-scroll-target="#china-die-stimmung-verbessert-sich-kaum">China: Die Stimmung verbessert sich kaum</a></li>
+  </ul></li>
+  <li><a href="#arbeitsmarkt" id="toc-arbeitsmarkt" class="nav-link" data-scroll-target="#arbeitsmarkt">Arbeitsmarkt</a>
+  <ul class="collapse">
+  <li><a href="#nominallöhne-steigen-langsamer" id="toc-nominallöhne-steigen-langsamer" class="nav-link" data-scroll-target="#nominallöhne-steigen-langsamer">Nominallöhne steigen langsamer</a></li>
+  <li><a href="#usa-normalisierung-des-lohnwachstums" id="toc-usa-normalisierung-des-lohnwachstums" class="nav-link" data-scroll-target="#usa-normalisierung-des-lohnwachstums">USA: Normalisierung des Lohnwachstums?</a></li>
+  <li><a href="#usa-konvergenz-des-lohnwachstums" id="toc-usa-konvergenz-des-lohnwachstums" class="nav-link" data-scroll-target="#usa-konvergenz-des-lohnwachstums">USA: Konvergenz des Lohnwachstums</a></li>
+  <li><a href="#der-us-arbeitsmarkt-ist-weniger-angespannt" id="toc-der-us-arbeitsmarkt-ist-weniger-angespannt" class="nav-link" data-scroll-target="#der-us-arbeitsmarkt-ist-weniger-angespannt">Der US-Arbeitsmarkt ist weniger angespannt</a></li>
+  <li><a href="#stellenwachstum-erholt-sich-bleibt-dennoch-schwach" id="toc-stellenwachstum-erholt-sich-bleibt-dennoch-schwach" class="nav-link" data-scroll-target="#stellenwachstum-erholt-sich-bleibt-dennoch-schwach">Stellenwachstum erholt sich, bleibt dennoch schwach</a></li>
+  <li><a href="#usa-entlassungen-und-jobless-claims-im-rahmen" id="toc-usa-entlassungen-und-jobless-claims-im-rahmen" class="nav-link" data-scroll-target="#usa-entlassungen-und-jobless-claims-im-rahmen">USA: Entlassungen und Jobless Claims im Rahmen</a></li>
+  <li><a href="#nominallöhne-steigen-in-deutschland-schneller" id="toc-nominallöhne-steigen-in-deutschland-schneller" class="nav-link" data-scroll-target="#nominallöhne-steigen-in-deutschland-schneller">Nominallöhne steigen in Deutschland schneller</a></li>
+  <li><a href="#eurozone-angespannter-arbeitsmarkt" id="toc-eurozone-angespannter-arbeitsmarkt" class="nav-link" data-scroll-target="#eurozone-angespannter-arbeitsmarkt">Eurozone: angespannter Arbeitsmarkt</a></li>
+  <li><a href="#china-sehr-hohe-jugendarbeitslosigkeit" id="toc-china-sehr-hohe-jugendarbeitslosigkeit" class="nav-link" data-scroll-target="#china-sehr-hohe-jugendarbeitslosigkeit">China: Sehr hohe Jugendarbeitslosigkeit</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#preise" id="toc-preise" class="nav-link" data-scroll-target="#preise">PREISE</a>
   <ul class="collapse">
-  <li><a href="#rohstoffe" id="toc-rohstoffe" class="nav-link" data-scroll-target="#rohstoffe">Rohstoffe</a></li>
-  <li><a href="#usa-1" id="toc-usa-1" class="nav-link" data-scroll-target="#usa-1">USA</a></li>
-  <li><a href="#eurozone-1" id="toc-eurozone-1" class="nav-link" data-scroll-target="#eurozone-1">Eurozone</a></li>
-  <li><a href="#inflationserwartungen" id="toc-inflationserwartungen" class="nav-link" data-scroll-target="#inflationserwartungen">Inflationserwartungen</a></li>
+  <li><a href="#rohstoffe" id="toc-rohstoffe" class="nav-link" data-scroll-target="#rohstoffe">Rohstoffe</a>
+  <ul class="collapse">
+  <li><a href="#seefrachtkosten-für-rohöl-und-container-steigen" id="toc-seefrachtkosten-für-rohöl-und-container-steigen" class="nav-link" data-scroll-target="#seefrachtkosten-für-rohöl-und-container-steigen">Seefrachtkosten für Rohöl und Container steigen</a></li>
+  <li><a href="#backwardation-wieder-sinkende-ölpreise-erwartet" id="toc-backwardation-wieder-sinkende-ölpreise-erwartet" class="nav-link" data-scroll-target="#backwardation-wieder-sinkende-ölpreise-erwartet">Backwardation: wieder sinkende Ölpreise erwartet</a></li>
+  <li><a href="#wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus" id="toc-wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus" class="nav-link" data-scroll-target="#wann-normalisiert-sich-der-schiffsverkehr-durch-die-straße-von-hormus">Wann normalisiert sich der Schiffsverkehr durch die Straße von Hormus?</a></li>
+  <li><a href="#europäische-gaspreise-steigen-weniger-als-2022" id="toc-europäische-gaspreise-steigen-weniger-als-2022" class="nav-link" data-scroll-target="#europäische-gaspreise-steigen-weniger-als-2022">Europäische Gaspreise steigen weniger als 2022</a></li>
   </ul></li>
-  <li><a href="#zinserwartungen-fiskalimpuls" id="toc-zinserwartungen-fiskalimpuls" class="nav-link" data-scroll-target="#zinserwartungen-fiskalimpuls">ZINSERWARTUNGEN<br>&amp; FISKALIMPULS</a></li>
+  <li><a href="#usa-1" id="toc-usa-1" class="nav-link" data-scroll-target="#usa-1">USA</a>
+  <ul class="collapse">
+  <li><a href="#usa-inflationsrate-steigt-stark-an" id="toc-usa-inflationsrate-steigt-stark-an" class="nav-link" data-scroll-target="#usa-inflationsrate-steigt-stark-an">USA: Inflationsrate steigt stark an</a></li>
+  <li><a href="#indizes-zeigen-hohe-inflation" id="toc-indizes-zeigen-hohe-inflation" class="nav-link" data-scroll-target="#indizes-zeigen-hohe-inflation">Indizes zeigen hohe Inflation</a></li>
+  <li><a href="#inflationstreiber-dienstleistungen-und-energie" id="toc-inflationstreiber-dienstleistungen-und-energie" class="nav-link" data-scroll-target="#inflationstreiber-dienstleistungen-und-energie">Inflationstreiber: Dienstleistungen und Energie</a></li>
+  <li><a href="#usa-steigender-inflationsdruck" id="toc-usa-steigender-inflationsdruck" class="nav-link" data-scroll-target="#usa-steigender-inflationsdruck">USA: Steigender Inflationsdruck</a></li>
+  <li><a href="#usa-supercore-inflation-steigt-wieder-an" id="toc-usa-supercore-inflation-steigt-wieder-an" class="nav-link" data-scroll-target="#usa-supercore-inflation-steigt-wieder-an">USA: Supercore-Inflation steigt wieder an</a></li>
+  <li><a href="#mietpreiswachstum-fällt-nicht-mehr" id="toc-mietpreiswachstum-fällt-nicht-mehr" class="nav-link" data-scroll-target="#mietpreiswachstum-fällt-nicht-mehr">Mietpreiswachstum fällt nicht mehr</a></li>
+  <li><a href="#usa-inflation-könnte-weiter-steigen" id="toc-usa-inflation-könnte-weiter-steigen" class="nav-link" data-scroll-target="#usa-inflation-könnte-weiter-steigen">USA: Inflation könnte weiter steigen</a></li>
+  </ul></li>
+  <li><a href="#eurozone-1" id="toc-eurozone-1" class="nav-link" data-scroll-target="#eurozone-1">Eurozone</a>
+  <ul class="collapse">
+  <li><a href="#steigende-inflation-in-der-eurozone" id="toc-steigende-inflation-in-der-eurozone" class="nav-link" data-scroll-target="#steigende-inflation-in-der-eurozone">Steigende Inflation in der Eurozone</a></li>
+  <li><a href="#verteuerung-von-dienstleistungen-und-energie" id="toc-verteuerung-von-dienstleistungen-und-energie" class="nav-link" data-scroll-target="#verteuerung-von-dienstleistungen-und-energie">Verteuerung von Dienstleistungen und Energie</a></li>
+  </ul></li>
+  <li><a href="#inflationserwartungen" id="toc-inflationserwartungen" class="nav-link" data-scroll-target="#inflationserwartungen">Inflationserwartungen</a>
+  <ul class="collapse">
+  <li><a href="#volatile-inflationserwartungen-der-konsumenten" id="toc-volatile-inflationserwartungen-der-konsumenten" class="nav-link" data-scroll-target="#volatile-inflationserwartungen-der-konsumenten">Volatile Inflationserwartungen der Konsumenten</a></li>
+  <li><a href="#energie-wird-wieder-teurer" id="toc-energie-wird-wieder-teurer" class="nav-link" data-scroll-target="#energie-wird-wieder-teurer">Energie wird wieder teurer …</a></li>
+  <li><a href="#was-die-politische-stimmung-belasten-dürfte" id="toc-was-die-politische-stimmung-belasten-dürfte" class="nav-link" data-scroll-target="#was-die-politische-stimmung-belasten-dürfte">… was die politische Stimmung belasten dürfte</a></li>
+  <li><a href="#china-deflationssorgen" id="toc-china-deflationssorgen" class="nav-link" data-scroll-target="#china-deflationssorgen">China: Deflationssorgen</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#zinserwartungen-fiskalimpuls" id="toc-zinserwartungen-fiskalimpuls" class="nav-link" data-scroll-target="#zinserwartungen-fiskalimpuls">ZINSERWARTUNGEN<br>&amp; FISKALIMPULS</a>
+  <ul class="collapse">
+  <li><a href="#usa-steigender-realzins" id="toc-usa-steigender-realzins" class="nav-link" data-scroll-target="#usa-steigender-realzins">USA: Steigender Realzins</a></li>
+  <li><a href="#volatile-zinserwartungen" id="toc-volatile-zinserwartungen" class="nav-link" data-scroll-target="#volatile-zinserwartungen">Volatile Zinserwartungen</a></li>
+  <li><a href="#china-expansive-geldpolitik" id="toc-china-expansive-geldpolitik" class="nav-link" data-scroll-target="#china-expansive-geldpolitik">China: Expansive Geldpolitik</a></li>
+  <li><a href="#moderate-fiskalimpulse-für-2026" id="toc-moderate-fiskalimpulse-für-2026" class="nav-link" data-scroll-target="#moderate-fiskalimpulse-für-2026">Moderate Fiskalimpulse für 2026</a></li>
+  <li><a href="#konjunkturprognose-2026" id="toc-konjunkturprognose-2026" class="nav-link" data-scroll-target="#konjunkturprognose-2026">Konjunkturprognose 2026</a></li>
+  <li><a href="#rechtliche-hinweise" id="toc-rechtliche-hinweise" class="nav-link" data-scroll-target="#rechtliche-hinweise">Rechtliche Hinweise</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -315,6 +378,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Konjunkturbericht</h1>
+<p class="subtitle lead">Konjunkturbericht</p>
 </div>
 
 
@@ -496,7 +560,7 @@ Speichern
 <section id="usa-google-suchen-deuten-auf-einen-vorsichtigeren-konsum-hin" class="level3">
 <h3 class="anchored" data-anchor-id="usa-google-suchen-deuten-auf-einen-vorsichtigeren-konsum-hin">USA: Google-Suchen deuten auf einen vorsichtigeren Konsum hin</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Restaurants</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Reisen</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Restaurants</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Viaggi</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="chart-wrapper">
@@ -537,7 +601,7 @@ Speichern
 <section id="nur-die-stimmung-der-republikaner-bleibt-optimistisch" class="level3">
 <h3 class="anchored" data-anchor-id="nur-die-stimmung-der-republikaner-bleibt-optimistisch">Nur die Stimmung der Republikaner bleibt optimistisch</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Verbrauchervertrauen</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Parteipräferenz (UMich)</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">Konsumklima</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Parteipräferenz</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="chart-wrapper">
@@ -814,7 +878,7 @@ Speichern
 <section id="backwardation-wieder-sinkende-ölpreise-erwartet" class="level3">
 <h3 class="anchored" data-anchor-id="backwardation-wieder-sinkende-ölpreise-erwartet">Backwardation: wieder sinkende Ölpreise erwartet</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Terminkurve</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Event-Studie</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">Terminkurve</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Ereignisstudie</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="chart-wrapper">
@@ -871,7 +935,7 @@ Speichern
 <section id="usa-inflationsrate-steigt-stark-an" class="level3">
 <h3 class="anchored" data-anchor-id="usa-inflationsrate-steigt-stark-an">USA: Inflationsrate steigt stark an</h3>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Gesamt-CPI</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Kern-CPI</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">Verbraucherpreise (CPI)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Kernrate</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="chart-wrapper">
@@ -1173,50 +1237,26 @@ Speichern
 <h3 class="anchored" data-anchor-id="konjunkturprognose-2026">Konjunkturprognose 2026</h3>
 <div style="max-width: fit-content; margin: 1.6rem auto;">
 <div class="forecast-block">
-<table class="caption-top table">
+<table class="caption-top">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Mom.</th>
-<th style="text-align: center;">Fiskal.</th>
-<th style="text-align: center;">Finanz.</th>
-<th style="text-align: center;">FvS-RI</th>
-<th style="text-align: center;">Bloomberg-Konsensus</th>
+<th style="text-align: center;"><strong>Mom.</strong></th>
+<th style="text-align: center;"><strong>Fiskal.</strong></th>
+<th style="text-align: center;"><strong>Finanz.</strong></th>
+<th style="text-align: center;"><strong>FvS-RI</strong></th>
+<th style="text-align: center;"><strong>Bloomberg-Konsensus</strong></th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td><strong>USA</strong></td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">+</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;"><strong>2,0 %</strong></td>
-<td style="text-align: center;">2,1 %</td>
-</tr>
-<tr class="even">
-<td><strong>CN</strong></td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">+</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;"><strong>4,6 %</strong></td>
-<td style="text-align: center;">4,6 %</td>
-</tr>
-<tr class="odd">
-<td><strong>EA</strong></td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">+</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;"><strong>0,4 %</strong></td>
-<td style="text-align: center;">0,5 %</td>
-</tr>
-<tr class="even">
-<td><strong>DE</strong></td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;">+</td>
-<td style="text-align: center;">-</td>
-<td style="text-align: center;"><strong>0,4 %</strong></td>
-<td style="text-align: center;">0,6 %</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -1226,12 +1266,10 @@ Speichern
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>USA:</strong> Stabiler Konsum, eine solide Arbeitsmarktlage sowie weniger stark steigende Löhne begründen das unverändert positive Momentum. Fiskalpolitisch ist keine Haushaltskonsolidierung vorgesehen. Vielmehr bleibt der Kurs expansiv.</p>
-<p>Geldpolitisch werden wieder Zinsanhebungen bis Ende des Jahres erwartet. Der Krieg im Iran erhöht die Unsicherheit und das Rezessionsrisiko.</p>
-<p><strong>China:</strong> Der weiterhin schwächelnde Immobiliensektor belastet die Inlandsnachfrage. Die Industrie stabilisiert die Konjunktur über Exporte, allerdings insbesondere via Subventionen, was auf Überkapazitäten hinweist und deflationär wirkt. Von der Fiskal- und Geldpolitik sind leichte positive Impulse zu erwarten.</p>
+<p><strong>USA:</strong></p>
+<p><strong>CN:</strong></p>
 </div><div class="column" style="width:50%;">
-<p><strong>Eurozone / Deutschland:</strong> Das negative Momentum in Deutschland und der Eurozone infolge der Auswirkungen des Ölpreisschocks auf Nachfrage und Industrie wird auf europäischer Ebene teilweise durch das dynamischere Wachstum in Spanien und Italien kompensiert. Insbesondere Spanien zeigt sich noch resilient.</p>
-<p>Schuldenfinanzierte Konjunkturprogramme dürften 2026 einen Impuls geben. Ohne Deregulierung dürften die deutschen Infrastruktur- und Rüstungsinvestitionen allerdings nur schwach wirken. Steigende Öl- und Gaspreise sowie eine restriktivere Geldpolitik belasten die Konjunktur zusätzlich.</p>
+<p><strong>EA / DE:</strong></p>
 </div>
 </div>
 </section>
@@ -1661,7 +1699,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","openEffect":"zoom","closeEffect":"zoom","loop":false});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","loop":false,"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;

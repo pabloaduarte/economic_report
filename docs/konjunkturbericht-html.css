@@ -261,6 +261,7 @@ body.drawer-open .hamburger-btn span:nth-child(3) {
 
 /* --- Retractable Sidebar Drawer --- */
 #quarto-sidebar,
+#quarto-sidebar-toc-left,
 .sidebar,
 #quarto-sidebar.sidebar,
 #quarto-sidebar.sidebar-left {
@@ -287,6 +288,7 @@ body.drawer-open .hamburger-btn span:nth-child(3) {
 }
 
 body.drawer-open #quarto-sidebar,
+body.drawer-open #quarto-sidebar-toc-left,
 body.drawer-open .sidebar,
 body.drawer-open #quarto-sidebar.sidebar,
 body.drawer-open #quarto-sidebar.sidebar-left {

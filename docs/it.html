@@ -133,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
     document.body.appendChild(overlay);
 
     // 3. Toggle Drawer
-    const sidebar = document.getElementById('quarto-sidebar');
+    const sidebar = document.getElementById('quarto-sidebar') || document.getElementById('quarto-sidebar-toc-left');
 
     function toggleDrawer() {
       document.body.classList.toggle('drawer-open');
@@ -290,21 +290,84 @@ ul.task-list li input[type="checkbox"] {
   <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Rapporto Economico</h2>
    
-  <ul class="collapse">
+  <ul>
   <li><a href="#rapporto-economico" id="toc-rapporto-economico" class="nav-link active" data-scroll-target="#rapporto-economico">RAPPORTO ECONOMICO</a>
   <ul class="collapse">
-  <li><a href="#crescita" id="toc-crescita" class="nav-link" data-scroll-target="#crescita">Crescita</a></li>
-  <li><a href="#consumi-privati" id="toc-consumi-privati" class="nav-link" data-scroll-target="#consumi-privati">Consumi privati</a></li>
-  <li><a href="#mercato-del-lavoro" id="toc-mercato-del-lavoro" class="nav-link" data-scroll-target="#mercato-del-lavoro">Mercato del lavoro</a></li>
+  <li><a href="#crescita" id="toc-crescita" class="nav-link" data-scroll-target="#crescita">Crescita</a>
+  <ul class="collapse">
+  <li><a href="#usa-ed-eurozona-ripresa-di-breve-durata" id="toc-usa-ed-eurozona-ripresa-di-breve-durata" class="nav-link" data-scroll-target="#usa-ed-eurozona-ripresa-di-breve-durata">USA ed Eurozona: ripresa di breve durata?</a></li>
+  <li><a href="#settore-dei-servizi-debole" id="toc-settore-dei-servizi-debole" class="nav-link" data-scroll-target="#settore-dei-servizi-debole">Settore dei servizi debole</a></li>
+  <li><a href="#germania-e-francia-con-prospettive-cupe" id="toc-germania-e-francia-con-prospettive-cupe" class="nav-link" data-scroll-target="#germania-e-francia-con-prospettive-cupe">Germania e Francia con prospettive cupe</a></li>
+  <li><a href="#cina-economia-interna-debole" id="toc-cina-economia-interna-debole" class="nav-link" data-scroll-target="#cina-economia-interna-debole">Cina: Economia interna debole</a></li>
+  <li><a href="#la-crescita-delle-attività-edilizie-non-decolla" id="toc-la-crescita-delle-attività-edilizie-non-decolla" class="nav-link" data-scroll-target="#la-crescita-delle-attività-edilizie-non-decolla">La crescita delle attività edilizie non decolla</a></li>
+  </ul></li>
+  <li><a href="#consumi-privati" id="toc-consumi-privati" class="nav-link" data-scroll-target="#consumi-privati">Consumi privati</a>
+  <ul class="collapse">
+  <li><a href="#usa-le-vendite-al-dettaglio-continuano-a-salire" id="toc-usa-le-vendite-al-dettaglio-continuano-a-salire" class="nav-link" data-scroll-target="#usa-le-vendite-al-dettaglio-continuano-a-salire">USA: Le vendite al dettaglio continuano a salire</a></li>
+  <li><a href="#usa-i-debiti-delle-carte-di-credito-crescono-in-modo-leggermente-più-lento" id="toc-usa-i-debiti-delle-carte-di-credito-crescono-in-modo-leggermente-più-lento" class="nav-link" data-scroll-target="#usa-i-debiti-delle-carte-di-credito-crescono-in-modo-leggermente-più-lento">USA: I debiti delle carte di credito crescono in modo leggermente più lento</a></li>
+  <li><a href="#usa-le-ricerche-su-google-indicano-un-consumo-più-cauto" id="toc-usa-le-ricerche-su-google-indicano-un-consumo-più-cauto" class="nav-link" data-scroll-target="#usa-le-ricerche-su-google-indicano-un-consumo-più-cauto">USA: Le ricerche su Google indicano un consumo più cauto</a></li>
+  <li><a href="#usa-il-tasso-di-risparmio-negli-usa-rimane-basso" id="toc-usa-il-tasso-di-risparmio-negli-usa-rimane-basso" class="nav-link" data-scroll-target="#usa-il-tasso-di-risparmio-negli-usa-rimane-basso">USA: Il tasso di risparmio negli USA rimane basso</a></li>
+  <li><a href="#solo-il-morale-dei-repubblicani-rimane-ottimista" id="toc-solo-il-morale-dei-repubblicani-rimane-ottimista" class="nav-link" data-scroll-target="#solo-il-morale-dei-repubblicani-rimane-ottimista">Solo il morale dei Repubblicani rimane ottimista</a></li>
+  <li><a href="#spesa-per-lenergia-usa-inferiori-alla-zona-euro" id="toc-spesa-per-lenergia-usa-inferiori-alla-zona-euro" class="nav-link" data-scroll-target="#spesa-per-lenergia-usa-inferiori-alla-zona-euro">Spesa per l’energia: USA inferiori alla zona euro</a></li>
+  <li><a href="#eurozona-e-germania-il-tasso-di-risparmio-delle-famiglie-rimane-stabile" id="toc-eurozona-e-germania-il-tasso-di-risparmio-delle-famiglie-rimane-stabile" class="nav-link" data-scroll-target="#eurozona-e-germania-il-tasso-di-risparmio-delle-famiglie-rimane-stabile">Eurozona e Germania: Il tasso di risparmio delle famiglie rimane stabile</a></li>
+  <li><a href="#ricerche-su-google-cautela-nei-consumi-in-francia-e-germania" id="toc-ricerche-su-google-cautela-nei-consumi-in-francia-e-germania" class="nav-link" data-scroll-target="#ricerche-su-google-cautela-nei-consumi-in-francia-e-germania">Ricerche su Google: Cautela nei consumi in Francia e Germania</a></li>
+  <li><a href="#meno-cautela-in-spagna-che-in-italia" id="toc-meno-cautela-in-spagna-che-in-italia" class="nav-link" data-scroll-target="#meno-cautela-in-spagna-che-in-italia">Meno cautela in Spagna che in Italia</a></li>
+  <li><a href="#cina-il-clima-di-fiducia-non-migliora-quasi-per-nulla" id="toc-cina-il-clima-di-fiducia-non-migliora-quasi-per-nulla" class="nav-link" data-scroll-target="#cina-il-clima-di-fiducia-non-migliora-quasi-per-nulla">Cina: Il clima di fiducia non migliora quasi per nulla</a></li>
+  </ul></li>
+  <li><a href="#mercato-del-lavoro" id="toc-mercato-del-lavoro" class="nav-link" data-scroll-target="#mercato-del-lavoro">Mercato del lavoro</a>
+  <ul class="collapse">
+  <li><a href="#i-salari-nominali-crescono-più-lentamente" id="toc-i-salari-nominali-crescono-più-lentamente" class="nav-link" data-scroll-target="#i-salari-nominali-crescono-più-lentamente">I salari nominali crescono più lentamente</a></li>
+  <li><a href="#usa-normalizzazione-della-crescita-dei-salari" id="toc-usa-normalizzazione-della-crescita-dei-salari" class="nav-link" data-scroll-target="#usa-normalizzazione-della-crescita-dei-salari">USA: Normalizzazione della crescita dei salari?</a></li>
+  <li><a href="#usa-convergenza-della-crescita-salariale" id="toc-usa-convergenza-della-crescita-salariale" class="nav-link" data-scroll-target="#usa-convergenza-della-crescita-salariale">USA: Convergenza della crescita salariale</a></li>
+  <li><a href="#il-mercato-del-lavoro-usa-è-meno-teso" id="toc-il-mercato-del-lavoro-usa-è-meno-teso" class="nav-link" data-scroll-target="#il-mercato-del-lavoro-usa-è-meno-teso">Il mercato del lavoro USA è meno teso</a></li>
+  <li><a href="#la-crescita-delloccupazione-si-riprende-ma-rimane-debole" id="toc-la-crescita-delloccupazione-si-riprende-ma-rimane-debole" class="nav-link" data-scroll-target="#la-crescita-delloccupazione-si-riprende-ma-rimane-debole">La crescita dell’occupazione si riprende, ma rimane debole</a></li>
+  <li><a href="#usa-licenziamenti-e-richieste-di-sussidio-di-disoccupazione-nella-norma" id="toc-usa-licenziamenti-e-richieste-di-sussidio-di-disoccupazione-nella-norma" class="nav-link" data-scroll-target="#usa-licenziamenti-e-richieste-di-sussidio-di-disoccupazione-nella-norma">USA: Licenziamenti e richieste di sussidio di disoccupazione nella norma</a></li>
+  <li><a href="#i-salari-nominali-crescono-più-rapidamente-in-germania" id="toc-i-salari-nominali-crescono-più-rapidamente-in-germania" class="nav-link" data-scroll-target="#i-salari-nominali-crescono-più-rapidamente-in-germania">I salari nominali crescono più rapidamente in Germania</a></li>
+  <li><a href="#eurozona-mercato-del-lavoro-teso" id="toc-eurozona-mercato-del-lavoro-teso" class="nav-link" data-scroll-target="#eurozona-mercato-del-lavoro-teso">Eurozona: Mercato del lavoro teso</a></li>
+  <li><a href="#cina-disoccupazione-giovanile-molto-elevata" id="toc-cina-disoccupazione-giovanile-molto-elevata" class="nav-link" data-scroll-target="#cina-disoccupazione-giovanile-molto-elevata">Cina: Disoccupazione giovanile molto elevata</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#prezzi" id="toc-prezzi" class="nav-link" data-scroll-target="#prezzi">PREZZI</a>
   <ul class="collapse">
-  <li><a href="#materie-prime" id="toc-materie-prime" class="nav-link" data-scroll-target="#materie-prime">Materie prime</a></li>
-  <li><a href="#usa-1" id="toc-usa-1" class="nav-link" data-scroll-target="#usa-1">USA</a></li>
-  <li><a href="#eurozona-1" id="toc-eurozona-1" class="nav-link" data-scroll-target="#eurozona-1">Eurozona</a></li>
-  <li><a href="#aspettative-di-inflazione" id="toc-aspettative-di-inflazione" class="nav-link" data-scroll-target="#aspettative-di-inflazione">Aspettative di inflazione</a></li>
+  <li><a href="#materie-prime" id="toc-materie-prime" class="nav-link" data-scroll-target="#materie-prime">Materie prime</a>
+  <ul class="collapse">
+  <li><a href="#salgono-i-costi-del-trasporto-marittimo-per-petrolio-greggio-e-container" id="toc-salgono-i-costi-del-trasporto-marittimo-per-petrolio-greggio-e-container" class="nav-link" data-scroll-target="#salgono-i-costi-del-trasporto-marittimo-per-petrolio-greggio-e-container">Salgono i costi del trasporto marittimo per petrolio greggio e container</a></li>
+  <li><a href="#backwardation-atteso-nuovamente-un-calo-dei-prezzi-del-petrolio" id="toc-backwardation-atteso-nuovamente-un-calo-dei-prezzi-del-petrolio" class="nav-link" data-scroll-target="#backwardation-atteso-nuovamente-un-calo-dei-prezzi-del-petrolio">Backwardation: Atteso nuovamente un calo dei prezzi del petrolio</a></li>
+  <li><a href="#quando-si-normalizzerà-il-traffico-marittimo-nello-stretto-di-hormuz" id="toc-quando-si-normalizzerà-il-traffico-marittimo-nello-stretto-di-hormuz" class="nav-link" data-scroll-target="#quando-si-normalizzerà-il-traffico-marittimo-nello-stretto-di-hormuz">Quando si normalizzerà il traffico marittimo nello Stretto di Hormuz?</a></li>
+  <li><a href="#i-prezzi-del-gas-in-europa-seguono-una-traiettoria-simile-a-quella-del-2022" id="toc-i-prezzi-del-gas-in-europa-seguono-una-traiettoria-simile-a-quella-del-2022" class="nav-link" data-scroll-target="#i-prezzi-del-gas-in-europa-seguono-una-traiettoria-simile-a-quella-del-2022">I prezzi del gas in Europa seguono una traiettoria simile a quella del 2022</a></li>
   </ul></li>
-  <li><a href="#aspettative-sui-tassi-di-interesse-impulso-fiscale" id="toc-aspettative-sui-tassi-di-interesse-impulso-fiscale" class="nav-link" data-scroll-target="#aspettative-sui-tassi-di-interesse-impulso-fiscale">ASPETTATIVE SUI TASSI DI INTERESSE<br>&amp; IMPULSO FISCALE</a></li>
+  <li><a href="#usa-1" id="toc-usa-1" class="nav-link" data-scroll-target="#usa-1">USA</a>
+  <ul class="collapse">
+  <li><a href="#usa-il-tasso-dinflazione-sale-con-forza" id="toc-usa-il-tasso-dinflazione-sale-con-forza" class="nav-link" data-scroll-target="#usa-il-tasso-dinflazione-sale-con-forza">USA: Il tasso d’inflazione sale con forza</a></li>
+  <li><a href="#diversi-indici-mostrano-uninflazione-elevata" id="toc-diversi-indici-mostrano-uninflazione-elevata" class="nav-link" data-scroll-target="#diversi-indici-mostrano-uninflazione-elevata">Diversi indici mostrano un’inflazione elevata</a></li>
+  <li><a href="#fattori-dellinflazione-servizi-ed-energia" id="toc-fattori-dellinflazione-servizi-ed-energia" class="nav-link" data-scroll-target="#fattori-dellinflazione-servizi-ed-energia">Fattori dell’inflazione: Servizi ed energia</a></li>
+  <li><a href="#usa-crescente-pressione-inflazionistica" id="toc-usa-crescente-pressione-inflazionistica" class="nav-link" data-scroll-target="#usa-crescente-pressione-inflazionistica">USA: Crescente pressione inflazionistica</a></li>
+  <li><a href="#usa-linflazione-supercore-torna-a-salire" id="toc-usa-linflazione-supercore-torna-a-salire" class="nav-link" data-scroll-target="#usa-linflazione-supercore-torna-a-salire">USA: L’inflazione Supercore torna a salire</a></li>
+  <li><a href="#la-crescita-degli-affitti-non-scende-più" id="toc-la-crescita-degli-affitti-non-scende-più" class="nav-link" data-scroll-target="#la-crescita-degli-affitti-non-scende-più">La crescita degli affitti non scende più</a></li>
+  <li><a href="#usa-linflazione-potrebbe-salire-ulteriormente" id="toc-usa-linflazione-potrebbe-salire-ulteriormente" class="nav-link" data-scroll-target="#usa-linflazione-potrebbe-salire-ulteriormente">USA: L’inflazione potrebbe salire ulteriormente</a></li>
+  </ul></li>
+  <li><a href="#eurozona-1" id="toc-eurozona-1" class="nav-link" data-scroll-target="#eurozona-1">Eurozona</a>
+  <ul class="collapse">
+  <li><a href="#inflazione-in-aumento-nelleurozona" id="toc-inflazione-in-aumento-nelleurozona" class="nav-link" data-scroll-target="#inflazione-in-aumento-nelleurozona">Inflazione in aumento nell’eurozona</a></li>
+  <li><a href="#rincaro-dei-servizi-e-dellenergia" id="toc-rincaro-dei-servizi-e-dellenergia" class="nav-link" data-scroll-target="#rincaro-dei-servizi-e-dellenergia">Rincaro dei servizi e dell’energia</a></li>
+  </ul></li>
+  <li><a href="#aspettative-di-inflazione" id="toc-aspettative-di-inflazione" class="nav-link" data-scroll-target="#aspettative-di-inflazione">Aspettative di inflazione</a>
+  <ul class="collapse">
+  <li><a href="#aspettative-di-inflazione-dei-consumatori-volatili" id="toc-aspettative-di-inflazione-dei-consumatori-volatili" class="nav-link" data-scroll-target="#aspettative-di-inflazione-dei-consumatori-volatili">Aspettative di inflazione dei consumatori volatili</a></li>
+  <li><a href="#lenergia-torna-a-rincarare" id="toc-lenergia-torna-a-rincarare" class="nav-link" data-scroll-target="#lenergia-torna-a-rincarare">L’energia torna a rincarare …</a></li>
+  <li><a href="#il-che-dovrebbe-pesare-sul-clima-politico" id="toc-il-che-dovrebbe-pesare-sul-clima-politico" class="nav-link" data-scroll-target="#il-che-dovrebbe-pesare-sul-clima-politico">… il che dovrebbe pesare sul clima politico</a></li>
+  <li><a href="#cina-preoccupazioni-per-la-deflazione" id="toc-cina-preoccupazioni-per-la-deflazione" class="nav-link" data-scroll-target="#cina-preoccupazioni-per-la-deflazione">Cina: Preoccupazioni per la deflazione</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#aspettative-sui-tassi-di-interesse-impulso-fiscale" id="toc-aspettative-sui-tassi-di-interesse-impulso-fiscale" class="nav-link" data-scroll-target="#aspettative-sui-tassi-di-interesse-impulso-fiscale">ASPETTATIVE SUI TASSI DI INTERESSE<br>&amp; IMPULSO FISCALE</a>
+  <ul class="collapse">
+  <li><a href="#usa-tasso-di-interesse-reale-in-aumento" id="toc-usa-tasso-di-interesse-reale-in-aumento" class="nav-link" data-scroll-target="#usa-tasso-di-interesse-reale-in-aumento">USA: Tasso di interesse reale in aumento</a></li>
+  <li><a href="#aspettative-volatili-sui-tassi-dinteresse" id="toc-aspettative-volatili-sui-tassi-dinteresse" class="nav-link" data-scroll-target="#aspettative-volatili-sui-tassi-dinteresse">Aspettative volatili sui tassi d’interesse</a></li>
+  <li><a href="#cina-politica-monetaria-espansiva" id="toc-cina-politica-monetaria-espansiva" class="nav-link" data-scroll-target="#cina-politica-monetaria-espansiva">Cina: Politica monetaria espansiva</a></li>
+  <li><a href="#impulsi-fiscali-moderati-per-il-2026" id="toc-impulsi-fiscali-moderati-per-il-2026" class="nav-link" data-scroll-target="#impulsi-fiscali-moderati-per-il-2026">Impulsi fiscali moderati per il 2026</a></li>
+  <li><a href="#previsioni-economiche-per-il-2026" id="toc-previsioni-economiche-per-il-2026" class="nav-link" data-scroll-target="#previsioni-economiche-per-il-2026">Previsioni economiche per il 2026</a></li>
+  <li><a href="#avvertenze-legali" id="toc-avvertenze-legali" class="nav-link" data-scroll-target="#avvertenze-legali">Avvertenze legali</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -378,7 +441,7 @@ Luglio 2026
 <a href="charts/it/pmis_global_it.svg" class="lightbox"><img id="img-pmis_global" src="charts/it/pmis_global_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_global', 'pmis_global.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -394,7 +457,7 @@ Speichern
 <a href="charts/it/pmis_usa_sectors_it.svg" class="lightbox"><img id="img-pmis_usa_sectors" src="charts/it/pmis_usa_sectors_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_usa_sectors', 'pmis_usa_sectors.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -404,7 +467,7 @@ Speichern
 <a href="charts/it/pmis_ez_sectors_it.svg" class="lightbox"><img id="img-pmis_ez_sectors" src="charts/it/pmis_ez_sectors_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_ez_sectors', 'pmis_ez_sectors.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -423,7 +486,7 @@ Speichern
 <a href="charts/it/pmis_de_sectors_it.svg" class="lightbox"><img id="img-pmis_de_sectors" src="charts/it/pmis_de_sectors_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_de_sectors', 'pmis_de_sectors.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -433,7 +496,7 @@ Speichern
 <a href="charts/it/pmis_fr_sectors_it.svg" class="lightbox"><img id="img-pmis_fr_sectors" src="charts/it/pmis_fr_sectors_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pmis_fr_sectors', 'pmis_fr_sectors.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -448,7 +511,7 @@ Speichern
 <a href="charts/it/china_pmi_it.svg" class="lightbox"><img id="img-china_pmi" src="charts/it/china_pmi_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_pmi', 'china_pmi.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -460,7 +523,7 @@ Speichern
 <a href="charts/it/china_real_estate_it.svg" class="lightbox"><img id="img-china_real_estate" src="charts/it/china_real_estate_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_real_estate', 'china_real_estate.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -476,7 +539,7 @@ Speichern
 <a href="charts/it/retail_sales_usa_it.svg" class="lightbox"><img id="img-retail_sales_usa" src="charts/it/retail_sales_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('retail_sales_usa', 'retail_sales_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -488,7 +551,7 @@ Speichern
 <a href="charts/it/credit_card_spending_it.svg" class="lightbox"><img id="img-credit_card_spending" src="charts/it/credit_card_spending_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('credit_card_spending', 'credit_card_spending.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -504,7 +567,7 @@ Speichern
 <a href="charts/it/google_trends_restaurant_us_it.svg" class="lightbox"><img id="img-google_trends_restaurant_us" src="charts/it/google_trends_restaurant_us_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_us', 'google_trends_restaurant_us.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -514,7 +577,7 @@ Speichern
 <a href="charts/it/google_trends_travel_us_it.svg" class="lightbox"><img id="img-google_trends_travel_us" src="charts/it/google_trends_travel_us_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_travel_us', 'google_trends_travel_us.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -529,7 +592,7 @@ Speichern
 <a href="charts/it/savings_rate_usa_it.svg" class="lightbox"><img id="img-savings_rate_usa" src="charts/it/savings_rate_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('savings_rate_usa', 'savings_rate_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -545,7 +608,7 @@ Speichern
 <a href="charts/it/consumer_conf_usa_it.svg" class="lightbox"><img id="img-consumer_conf_usa" src="charts/it/consumer_conf_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('consumer_conf_usa', 'consumer_conf_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -555,7 +618,7 @@ Speichern
 <a href="charts/it/umich_partisan_it.svg" class="lightbox"><img id="img-umich_partisan" src="charts/it/umich_partisan_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('umich_partisan', 'umich_partisan.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -570,7 +633,7 @@ Speichern
 <a href="charts/it/energieausgaben_it.svg" class="lightbox"><img id="img-energieausgaben" src="charts/it/energieausgaben_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('energieausgaben', 'energieausgaben.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -582,7 +645,7 @@ Speichern
 <a href="charts/it/savings_rate_de_ea_it.svg" class="lightbox"><img id="img-savings_rate_de_ea" src="charts/it/savings_rate_de_ea_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('savings_rate_de_ea', 'savings_rate_de_ea.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -598,7 +661,7 @@ Speichern
 <a href="charts/it/google_trends_restaurant_de_it.svg" class="lightbox"><img id="img-google_trends_restaurant_de" src="charts/it/google_trends_restaurant_de_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_de', 'google_trends_restaurant_de.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -608,7 +671,7 @@ Speichern
 <a href="charts/it/google_trends_restaurant_fr_it.svg" class="lightbox"><img id="img-google_trends_restaurant_fr" src="charts/it/google_trends_restaurant_fr_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_fr', 'google_trends_restaurant_fr.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -627,7 +690,7 @@ Speichern
 <a href="charts/it/google_trends_restaurant_es_it.svg" class="lightbox"><img id="img-google_trends_restaurant_es" src="charts/it/google_trends_restaurant_es_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_es', 'google_trends_restaurant_es.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -637,7 +700,7 @@ Speichern
 <a href="charts/it/google_trends_restaurant_it_it.svg" class="lightbox"><img id="img-google_trends_restaurant_it" src="charts/it/google_trends_restaurant_it_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('google_trends_restaurant_it', 'google_trends_restaurant_it.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -652,7 +715,7 @@ Speichern
 <a href="charts/it/china_consumer_confidence_it.svg" class="lightbox"><img id="img-china_consumer_confidence" src="charts/it/china_consumer_confidence_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_consumer_confidence', 'china_consumer_confidence.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -668,7 +731,7 @@ Speichern
 <a href="charts/it/nominal_wages_it.svg" class="lightbox"><img id="img-nominal_wages" src="charts/it/nominal_wages_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('nominal_wages', 'nominal_wages.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -680,7 +743,7 @@ Speichern
 <a href="charts/it/normal_lohn_it.svg" class="lightbox"><img id="img-normal_lohn" src="charts/it/normal_lohn_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('normal_lohn', 'normal_lohn.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -692,7 +755,7 @@ Speichern
 <a href="charts/it/us_wages_q_it.svg" class="lightbox"><img id="img-us_wages_q" src="charts/it/us_wages_q_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_wages_q', 'us_wages_q.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -704,7 +767,7 @@ Speichern
 <a href="charts/it/labor_force_usa_it.svg" class="lightbox"><img id="img-labor_force_usa" src="charts/it/labor_force_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('labor_force_usa', 'labor_force_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -716,7 +779,7 @@ Speichern
 <a href="charts/it/adp_bls_comparison_it.svg" class="lightbox"><img id="img-adp_bls_comparison" src="charts/it/adp_bls_comparison_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('adp_bls_comparison', 'adp_bls_comparison.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -732,7 +795,7 @@ Speichern
 <a href="charts/it/us_layoffs_sectors_it.svg" class="lightbox"><img id="img-us_layoffs_sectors" src="charts/it/us_layoffs_sectors_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_layoffs_sectors', 'us_layoffs_sectors.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -742,7 +805,7 @@ Speichern
 <a href="charts/it/us_jobless_it.svg" class="lightbox"><img id="img-us_jobless" src="charts/it/us_jobless_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_jobless', 'us_jobless.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -757,7 +820,7 @@ Speichern
 <a href="charts/it/indeed_wage_tracker_it.svg" class="lightbox"><img id="img-indeed_wage_tracker" src="charts/it/indeed_wage_tracker_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('indeed_wage_tracker', 'indeed_wage_tracker.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -769,7 +832,7 @@ Speichern
 <a href="charts/it/ea_beveridge_it.svg" class="lightbox"><img id="img-ea_beveridge" src="charts/it/ea_beveridge_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_beveridge', 'ea_beveridge.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -781,7 +844,7 @@ Speichern
 <a href="charts/it/china_unemployment_it.svg" class="lightbox"><img id="img-china_unemployment" src="charts/it/china_unemployment_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_unemployment', 'china_unemployment.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -800,7 +863,7 @@ Speichern
 <a href="charts/it/baltic_drewry_it.svg" class="lightbox"><img id="img-baltic_drewry" src="charts/it/baltic_drewry_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('baltic_drewry', 'baltic_drewry.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -816,7 +879,7 @@ Speichern
 <a href="charts/it/brent_forward_curve_it.svg" class="lightbox"><img id="img-brent_forward_curve" src="charts/it/brent_forward_curve_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('brent_forward_curve', 'brent_forward_curve.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -826,7 +889,7 @@ Speichern
 <a href="charts/it/brent_event_study_it.svg" class="lightbox"><img id="img-brent_event_study" src="charts/it/brent_event_study_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('brent_event_study', 'brent_event_study.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -841,7 +904,7 @@ Speichern
 <a href="charts/it/hormuz_payoffs_it.svg" class="lightbox"><img id="img-hormuz_payoffs" src="charts/it/hormuz_payoffs_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hormuz_payoffs', 'hormuz_payoffs.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -853,7 +916,7 @@ Speichern
 <a href="charts/it/ttf_gas_it.svg" class="lightbox"><img id="img-ttf_gas" src="charts/it/ttf_gas_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ttf_gas', 'ttf_gas.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -873,7 +936,7 @@ Speichern
 <a href="charts/it/cpi_vs_expectations_usa_it.svg" class="lightbox"><img id="img-cpi_vs_expectations_usa" src="charts/it/cpi_vs_expectations_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('cpi_vs_expectations_usa', 'cpi_vs_expectations_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -883,7 +946,7 @@ Speichern
 <a href="charts/it/core_cpi_vs_expectations_usa_it.svg" class="lightbox"><img id="img-core_cpi_vs_expectations_usa" src="charts/it/core_cpi_vs_expectations_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('core_cpi_vs_expectations_usa', 'core_cpi_vs_expectations_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -898,7 +961,7 @@ Speichern
 <a href="charts/it/pce_cpi_deflator_usa_it.svg" class="lightbox"><img id="img-pce_cpi_deflator_usa" src="charts/it/pce_cpi_deflator_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('pce_cpi_deflator_usa', 'pce_cpi_deflator_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -910,7 +973,7 @@ Speichern
 <a href="charts/it/cpi_components_usa_it.svg" class="lightbox"><img id="img-cpi_components_usa" src="charts/it/cpi_components_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('cpi_components_usa', 'cpi_components_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -922,7 +985,7 @@ Speichern
 <a href="charts/it/us_cpi_contributions_it.svg" class="lightbox"><img id="img-us_cpi_contributions" src="charts/it/us_cpi_contributions_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_cpi_contributions', 'us_cpi_contributions.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -934,7 +997,7 @@ Speichern
 <a href="charts/it/supercore_usa_it.svg" class="lightbox"><img id="img-supercore_usa" src="charts/it/supercore_usa_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('supercore_usa', 'supercore_usa.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -946,7 +1009,7 @@ Speichern
 <a href="charts/it/zillow_rent_it.svg" class="lightbox"><img id="img-zillow_rent" src="charts/it/zillow_rent_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('zillow_rent', 'zillow_rent.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -958,7 +1021,7 @@ Speichern
 <a href="charts/it/ism_services_prices_it.svg" class="lightbox"><img id="img-ism_services_prices" src="charts/it/ism_services_prices_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ism_services_prices', 'ism_services_prices.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -978,7 +1041,7 @@ Speichern
 <a href="charts/it/hicp_core_ea_it.svg" class="lightbox"><img id="img-hicp_core_ea" src="charts/it/hicp_core_ea_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hicp_core_ea', 'hicp_core_ea.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -988,7 +1051,7 @@ Speichern
 <a href="charts/it/hicp_countries_ea_it.svg" class="lightbox"><img id="img-hicp_countries_ea" src="charts/it/hicp_countries_ea_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hicp_countries_ea', 'hicp_countries_ea.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1003,7 +1066,7 @@ Speichern
 <a href="charts/it/hicp_contributions_ea_it.svg" class="lightbox"><img id="img-hicp_contributions_ea" src="charts/it/hicp_contributions_ea_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('hicp_contributions_ea', 'hicp_contributions_ea.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1023,7 +1086,7 @@ Speichern
 <a href="charts/it/us_infl_expectations_it.svg" class="lightbox"><img id="img-us_infl_expectations" src="charts/it/us_infl_expectations_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_infl_expectations', 'us_infl_expectations.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1033,7 +1096,7 @@ Speichern
 <a href="charts/it/ea_infl_expectations_it.svg" class="lightbox"><img id="img-ea_infl_expectations" src="charts/it/ea_infl_expectations_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_infl_expectations', 'ea_infl_expectations.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1052,7 +1115,7 @@ Speichern
 <a href="charts/it/us_cpi_en_it.svg" class="lightbox"><img id="img-us_cpi_en" src="charts/it/us_cpi_en_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_cpi_en', 'us_cpi_en.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1062,7 +1125,7 @@ Speichern
 <a href="charts/it/ea_hicp_en_it.svg" class="lightbox"><img id="img-ea_hicp_en" src="charts/it/ea_hicp_en_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('ea_hicp_en', 'ea_hicp_en.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1077,7 +1140,7 @@ Speichern
 <a href="charts/it/polymarket_congress_it.svg" class="lightbox"><img id="img-polymarket_congress" src="charts/it/polymarket_congress_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('polymarket_congress', 'polymarket_congress.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1089,7 +1152,7 @@ Speichern
 <a href="charts/it/china_cpi_it.svg" class="lightbox"><img id="img-china_cpi" src="charts/it/china_cpi_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_cpi', 'china_cpi.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1105,7 +1168,7 @@ Speichern
 <a href="charts/it/us_real_rate_it.svg" class="lightbox"><img id="img-us_real_rate" src="charts/it/us_real_rate_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('us_real_rate', 'us_real_rate.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1121,7 +1184,7 @@ Speichern
 <a href="charts/it/implied_fed_rates_it.svg" class="lightbox"><img id="img-implied_fed_rates" src="charts/it/implied_fed_rates_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('implied_fed_rates', 'implied_fed_rates.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1131,7 +1194,7 @@ Speichern
 <a href="charts/it/implied_ecb_rates_it.svg" class="lightbox"><img id="img-implied_ecb_rates" src="charts/it/implied_ecb_rates_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('implied_ecb_rates', 'implied_ecb_rates.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1146,7 +1209,7 @@ Speichern
 <a href="charts/it/china_policy_rates_it.svg" class="lightbox"><img id="img-china_policy_rates" src="charts/it/china_policy_rates_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('china_policy_rates', 'china_policy_rates.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1158,7 +1221,7 @@ Speichern
 <a href="charts/it/fiscal_impulse_it.svg" class="lightbox"><img id="img-fiscal_impulse" src="charts/it/fiscal_impulse_it.svg" class="chart-img"></a>
 <div class="chart-actions">
 <button class="btn-download" onclick="downloadChart('fiscal_impulse', 'fiscal_impulse.svg', 'svg')">
-Speichern
+Salva
 </button>
 </div>
 </div>
@@ -1662,7 +1725,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","loop":false,"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom","closeEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
