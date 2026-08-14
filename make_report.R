@@ -99,7 +99,7 @@ if (DO_PDF) {
         # 3. Compress the web version in docs/ using ps2pdf if available
         cat("     Compressing web version for docs/...\n")
         temp_pdf <- tempfile(fileext = ".pdf")
-        cmd_str <- sprintf("gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.5 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile=%s %s", shQuote(temp_pdf), shQuote(docs_pdf_path))
+        cmd_str <- sprintf("ps2pdf -dPDFSETTINGS=/ebook %s %s", shQuote(docs_pdf_path), shQuote(temp_pdf))
         status <- system(cmd_str)
         if (status == 0 && file.exists(temp_pdf) && file.info(temp_pdf)$size > 0) {
           file.copy(temp_pdf, docs_pdf_path, overwrite = TRUE)
