@@ -792,7 +792,7 @@ tr:last-child td {
 }
 
 /* --- Footnotes & Legal --- */
-section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):not(#aviso-legal):not(#avviso-legale)::after {
+section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):not(#aviso-legal):not(#avviso-legale):not(#note-legali)::after {
   content: "";
   display: block;
   width: 90px;
@@ -811,7 +811,9 @@ section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):n
 #aviso-legal p,
 #aviso-legal .column,
 #avviso-legale p,
-#avviso-legale .column {
+#avviso-legale .column,
+#note-legali p,
+#note-legali .column {
   color: #4a545e;
   font-size: 0.75rem;
   line-height: 1.45;
@@ -820,7 +822,8 @@ section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):n
 #rechtliche-hinweise h3,
 #legal-notice h3,
 #aviso-legal h3,
-#avviso-legale h3 {
+#avviso-legale h3,
+#note-legali h3 {
   font-size: 1.4rem !important;
 }
 

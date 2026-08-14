@@ -205,8 +205,11 @@ ul.task-list li input[type="checkbox"] {
           section.id === 'legal-notice' ||
           section.id === 'aviso-legal' ||
           section.id === 'avviso-legale' ||
+          section.id === 'note-legali' ||
           section.id.includes('konjunkturprognose') ||
-          section.id.includes('forecast')) {
+          section.id.includes('forecast') ||
+          section.id.includes('previsi') ||
+          section.id.includes('prognose')) {
         return;
       }
 
@@ -341,17 +344,17 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#real-economy" id="toc-real-economy" class="nav-link active" data-scroll-target="#real-economy">REAL ECONOMY</a>
   <ul class="collapse">
-  <li><a href="#wachstum" id="toc-wachstum" class="nav-link" data-scroll-target="#wachstum">Wachstum</a></li>
-  <li><a href="#finanzierungsbedingungen" id="toc-finanzierungsbedingungen" class="nav-link" data-scroll-target="#finanzierungsbedingungen">Finanzierungsbedingungen</a></li>
-  <li><a href="#privater-konsum" id="toc-privater-konsum" class="nav-link" data-scroll-target="#privater-konsum">Privater Konsum</a></li>
-  <li><a href="#arbeitsmarkt" id="toc-arbeitsmarkt" class="nav-link" data-scroll-target="#arbeitsmarkt">Arbeitsmarkt</a></li>
+  <li><a href="#growth" id="toc-growth" class="nav-link" data-scroll-target="#growth">Growth</a></li>
+  <li><a href="#financial-conditions" id="toc-financial-conditions" class="nav-link" data-scroll-target="#financial-conditions">Financial Conditions</a></li>
+  <li><a href="#private-consumption" id="toc-private-consumption" class="nav-link" data-scroll-target="#private-consumption">Private Consumption</a></li>
+  <li><a href="#labor-market" id="toc-labor-market" class="nav-link" data-scroll-target="#labor-market">Labor Market</a></li>
   </ul></li>
   <li><a href="#prices" id="toc-prices" class="nav-link" data-scroll-target="#prices">PRICES</a>
   <ul class="collapse">
-  <li><a href="#rohstoffe" id="toc-rohstoffe" class="nav-link" data-scroll-target="#rohstoffe">Rohstoffe</a></li>
-  <li><a href="#usa-2" id="toc-usa-2" class="nav-link" data-scroll-target="#usa-2">USA</a></li>
+  <li><a href="#commodities" id="toc-commodities" class="nav-link" data-scroll-target="#commodities">Commodities</a></li>
+  <li><a href="#us" id="toc-us" class="nav-link" data-scroll-target="#us">US</a></li>
   <li><a href="#eurozone-2" id="toc-eurozone-2" class="nav-link" data-scroll-target="#eurozone-2">Eurozone</a></li>
-  <li><a href="#inflationserwartungen" id="toc-inflationserwartungen" class="nav-link" data-scroll-target="#inflationserwartungen">Inflationserwartungen</a></li>
+  <li><a href="#inflation-expectations" id="toc-inflation-expectations" class="nav-link" data-scroll-target="#inflation-expectations">Inflation Expectations</a></li>
   </ul></li>
   <li><a href="#interest-rate-expectations-fiscal-impulse" id="toc-interest-rate-expectations-fiscal-impulse" class="nav-link" data-scroll-target="#interest-rate-expectations-fiscal-impulse">INTEREST RATE EXPECTATIONS &amp; FISCAL IMPULSE</a></li>
   </ul>
@@ -422,8 +425,8 @@ August 2026
 </section>
 <section id="real-economy" class="level1">
 <h1>REAL ECONOMY</h1>
-<section id="wachstum" class="level2">
-<h2 class="anchored" data-anchor-id="wachstum">Wachstum</h2>
+<section id="growth" class="level2">
+<h2 class="anchored" data-anchor-id="growth">Growth</h2>
 <p><img src="schiff.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-and-eurozone-recovery-in-business-conditions" class="level3">
 <h3 class="anchored" data-anchor-id="usa-and-eurozone-recovery-in-business-conditions">USA and Eurozone: Recovery in Business Conditions</h3>
@@ -532,8 +535,8 @@ Save
 </div>
 </section>
 </section>
-<section id="finanzierungsbedingungen" class="level2">
-<h2 class="anchored" data-anchor-id="finanzierungsbedingungen">Finanzierungsbedingungen</h2>
+<section id="financial-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="financial-conditions">Financial Conditions</h2>
 <p><img src="bank.png" class="feature-image nolightbox img-fluid"></p>
 <section id="us-banks-slight-easing-of-lending-standards" class="level3">
 <h3 class="anchored" data-anchor-id="us-banks-slight-easing-of-lending-standards">US Banks: Slight Easing of Lending Standards?</h3>
@@ -623,8 +626,8 @@ Save
 </div>
 </section>
 </section>
-<section id="privater-konsum" class="level2">
-<h2 class="anchored" data-anchor-id="privater-konsum">Privater Konsum</h2>
+<section id="private-consumption" class="level2">
+<h2 class="anchored" data-anchor-id="private-consumption">Private Consumption</h2>
 <p><img src="markt.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-retail-sales-continue-to-rise" class="level3">
 <h3 class="anchored" data-anchor-id="usa-retail-sales-continue-to-rise">USA: Retail Sales Continue to Rise</h3>
@@ -815,8 +818,8 @@ Save
 </div>
 </section>
 </section>
-<section id="arbeitsmarkt" class="level2">
-<h2 class="anchored" data-anchor-id="arbeitsmarkt">Arbeitsmarkt</h2>
+<section id="labor-market" class="level2">
+<h2 class="anchored" data-anchor-id="labor-market">Labor Market</h2>
 <p><img src="Leuchtturm.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-slower-rise-in-nominal-wages" class="level3">
 <h3 class="anchored" data-anchor-id="usa-slower-rise-in-nominal-wages">USA: Slower Rise in Nominal Wages</h3>
@@ -947,8 +950,8 @@ Save
 </section>
 <section id="prices" class="level1">
 <h1>PRICES</h1>
-<section id="rohstoffe" class="level2">
-<h2 class="anchored" data-anchor-id="rohstoffe">Rohstoffe</h2>
+<section id="commodities" class="level2">
+<h2 class="anchored" data-anchor-id="commodities">Commodities</h2>
 <p><img src="glut.png" class="feature-image nolightbox img-fluid"></p>
 <section id="ocean-freight-costs-continue-to-rise" class="level3">
 <h3 class="anchored" data-anchor-id="ocean-freight-costs-continue-to-rise">Ocean Freight Costs Continue to Rise</h3>
@@ -1016,8 +1019,8 @@ Save
 </div>
 </section>
 </section>
-<section id="usa-2" class="level2">
-<h2 class="anchored" data-anchor-id="usa-2">USA</h2>
+<section id="us" class="level2">
+<h2 class="anchored" data-anchor-id="us">US</h2>
 <p><img src="hitze.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-inflation-rate-surges" class="level3">
 <h3 class="anchored" data-anchor-id="usa-inflation-rate-surges">USA: Inflation Rate Surges</h3>
@@ -1166,8 +1169,8 @@ Save
 </div>
 </section>
 </section>
-<section id="inflationserwartungen" class="level2">
-<h2 class="anchored" data-anchor-id="inflationserwartungen">Inflationserwartungen</h2>
+<section id="inflation-expectations" class="level2">
+<h2 class="anchored" data-anchor-id="inflation-expectations">Inflation Expectations</h2>
 <p><img src="einkaufen.png" class="feature-image nolightbox img-fluid"></p>
 <section id="volatile-consumer-inflation-expectations" class="level3">
 <h3 class="anchored" data-anchor-id="volatile-consumer-inflation-expectations">Volatile Consumer Inflation Expectations</h3>
@@ -1332,14 +1335,6 @@ Save
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
 <td><strong>USA</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1347,7 +1342,7 @@ Save
 <td style="text-align: center;"><strong>2.0%</strong></td>
 <td style="text-align: center;">2.1%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>CN</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1355,7 +1350,7 @@ Save
 <td style="text-align: center;"><strong>4.6%</strong></td>
 <td style="text-align: center;">4.6%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>EA</strong></td>
 <td style="text-align: center;"><span class="math inline">-</span></td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1363,7 +1358,7 @@ Save
 <td style="text-align: center;"><strong>0.6%</strong></td>
 <td style="text-align: center;">0.8%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>DE</strong></td>
 <td style="text-align: center;"><span class="math inline">-</span></td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1386,13 +1381,11 @@ Save
 </section>
 <section id="legal-notice" class="level3">
 <h3 class="anchored" data-anchor-id="legal-notice">Legal Notice</h3>
-<p>The information contained and opinions expressed in this document reflect the assessments of the author at the time of publication and are subject to change at any time without prior notice. Forward-looking statements reflect the view and future expectations of the author. Opinions and expectations may differ from assessments expressed in other documents of Flossbach von Storch SE. Contributions are provided solely for information purposes without contractual or other obligation. The information and assessments contained herein do not constitute investment advice or any other recommendation. No liability is accepted for the completeness, timeliness, or accuracy of the information and assessments provided. <strong>Past performance is not a reliable indicator of future performance.</strong></p>
-<p>All copyrights and other rights, titles, and claims in, to, and from all information in this publication remain unconditionally subject to applicable regulations and proprietary rights of the respective registered owners. You acquire no rights to the content. Copyright for published content created by Flossbach von Storch SE itself remains solely with Flossbach von Storch SE. Any reproduction or use of such content, in whole or in part, is not permitted without prior written consent from Flossbach von Storch SE. <strong>Reprints of this publication as well as making it publicly accessible require prior written consent from Flossbach von Storch SE.</strong> © 2026 Flossbach von Storch. All rights reserved.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<p>The information contained and opinions expressed in this document reflect the assessments of the author at the time of publication and are subject to change at any time without prior notice. Forward-looking statements reflect the view and future expectations of the author. Opinions and expectations may differ from assessments expressed in other documents of Flossbach von Storch SE. Contributions are provided solely for information purposes without contractual or other obligation. The information and assessments contained herein do not constitute investment advice or any other recommendation. No liability is accepted for the completeness, timeliness, or accuracy of the information and assessments provided. <strong>Past performance is not a reliable indicator of future performance.</strong></p>
 </div><div class="column" style="width:50%;">
-
+<p>All copyrights and other rights, titles, and claims in, to, and from all information in this publication remain unconditionally subject to applicable regulations and proprietary rights of the respective registered owners. You acquire no rights to the content. Copyright for published content created by Flossbach von Storch SE itself remains solely with Flossbach von Storch SE. Any reproduction or use of such content, in whole or in part, is not permitted without prior written consent from Flossbach von Storch SE. <strong>Reprints of this publication as well as making it publicly accessible require prior written consent from Flossbach von Storch SE.</strong> © 2026 Flossbach von Storch. All rights reserved.</p>
 </div>
 </div>
 <script>

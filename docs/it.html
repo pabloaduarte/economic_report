@@ -204,8 +204,11 @@ ul.task-list li input[type="checkbox"] {
           section.id === 'legal-notice' ||
           section.id === 'aviso-legal' ||
           section.id === 'avviso-legale' ||
+          section.id === 'note-legali' ||
           section.id.includes('konjunkturprognose') ||
-          section.id.includes('forecast')) {
+          section.id.includes('forecast') ||
+          section.id.includes('previsi') ||
+          section.id.includes('prognose')) {
         return;
       }
 
@@ -340,17 +343,17 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#economia-reale" id="toc-economia-reale" class="nav-link active" data-scroll-target="#economia-reale">ECONOMIA REALE</a>
   <ul class="collapse">
-  <li><a href="#wachstum" id="toc-wachstum" class="nav-link" data-scroll-target="#wachstum">Wachstum</a></li>
-  <li><a href="#finanzierungsbedingungen" id="toc-finanzierungsbedingungen" class="nav-link" data-scroll-target="#finanzierungsbedingungen">Finanzierungsbedingungen</a></li>
-  <li><a href="#privater-konsum" id="toc-privater-konsum" class="nav-link" data-scroll-target="#privater-konsum">Privater Konsum</a></li>
-  <li><a href="#arbeitsmarkt" id="toc-arbeitsmarkt" class="nav-link" data-scroll-target="#arbeitsmarkt">Arbeitsmarkt</a></li>
+  <li><a href="#crescita" id="toc-crescita" class="nav-link" data-scroll-target="#crescita">Crescita</a></li>
+  <li><a href="#condizioni-finanziarie" id="toc-condizioni-finanziarie" class="nav-link" data-scroll-target="#condizioni-finanziarie">Condizioni Finanziarie</a></li>
+  <li><a href="#consumi-privati" id="toc-consumi-privati" class="nav-link" data-scroll-target="#consumi-privati">Consumi Privati</a></li>
+  <li><a href="#mercato-del-lavoro" id="toc-mercato-del-lavoro" class="nav-link" data-scroll-target="#mercato-del-lavoro">Mercato del Lavoro</a></li>
   </ul></li>
   <li><a href="#prezzi" id="toc-prezzi" class="nav-link" data-scroll-target="#prezzi">PREZZI</a>
   <ul class="collapse">
-  <li><a href="#rohstoffe" id="toc-rohstoffe" class="nav-link" data-scroll-target="#rohstoffe">Rohstoffe</a></li>
+  <li><a href="#materie-prime" id="toc-materie-prime" class="nav-link" data-scroll-target="#materie-prime">Materie Prime</a></li>
   <li><a href="#usa-2" id="toc-usa-2" class="nav-link" data-scroll-target="#usa-2">USA</a></li>
-  <li><a href="#eurozone" id="toc-eurozone" class="nav-link" data-scroll-target="#eurozone">Eurozone</a></li>
-  <li><a href="#inflationserwartungen" id="toc-inflationserwartungen" class="nav-link" data-scroll-target="#inflationserwartungen">Inflationserwartungen</a></li>
+  <li><a href="#area-euro" id="toc-area-euro" class="nav-link" data-scroll-target="#area-euro">Area Euro</a></li>
+  <li><a href="#aspettative-di-inflazione" id="toc-aspettative-di-inflazione" class="nav-link" data-scroll-target="#aspettative-di-inflazione">Aspettative di Inflazione</a></li>
   </ul></li>
   <li><a href="#aspettative-sui-tassi-impulso-fiscale" id="toc-aspettative-sui-tassi-impulso-fiscale" class="nav-link" data-scroll-target="#aspettative-sui-tassi-impulso-fiscale">ASPETTATIVE SUI TASSI &amp; IMPULSO FISCALE</a></li>
   </ul>
@@ -421,8 +424,8 @@ Agosto 2026
 </section>
 <section id="economia-reale" class="level1">
 <h1>ECONOMIA REALE</h1>
-<section id="wachstum" class="level2">
-<h2 class="anchored" data-anchor-id="wachstum">Wachstum</h2>
+<section id="crescita" class="level2">
+<h2 class="anchored" data-anchor-id="crescita">Crescita</h2>
 <p><img src="schiff.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-e-area-euro-ripresa-del-clima-economico" class="level3">
 <h3 class="anchored" data-anchor-id="usa-e-area-euro-ripresa-del-clima-economico">USA e Area Euro: Ripresa del clima economico</h3>
@@ -531,8 +534,8 @@ Salva
 </div>
 </section>
 </section>
-<section id="finanzierungsbedingungen" class="level2">
-<h2 class="anchored" data-anchor-id="finanzierungsbedingungen">Finanzierungsbedingungen</h2>
+<section id="condizioni-finanziarie" class="level2">
+<h2 class="anchored" data-anchor-id="condizioni-finanziarie">Condizioni Finanziarie</h2>
 <p><img src="bank.png" class="feature-image nolightbox img-fluid"></p>
 <section id="banche-usa-lieve-allentamento-dei-criteri-di-credito" class="level3">
 <h3 class="anchored" data-anchor-id="banche-usa-lieve-allentamento-dei-criteri-di-credito">Banche USA: lieve allentamento dei criteri di credito?</h3>
@@ -622,8 +625,8 @@ Salva
 </div>
 </section>
 </section>
-<section id="privater-konsum" class="level2">
-<h2 class="anchored" data-anchor-id="privater-konsum">Privater Konsum</h2>
+<section id="consumi-privati" class="level2">
+<h2 class="anchored" data-anchor-id="consumi-privati">Consumi Privati</h2>
 <p><img src="markt.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-le-vendite-al-dettaglio-continuano-ad-aumentare" class="level3">
 <h3 class="anchored" data-anchor-id="usa-le-vendite-al-dettaglio-continuano-ad-aumentare">USA: Le vendite al dettaglio continuano ad aumentare</h3>
@@ -814,8 +817,8 @@ Salva
 </div>
 </section>
 </section>
-<section id="arbeitsmarkt" class="level2">
-<h2 class="anchored" data-anchor-id="arbeitsmarkt">Arbeitsmarkt</h2>
+<section id="mercato-del-lavoro" class="level2">
+<h2 class="anchored" data-anchor-id="mercato-del-lavoro">Mercato del Lavoro</h2>
 <p><img src="Leuchtturm.png" class="feature-image nolightbox img-fluid"></p>
 <section id="usa-crescita-più-lenta-dei-salari-nominali" class="level3">
 <h3 class="anchored" data-anchor-id="usa-crescita-più-lenta-dei-salari-nominali">USA: Crescita più lenta dei salari nominali</h3>
@@ -946,8 +949,8 @@ Salva
 </section>
 <section id="prezzi" class="level1">
 <h1>PREZZI</h1>
-<section id="rohstoffe" class="level2">
-<h2 class="anchored" data-anchor-id="rohstoffe">Rohstoffe</h2>
+<section id="materie-prime" class="level2">
+<h2 class="anchored" data-anchor-id="materie-prime">Materie Prime</h2>
 <p><img src="glut.png" class="feature-image nolightbox img-fluid"></p>
 <section id="i-costi-di-trasporto-marittimo-continuano-a-salire" class="level3">
 <h3 class="anchored" data-anchor-id="i-costi-di-trasporto-marittimo-continuano-a-salire">I costi di trasporto marittimo continuano a salire</h3>
@@ -1120,8 +1123,8 @@ Salva
 </div>
 </section>
 </section>
-<section id="eurozone" class="level2">
-<h2 class="anchored" data-anchor-id="eurozone">Eurozone</h2>
+<section id="area-euro" class="level2">
+<h2 class="anchored" data-anchor-id="area-euro">Area Euro</h2>
 <p><img src="warenkorb.png" class="feature-image nolightbox img-fluid"></p>
 <section id="inflazione-in-aumento-nellarea-euro" class="level3">
 <h3 class="anchored" data-anchor-id="inflazione-in-aumento-nellarea-euro">Inflazione in aumento nell’Area Euro</h3>
@@ -1165,8 +1168,8 @@ Salva
 </div>
 </section>
 </section>
-<section id="inflationserwartungen" class="level2">
-<h2 class="anchored" data-anchor-id="inflationserwartungen">Inflationserwartungen</h2>
+<section id="aspettative-di-inflazione" class="level2">
+<h2 class="anchored" data-anchor-id="aspettative-di-inflazione">Aspettative di Inflazione</h2>
 <p><img src="einkaufen.png" class="feature-image nolightbox img-fluid"></p>
 <section id="aspettative-dinflazione-dei-consumatori-volatili" class="level3">
 <h3 class="anchored" data-anchor-id="aspettative-dinflazione-dei-consumatori-volatili">Aspettative d’inflazione dei consumatori volatili</h3>
@@ -1331,14 +1334,6 @@ Salva
 </thead>
 <tbody>
 <tr class="odd">
-<td></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="even">
 <td><strong>USA</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1346,7 +1341,7 @@ Salva
 <td style="text-align: center;"><strong>2,0%</strong></td>
 <td style="text-align: center;">2,1%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>CN</strong></td>
 <td style="text-align: center;">0</td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1354,7 +1349,7 @@ Salva
 <td style="text-align: center;"><strong>4,6%</strong></td>
 <td style="text-align: center;">4,6%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>EA</strong></td>
 <td style="text-align: center;"><span class="math inline">-</span></td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1362,7 +1357,7 @@ Salva
 <td style="text-align: center;"><strong>0,6%</strong></td>
 <td style="text-align: center;">0,8%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>DE</strong></td>
 <td style="text-align: center;"><span class="math inline">-</span></td>
 <td style="text-align: center;"><span class="math inline">+</span></td>
@@ -1379,19 +1374,17 @@ Salva
 <p><strong>USA:</strong> Consumi stabili, una solida situazione del mercato del lavoro e salari in crescita meno marcata giustificano il momentum positivamente invariato. Sul piano della politica fiscale non è prevista alcuna consolidamento di bilancio. Al contrario, l’orientamento rimane espansivo. Sul piano monetario non si attendono più tagli dei tassi entro la fine dell’anno. La guerra in Iran aumenta l’incertezza e il rischio di recessione.</p>
 <p><strong>Cina:</strong> Il settore immobiliare, ancora debole, pesa sulla domanda interna. L’industria stabilizza la congiuntura attraverso le esportazioni, tuttavia soprattutto tramite sussidi, il che indica sovraccapacità produttiva ed esercita un effetto deflazionistico. Dalle politiche fiscale e monetaria ci si attende lievi impulsi.</p>
 </div><div class="column" style="width:50%;">
-<p><strong>Area Euro / Germania:</strong> Il momentum negativo in Germania e nell’Area Euro dovuto agli impatti dello shock del prezzo del petrolio sulla domanda e sull’industria viene parzialmente compensato a livello europeo dalla crescita più dinamica in Spagna e Italia. La Spagna mostra tuttavia una crescente debolezza. I programmi congiunturali finanziati a debito dovrebbero fornire un impulso nel 2026. Senza deregolamentazione, tuttavia, gli investimenti tedeschi in infrastrutture e difesa dovrebbero esplicare un effetto modesto. L’aumento dei prezzi di petrolio e gas e un euro debole appesantiscono ulteriormente la congiuntura. Alla luce delle scarse prospettive aziendali e dell’accresciuta incertezza, abbiamo nuovamente ridotto la nostra previsione.</p>
+<p><strong>Area Euro / Germania:</strong> Il momentum negativo in Germania e nell’Area Euro dovuto agli impatti dello shock del prezzo del petrolio sulla domanda e sull’industria viene parzialmente compensato a nivel europeo dalla crescita più dinamica in Spagna e Italia. La Spagna mostra tuttavia una crescente debolezza. I programmi congiunturali finanziati a debito dovrebbero fornire un impulso nel 2026. Senza deregolamentazione, tuttavia, gli investimenti tedeschi in infrastrutture e difesa dovrebbero esplicare un effetto modesto. L’aumento dei prezzi di petrolio e gas e un euro debole appesantiscono ulteriormente la congiuntura. Alla luce delle scarse prospettive aziendali e dell’accresciuta incertezza, abbiamo nuovamente ridotto la nostra previsione.</p>
 </div>
 </div>
 </section>
 <section id="note-legali" class="level3">
 <h3 class="anchored" data-anchor-id="note-legali">Note Legali</h3>
-<p>Le informazioni contenute nel presente documento e le opinioni espresse riflettono le valutazioni dell’autore al momento della pubblicazione e possono cambiare in qualsiasi momento senza preavviso. Le indicazioni relative a dichiarazioni previsionali riflettono la visione e le aspettative future dell’autore. Le opinioni e le aspettative possono differire dalle valutazioni espresse in altri documenti di Flossbach von Storch SE. I contributi vengono messi a disposizione a soli fini informativi e senza alcun vincolo contrattuale o di altra natura. Le informazioni e le valutazioni contenute non costituiscono una consulenza in materia di investimenti o altra raccomandazione. È esclusa qualsiasi responsabilità per la completezza, l’attualità e la correttezza delle informazioni e delle valutazioni fornite. <strong>L’andamento storico non è un indicatore affidabile dell’andamento futuro.</strong></p>
-<p>Tutti i diritti d’autore e altri diritti, titoli e pretese su, per e da tutte le informazioni di questa pubblicazione sono soggetti senza limitazioni alle disposizioni in ciascun caso applicabili e ai diritti di proprietà dei rispettivi proprietari registrati. L’utente non acquisisce alcun diritto sul contenuto. Il copyright per i contenuti pubblicati creati dalla stessa Flossbach von Storch SE rimane di esclusiva proprietà di Flossbach von Storch SE. La riproduzione o l’uso di tali contenuti, in tutto o in parte, non è consentita senza il consenso scritto di Flossbach von Storch SE. <strong>Le ristampe di questa pubblicazione e la sua messa a disposizione del pubblico richiedono il previo consenso scritto di Flossbach von Storch SE.</strong> © 2026 Flossbach von Storch. Tutti i diritti riservati.</p>
 <div class="columns">
 <div class="column" style="width:50%;">
-
+<p>Le informazioni contenute nel presente documento e le opinioni espresse riflettono le valutazioni dell’autore al momento della pubblicazione e possono cambiare in qualsiasi momento senza preavviso. Le indicazioni relative a dichiarazioni previsionali riflettono la visione e le aspettative future dell’autore. Le opinioni e le aspettative possono differire dalle valutazioni espresse in altri documenti di Flossbach von Storch SE. I contributi vengono messi a disposizione a soli fini informativi e senza alcun vincolo contrattuale o di altra natura. Le informazioni e le valutazioni contenute non costituiscono una consulenza in materia di investimenti o altra raccomandazione. È esclusa qualsiasi responsabilità per la completezza, l’attualità e la correttezza delle informazioni e delle valutazioni fornite. <strong>L’andamento storico non è un indicatore affidabile dell’andamento futuro.</strong></p>
 </div><div class="column" style="width:50%;">
-
+<p>Tutti i diritti d’autore e altri diritti, titoli e pretese su, per e da tutte le informazioni di questa pubblicazione sono soggetti senza limitazioni alle disposizioni in ciascun caso applicabili e ai diritti di proprietà dei rispettivi proprietari registrati. L’utente non acquisisce alcun diritto sul contenuto. Il copyright per i contenuti pubblicati creati dalla stessa Flossbach von Storch SE rimane di esclusiva proprietà di Flossbach von Storch SE. La riproduzione o l’uso di tali contenuti, in tutto o in parte, non è consentita senza il consenso scritto di Flossbach von Storch SE. <strong>Le ristampe di questa pubblicazione e la sua messa a disposizione del pubblico richiedono il previo consenso scritto di Flossbach von Storch SE.</strong> © 2026 Flossbach von Storch. Tutti i diritti riservati.</p>
 </div>
 </div>
 <script>
