@@ -37,10 +37,11 @@ REPORT_MONTH   <- MONTH_NAMES_DE[as.integer(format(Sys.Date(), "%m"))]
 REPORT_YEAR    <- format(Sys.Date(), "%Y")
 
 # Logic Flags
-DO_DATA   <- cmd %in% c("all", "data")
-DO_CHARTS <- cmd %in% c("all", "charts")
-DO_PDF    <- cmd %in% c("all", "pdf", "reports")
-DO_HTML   <- cmd %in% c("all", "html", "reports")
+DO_DATA       <- cmd %in% c("all", "data")
+DO_CHARTS     <- cmd %in% c("all", "charts")
+DO_PDF        <- cmd %in% c("all", "pdf", "reports")
+DO_HTML       <- cmd %in% c("all", "html", "reports")
+DO_HIGHLIGHTS <- cmd %in% c("all", "highlights", "reports")
 
 # --- PHASE 1: DATA FETCHING ---
 if (DO_DATA) {
@@ -119,6 +120,27 @@ if (DO_PDF) {
       }
     }, error = function(e) {
       cat(sprintf("     ERROR rendering %s: %s\n", l, e$message))
+    })
+  }
+}
+
+# --- PHASE 3b: HIGHLIGHTS REPORT (Beamer PDF) ---
+if (DO_HIGHLIGHTS) {
+  hl_qmd <- "konjunkturbericht_highlights.qmd"
+  if (file.exists(hl_qmd)) {
+    cat("\n[STEP 3b] Rendering Highlights PDF report...\n")
+    tryCatch({
+      quarto_render(input = hl_qmd, output_format = "beamer", quiet = FALSE)
+      hl_pdf <- "konjunkturbericht_highlights.pdf"
+      if (file.exists(hl_pdf)) {
+        hl_archive_name <- sprintf("Konjunkturbericht_Highlights_%s_%s.pdf", REPORT_MONTH, REPORT_YEAR)
+        file.copy(hl_pdf, file.path(OUTPUT_DIR, hl_archive_name), overwrite = TRUE)
+        dir.create("docs", showWarnings = FALSE)
+        file.copy(hl_pdf, file.path("docs", "Konjunkturbericht_highlights.pdf"), overwrite = TRUE)
+        cat(sprintf("     Success: %s (Archived as %s and copied to docs/)\n", hl_pdf, hl_archive_name))
+      }
+    }, error = function(e) {
+      cat(sprintf("     ERROR rendering Highlights: %s\n", e$message))
     })
   }
 }
