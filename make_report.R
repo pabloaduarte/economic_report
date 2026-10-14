@@ -49,6 +49,9 @@ if (DO_DATA) {
   # Note: Requires Macrobond API license on the machine
   system("Rscript fetch_macrobond.R")
   
+  cat("\n[STEP 1a] Fetching BEA PCE diffusion data & generating standalone Excel...\n")
+  system("Rscript scripts/fetch_pce_diffusion.R")
+  
   cat("\n[STEP 1b] Exporting Excel data file...\n")
   system("Rscript export_data.R")
 }
