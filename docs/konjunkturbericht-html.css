@@ -1117,3 +1117,27 @@ section.level3:not(.report-cover):not(#rechtliche-hinweise):not(#legal-notice):n
     line-height: 1.25 !important;
   }
 }
+
+/* --- Forecast Slide Full-Width Protection --- */
+.forecast-slide,
+section.level3:has(.forecast-block) {
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+.forecast-slide .card-split-pane,
+section.level3:has(.forecast-block) .card-split-pane {
+  display: block !important;
+}
+
+.forecast-block {
+  width: 100% !important;
+  margin: 1.5rem auto !important;
+}
+
+.forecast-block table {
+  width: 100% !important;
+}
